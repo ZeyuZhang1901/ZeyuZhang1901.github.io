@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Zeyu Zhang</title>
+</head>
+<body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("UA-129163640-1");
+    pageTracker._trackPageview();
+} catch(err) {}</script>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Zeyu Zhang</div>
+<div class="menu-item"><a href="index.html" class="current">Home</a></div>
+<div class="menu-item"><a href="index.html" class="current">Publication</a></div>
+<div class="menu-item"><a href="projects.html">Projects</a></div>
+<div class="menu-item"><a href="https://github.com/ZeyuZhang1901">GitHub</a></div>
+<!-- <div class="menu-item"><a href="https://scholar.google.com/citations?user=mefMx34AAAAJ&hl=en">Google&nbsp;Scholar</a></div> -->
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Selected Projects</h1>
+</div>
+<h3>Offline Reinforcement Learning to Rank</h3>
+<ul>
+    <li><p>March 2022 - April 2023, Remote</p></li>
+    <li><p>Mentored by <a href="https://huazhengwang.github.io/">Dr. Huazheng Wang</a> and <a href="https://huazhengwang.github.io/">Dr. Mengdi Wang</a></p></li>
+    <li><p>Reproduced the code in paper <i>Reinforcement Online Learning to Rank with Unbiased Reward Shaping</i>. <a href="https://github.com/ielab/OLTR">[code link]</a></p></li>
+    <li><p>Formulate the off-policy LTR with biased feedback under general click model as a Markov Decision Process, and bridge the area of off-policy learning to rank and offline reinforcement learning</p></li>
+    <li><p>Propose <b>CUORL</b>, a Click model-agnostic Unified Off-policy LTR method that could utilize any offline RL algorithm as a plug-in solver, and we instantiate it using CQL.</p></li>
+    <li><p>Conduct extensive empirical experiments to validate the effectiveness of our algorithm using real-world LTR datasets under different click models. <a href="https://anonymous.4open.science/r/myLTR-0945/">[code link]</a></p></li>
+</ul>
+
+<h3>Playing Pong via Proximal Policy Optimization</h3>
+<ul>
+    <li><p>November 2021 - Januaray 2022, USTC</p></li>
+    <li><p>Mentored by <a href="https://miralab.ai/people/jie-wang/">Dr. Jie Wang</a></p></li>
+    <li><p>Trained an agent to learn the Atari game: pong with proximal policy optimization algorithm (PPO).</p></li>
+    <li><p>The result reached an average reward of twenty points after training on RTX 3060 GPU for 14310 epochs, where the maximum reward is twenty-one points.</p></li>
+    <li><p>Took advantage of Actor-Critic policy, clipping technique to reduce variance.</p></li>
+</ul>
+
+<h3>Deep Q-Networks Reproduction</h3>
+<ul>
+    <li><p>September 2021 - November 2021, USTC</p></li>
+    <li><p>Mentored by <a href="https://miralab.ai/people/jie-wang/">Dr. Jie Wang</a></p></li>
+    <li><p>Reproduced Deep Q-Network (DQN) and its variants (Double DQN, Duel DQN) using PyTorch to play Atari games.</p></li>
+    <li><p>Reduced correlation between input data by applying experience replay technique to the model.</p></li>
+    <li><p>Improved stability through employing fixed target technique to the model.</p></li>
+</ul>
+
+<h3>Implementing FFT Parallel Algorithms via Openmp</h3>
+<ul>
+    <li><p>September 2021 - November 2021, USTC</p></li>
+    <li><p>Mentored by Dr. Lixiang Tan</p></li>
+    <li><p>On 8-core CPU with 8 threads, the acceleration ratio was stable at around 3 when the number of FFT points was large(<math>2^20</math> or more).</p></li>
+    <li><p>Theoretically analyzed FFT algorithm and found relative independence of each butterfly operation in each step, which can be paralleled.</p></li>
+    <li><p>Added appropriate parallel compilation guidance using OpenMP to maximize the effectiveness of parallel.</p></li>
+</ul>
+
+<h3>Signal Distortion Measurement Device Design</h3>
+<ul>
+    <li>April 2021 - November 2021, USTC</li>
+    <li>Mentored by Dr. Wei Lu</li>
+    <li><p>Reduced distortion error to around 0.5% with requirement of 3% and extended measurement band width to 1k-100k.</p></li>
+    <li><p>Applied window functions to reduce Spectrum Leakage. Considering both effectiveness and feasibility, I chose Hanning window finally.</p></li>
+    <li><p>Designed an algorithm to accurately detect the center spectrum by adding energy from nearby spectrum lines.</p></li>
+    <li><p>Developed an LCD to visualize relevant data and input analog signals.</p></li>
+</ul>
+</td>
+</tr>
+</table>
+</body>
+</html>
