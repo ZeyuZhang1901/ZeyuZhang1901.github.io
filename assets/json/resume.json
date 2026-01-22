@@ -23,7 +23,7 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-06-01",
       "endDate": "",
-      "summary": "Developing methods to detect temporal knowledge leakage in LLMs. Submitted to KDD 2026.",
+      "summary": "Developing methods to detect temporal knowledge leakage in LLMs.",
       "highlights": [
         "Formalized temporal knowledge leakage problem and introduced a four-phase detection pipeline",
         "Computed Shapley values and developed Shapley-weighted Decision-Critical Leakage Rate metric",
@@ -71,74 +71,6 @@
         "Proposed Click model-agnostic Unified Off-Policy Learning to Rank (CUOLR) algorithm",
         "Demonstrated effective application of offline RL methods (DQN, SAC, BCQ, CQL) to LTR",
         "Achieved state-of-the-art performance across heterogeneous click models"
-      ]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "Northwestern University",
-      "location": "Evanston, IL",
-      "position": "Teaching Assistant - Data Science 2 with Python (303-2)",
-      "url": "https://www.northwestern.edu/",
-      "startDate": "2026-01-01",
-      "endDate": "",
-      "summary": "Teaching assistant for Data Science 2, covering machine learning concepts.",
-      "highlights": [
-        "Grade all 5 homework assignments",
-        "Grade two in-person exams"
-      ]
-    },
-    {
-      "organization": "Northwestern University",
-      "location": "Evanston, IL",
-      "position": "Teaching Assistant - Applied Multivariate Analysis (STAT 348)",
-      "url": "https://www.northwestern.edu/",
-      "startDate": "2025-09-01",
-      "endDate": "2025-12-01",
-      "summary": "Teaching assistant for Applied Multivariate Analysis course.",
-      "highlights": [
-        "Held weekly TA discussion sessions every Friday afternoon",
-        "Answered student questions related to course material",
-        "Graded all 5 homework assignments"
-      ]
-    },
-    {
-      "organization": "Northwestern University",
-      "location": "Evanston, IL",
-      "position": "Teaching Assistant - Data Science 3 with Python (303-3)",
-      "url": "https://www.northwestern.edu/",
-      "startDate": "2025-04-01",
-      "endDate": "2025-06-01",
-      "summary": "Teaching assistant for advanced data science course.",
-      "highlights": [
-        "Introduced non-linear statistical models (splines) and tree-based methods (random forests, boosting)",
-        "Taught statistical concepts including model bias and variance"
-      ]
-    },
-    {
-      "organization": "Northwestern University",
-      "location": "Evanston, IL",
-      "position": "Teaching Assistant - Data Science 2 with Python (303-2)",
-      "url": "https://www.northwestern.edu/",
-      "startDate": "2025-01-01",
-      "endDate": "2025-03-01",
-      "summary": "Teaching assistant for Data Science 2.",
-      "highlights": [
-        "Introduced supervised machine learning in Python",
-        "Focus on linear and logistic regression"
-      ]
-    },
-    {
-      "organization": "Northwestern University",
-      "location": "Evanston, IL",
-      "position": "Teaching Assistant - Introduction to Probability and Statistics (210-0)",
-      "url": "https://www.northwestern.edu/",
-      "startDate": "2024-09-01",
-      "endDate": "2024-12-01",
-      "summary": "Teaching assistant for introductory statistics course.",
-      "highlights": [
-        "Covered descriptive statistics, probability, random variables",
-        "Taught sampling distributions, confidence intervals, and significance tests"
       ]
     }
   ],
