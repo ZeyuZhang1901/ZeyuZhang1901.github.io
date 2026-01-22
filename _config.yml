@@ -3,20 +3,21 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: You
-middle_name: R.
-last_name: Name
+first_name: Zeyu (Steven)
+middle_name:
+last_name: Zhang
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Best reached via email.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  I am a third-year Ph.D. student in the Department of Statistics and Data Science at Northwestern University. My research focuses on knowledge leakage in large language models, with particular emphasis on settings that involve complex reasoning and chain-of-thought processes. I study how and when sensitive or unintended information may be exposed during multi-step inference, and I am interested in principled methods for detecting, characterizing, and mitigating such leakage. In parallel, I work on fine-tuning language models using reinforcement learning–based approaches, including RLHF, Direct Preference Optimization (DPO), and related algorithms, with the goal of improving alignment, robustness, and controllability. 
+  
+  Outside of research, I am deeply committed to an active lifestyle. I follow a structured workout program and train almost every day, viewing physical discipline as a natural complement to intellectual rigor. I enjoy a wide range of sports, with basketball being my favorite, and I am particularly drawn to long-distance running for both its physical demands and its meditative rhythm. These activities keep me grounded, energized, and continuously motivated—both on and off the track.
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+  © Copyright 2026 Zeyu Zhang. Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: LLM Fine-Tuning, Knowledge Leakage Detection, Reinforcement Learning based Fine-Tuning # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: 🎓 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://ZeyuZhang1901.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -93,8 +94,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Zeyu's Blog # blog_name will be displayed in your blog page
+blog_description: Insights on LLMs, reinforcement learning, and research life
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -281,8 +282,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Zhang]
+  first_name: [Zeyu, Z., Steven]
 
   style: apa
   locale: en
