@@ -12,9 +12,14 @@ course_id: 25fall-multivariate-analysis
 
 - Held weekly TA discussion sessions
 - Answered student questions related to course material
-- Graded all 5 homework assignments
+- Graded homework assignments
 
 ## Course Description
 
-This course covers statistical methods for analyzing multivariate data, including principal component analysis,
-factor analysis, and discriminant analysis.
+The primary goal of this course is to present statistical methods for describing and analyzing multivariate data, data
+in which the response is multidimensional. Topics covered will include principal component analysis, canonical
+correlation, multidimensional scaling, factor analysis, and clustering. Although the statistical theory behind the
+methods will be discussed, the course will emphasize the statistical and geometric motivation for the methods, the
+practical application of the methods, and the interpretation of the results. Given the nature of the data, and the
+methodology used, linear algebra plays an important role in the course. Thus, a second goal of the course is to
+present topics in linear algebra that are useful in understanding statistical methodology.

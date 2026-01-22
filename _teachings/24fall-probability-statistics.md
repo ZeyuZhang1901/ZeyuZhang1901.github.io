@@ -16,5 +16,5 @@ course_id: 24fall-probability-statistics
 
 ## Course Description
 
-This class covers descriptive statistics, probability, random variables, sampling distributions, confidence
-intervals, and significance tests.
+This class is titled Introduction to Probability and Statistics. We will cover descriptive statistics, probability,
+random variables, sampling distributions, confidence intervals, and significance tests.

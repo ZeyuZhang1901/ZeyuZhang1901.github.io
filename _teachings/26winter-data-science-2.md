@@ -11,7 +11,7 @@ course_id: 26winter-data-science-2
 ## Teaching Assistant Responsibilities
 
 - Grade homework assignments
-- Grade two in-person exams
+- Grade in-person exams
 - Assist students with course material
 
 ## Course Description
