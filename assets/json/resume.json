@@ -6,7 +6,7 @@
     "email": "zeyuzhang2028@u.northwestern.edu",
     "phone": "",
     "url": "https://ZeyuZhang1901.github.io",
-    "summary": "Third-year PhD student at Northwestern University researching trustworthy AI and large language model alignment. My work spans knowledge leakage detection in complex reasoning scenarios, off-policy learning to rank, and interpretability of black-box models. Experienced in both theoretical research and practical implementation of RL-based fine-tuning methods including RLHF and DPO.",
+    "summary": "Third-year PhD student at Northwestern University researching trustworthy AI and large language model alignment.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -23,12 +23,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-06-01",
       "endDate": "",
-      "summary": "Developing methods to detect and prevent temporal knowledge leakage in LLMs for prediction tasks requiring temporal reasoning (e.g., legal outcomes, stock performance). Submitted to KDD 2026.",
+      "summary": "Developing methods to detect temporal knowledge leakage in LLMs. Submitted to KDD 2026.",
       "highlights": [
         "Formalized temporal knowledge leakage problem and introduced a four-phase detection pipeline",
-        "Computed Shapley values to quantify claim contributions and developed Shapley-weighted Decision-Critical Leakage Rate metric",
+        "Computed Shapley values and developed Shapley-weighted Decision-Critical Leakage Rate metric",
         "Proposed Temporal LLM Agent architecture with iterative claim verification to prevent leakage",
-        "Demonstrated significant leakage reduction across legal case prediction, salary estimation, and stock ranking tasks"
+        "Demonstrated significant leakage reduction across legal, salary, and stock ranking tasks"
       ]
     },
     {
@@ -37,12 +37,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2024-01-01",
       "endDate": "2025-05-01",
-      "summary": "Developed Linear Attribution Mapping Probe (LAMP) for interpreting black-box language models. Accepted as Spotlight paper at AISTATS 2026.",
+      "summary": "Developed LAMP for interpreting black-box LLMs. Accepted as Spotlight at AISTATS 2026.",
       "highlights": [
         "Developed LAMP framework for interpreting black-box LLMs by fitting locally linear surrogate models",
-        "Designed perturbation-based method to probe model sensitivity without accessing gradients, logits, or internal states",
+        "Designed perturbation-based method to probe model sensitivity without internal access",
         "Enabled practical interpretability for proprietary LLMs through self-reported explanations",
-        "Conducted extensive experiments across sentiment classification, controversial-topic detection, and harmful response auditing"
+        "Conducted experiments across sentiment, controversial-topic detection, and harmful auditing"
       ]
     },
     {
@@ -51,12 +51,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2024-06-01",
       "endDate": "2025-01-01",
-      "summary": "Comprehensive analysis of LLM memorization behaviors under different fine-tuning paradigms (SFT and DPO). Completed as qualifying examination paper.",
+      "summary": "Analysis of LLM memorization under SFT and DPO. Qualifying examination paper.",
       "highlights": [
         "Analyzed LLM memorization behaviors under SFT and DPO fine-tuning paradigms",
         "Reproduced and extended findings from Stanford's Finetunebench, evaluating robustness to input rephrasings",
-        "Proposed formal distinction between passive and positive memorization, demonstrating superior efficiency of the latter",
-        "Designed temporal generalization experiments showing that lightweight system prompts can mitigate temporal overfitting"
+        "Proposed distinction between passive and positive memorization",
+        "Designed experiments showing system prompts can mitigate temporal overfitting"
       ]
     },
     {
@@ -65,12 +65,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2023-09-01",
       "endDate": "2024-05-01",
-      "summary": "Formulated unified framework for off-policy Learning to Rank using reinforcement learning. Published at NeurIPS 2023.",
+      "summary": "Unified framework for off-policy Learning to Rank. Published at NeurIPS 2023.",
       "highlights": [
         "Formulated unified framework modeling various click models in LTR as Markov Decision Process (MDP)",
         "Proposed Click model-agnostic Unified Off-Policy Learning to Rank (CUOLR) algorithm",
         "Demonstrated effective application of offline RL methods (DQN, SAC, BCQ, CQL) to LTR",
-        "Achieved state-of-the-art performance and improved robustness across heterogeneous click models on large-scale datasets"
+        "Achieved state-of-the-art performance across heterogeneous click models"
       ]
     }
   ],
@@ -82,7 +82,7 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2026-01-01",
       "endDate": "",
-      "summary": "Teaching assistant for Data Science 2, focusing on supervised machine learning with linear and logistic regression. Course ongoing.",
+      "summary": "Teaching assistant for Data Science 2, covering machine learning concepts.",
       "highlights": [
         "Grade all 5 homework assignments",
         "Grade two in-person exams"
@@ -109,7 +109,7 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-04-01",
       "endDate": "2025-06-01",
-      "summary": "Teaching assistant for advanced data science course covering non-linear models, tree-based methods, and statistical concepts.",
+      "summary": "Teaching assistant for advanced data science course.",
       "highlights": [
         "Introduced non-linear statistical models (splines) and tree-based methods (random forests, boosting)",
         "Taught statistical concepts including model bias and variance"
@@ -122,7 +122,7 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-01-01",
       "endDate": "2025-03-01",
-      "summary": "Teaching assistant for Data Science 2, focusing on supervised machine learning with linear and logistic regression.",
+      "summary": "Teaching assistant for Data Science 2.",
       "highlights": [
         "Introduced supervised machine learning in Python",
         "Focus on linear and logistic regression"
@@ -298,7 +298,7 @@
   "projects": [
     {
       "name": "Signal Distortion Measurement Device Design",
-      "summary": "Designed and implemented a high-precision signal distortion measurement device achieving 0.5% error (requirement: 3%) with extended measurement bandwidth of 1kHz-100kHz.",
+      "summary": "Designed high-precision signal distortion measurement device (0.5% error).",
       "highlights": [
         "Applied Hanning window functions to reduce spectrum leakage effectively",
         "Designed algorithm to accurately detect center spectrum by aggregating energy from nearby spectrum lines",
