@@ -39,7 +39,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "This page presents my academic and professional qualifications, including education, research experience, teaching roles, awards, skills, and projects.",
+          description: "This page presents my academic and professional qualifications.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
