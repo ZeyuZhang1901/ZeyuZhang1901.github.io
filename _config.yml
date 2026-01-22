@@ -303,8 +303,10 @@ scholar:
   details_link: Details
 
   query: "@*"
-  group_by: year
-  group_order: descending
+  group_by: category
+  group_order: ascending
+  sort_by: year
+  order: descending
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
@@ -327,6 +329,7 @@ filtered_bibtex_keywords:
     award_name,
     bibtex_show,
     blog,
+    category,
     code,
     dimensions,
     eprint,
