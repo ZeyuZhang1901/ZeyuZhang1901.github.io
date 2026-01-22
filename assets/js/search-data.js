@@ -496,16 +496,31 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
-            },},{id: "teachings-data-science-fundamentals",
-          title: 'Data Science Fundamentals',
-          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
+            },},{id: "teachings-introduction-to-probability-and-statistics-210-0-20",
+          title: 'Introduction to Probability and Statistics (210-0-20)',
+          description: "Foundational course in probability and statistical methods.",
           section: "Teachings",handler: () => {
-              window.location.href = "/teachings/data-science-fundamentals/";
-            },},{id: "teachings-introduction-to-machine-learning",
-          title: 'Introduction to Machine Learning',
-          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
+              window.location.href = "/teachings/24fall-probability-statistics/";
+            },},{id: "teachings-applied-multivariate-analysis-stat-348",
+          title: 'Applied Multivariate Analysis (STAT 348)',
+          description: "Statistical methods for multivariate data analysis.",
           section: "Teachings",handler: () => {
-              window.location.href = "/teachings/introduction-to-machine-learning/";
+              window.location.href = "/teachings/25fall-multivariate-analysis/";
+            },},{id: "teachings-data-science-3-with-python-303-3-21",
+          title: 'Data Science 3 with Python (303-3-21)',
+          description: "Non-linear statistical models and tree-based methods in data science.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/25spring-data-science-3/";
+            },},{id: "teachings-data-science-2-with-python-303-2-22",
+          title: 'Data Science 2 with Python (303-2-22)',
+          description: "Supervised machine learning in Python with focus on linear and logistic regression.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/25winter-data-science-2/";
+            },},{id: "teachings-data-science-2-with-python-303-2-22",
+          title: 'Data Science 2 with Python (303-2-22)',
+          description: "Supervised machine learning in Python with focus on linear and logistic regression.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/26winter-data-science-2/";
             },},{
         id: 'social-cv',
         title: 'CV',
