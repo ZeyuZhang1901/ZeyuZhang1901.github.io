@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Generating High-Quality Paper Figures with Gemini
-date: 2026-01-23 10:00:00-0600
+date: 2026-01-22 10:00:00-0600
 description: A guide to creating professional architecture and pipeline illustrations for research papers using AI image generation
-tags: research writing AI tools
+tags: code images AI tools
 categories: tutorials
 giscus_comments: true
 related_posts: true
