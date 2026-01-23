@@ -10,28 +10,28 @@ ninja.data = [{
       window.location.href = "/";
     },
   },{id: "nav-publications",
-          title: "publications",
+          title: "Publications",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
         },{id: "nav-projects",
-          title: "projects",
+          title: "Projects",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
         },{id: "nav-teaching",
-          title: "teaching",
+          title: "Teaching",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
           },
         },{id: "nav-repositories",
-          title: "repositories",
+          title: "Repositories",
           description: "",
           section: "Navigation",
           handler: () => {
