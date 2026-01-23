@@ -51,7 +51,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "books-the-godfather",
+        },{id: "post-generating-high-quality-paper-figures-with-gemini",
+        
+          title: "Generating High-Quality Paper Figures with Gemini",
+        
+        description: "A guide to creating professional architecture and pipeline illustrations for research papers using AI image generation",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/generating-paper-figures-with-gemini/";
+          
+        },
+      },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
