@@ -54,7 +54,7 @@
       "summary": "Analysis of LLM memorization under SFT and DPO. Qualifying examination paper.",
       "highlights": [
         "Analyzed LLM memorization behaviors under SFT and DPO fine-tuning paradigms",
-        "Reproduced and extended findings from Stanford's Finetunebench, evaluating robustness to input rephrasings",
+        "Reproduced and extended findings from Stanford's Finetunebench",
         "Proposed distinction between passive and positive memorization",
         "Designed experiments showing system prompts can mitigate temporal overfitting"
       ]
@@ -233,7 +233,7 @@
       "summary": "Designed high-precision signal distortion measurement device (0.5% error).",
       "highlights": [
         "Applied Hanning window functions to reduce spectrum leakage effectively",
-        "Designed algorithm to accurately detect center spectrum by aggregating energy from nearby spectrum lines",
+        "Designed algorithm to detect center spectrum by aggregating energy from nearby lines",
         "Developed LCD interface to visualize data and input analog signals"
       ],
       "startDate": "2021-04-01",
