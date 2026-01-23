@@ -475,6 +475,11 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
+            },},{id: "projects-signal-distortion-measurement-device-design",
+          title: 'Signal Distortion Measurement Device Design',
+          description: "High-precision device achieving 0.5% error with 1kHz-100kHz bandwidth",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/signal_distortion/";
             },},{id: "teachings-introduction-to-probability-and-statistics-210-0-20",
           title: 'Introduction to Probability and Statistics (210-0-20)',
           description: "Foundational course in probability and statistical methods.",
