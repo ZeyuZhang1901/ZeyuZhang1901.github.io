@@ -3,7 +3,6 @@ layout: page
 title: Signal Distortion Measurement Device Design
 description: High-precision device achieving 0.5% error with 1kHz-100kHz bandwidth
 importance: 1
-category: work
 ---
 
 ## Project Overview

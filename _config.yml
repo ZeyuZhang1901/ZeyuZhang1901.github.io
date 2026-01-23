@@ -314,7 +314,7 @@ scholar:
 
   query: "@*"
   group_by: category
-  group_order: ascending
+  group_order: descending
   sort_by: year
   order: descending
 
