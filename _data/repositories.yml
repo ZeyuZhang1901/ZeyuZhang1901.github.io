@@ -1,14 +1,12 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - ZeyuZhang1901
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - ZeyuZhang1901/Unified-Off-Policy-LTR-Neurips2023
+  - ZeyuZhang1901/ZeyuZhang1901.github.io
+  - ZeyuZhang1901/Online-LTR
+  - ZeyuZhang1901/GradewithGolden
+  - ZeyuZhang1901/Offline-Learning-to-Rank
+  - ZeyuZhang1901/offline_CQL_LTR
