@@ -37,9 +37,10 @@ horizontal: false
 
 {% else %}
 
-<!-- Display projects without categories -->
+<!-- Display projects without categories, excluding template projects -->
 
-{% assign sorted_projects = site.projects | sort: "importance" %}
+{% assign all_projects = site.projects | sort: "importance" %}
+{% assign sorted_projects = all_projects | where_exp: "item", "item.category != 'template'" %}
 
   <!-- Generate cards for each project -->
 

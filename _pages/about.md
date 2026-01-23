@@ -9,9 +9,9 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p style="font-size: 0.85rem; margin: 0.2rem 0;">🏛️ Dept. of Statistics & Data Science</p>
-    <p style="font-size: 0.85rem; margin: 0.2rem 0;">🎓 Northwestern University</p>
-    <p style="font-size: 0.85rem; margin: 0.2rem 0;">📧 zeyuzhang2028@u.northwestern.edu</p>
+    <p style="font-size: 0.75rem; margin: 0.15rem 0;">🏛️ Statistics & Data Science</p>
+    <p style="font-size: 0.75rem; margin: 0.15rem 0;">🎓 Northwestern University</p>
+    <p style="font-size: 0.75rem; margin: 0.15rem 0;">📧 zeyuzhang2028@u.northwestern.edu</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
