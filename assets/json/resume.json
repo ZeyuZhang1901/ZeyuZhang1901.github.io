@@ -6,7 +6,7 @@
     "email": "zeyuzhang2028@u.northwestern.edu",
     "phone": "",
     "url": "https://ZeyuZhang1901.github.io",
-    "summary": "Third-year PhD student at Northwestern University researching trustworthy AI and large language model alignment.",
+    "summary": "Third-year PhD student at Northwestern University researching trustworthy AI.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -23,12 +23,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-06-01",
       "endDate": "",
-      "summary": "Developing methods to detect and prevent temporal knowledge leakage in LLMs. Submitted to KDD 2026.",
+      "summary": "Developing methods to detect temporal knowledge leakage in LLMs.",
       "highlights": [
         "Formalized temporal knowledge leakage problem and introduced a four-phase detection pipeline",
-        "Computed Shapley values to quantify claim contributions and developed Shapley-weighted Decision-Critical Leakage Rate metric",
+        "Computed Shapley values and developed Shapley-weighted Decision-Critical Leakage Rate metric",
         "Proposed Temporal LLM Agent architecture with iterative claim verification to prevent leakage",
-        "Demonstrated significant leakage reduction across legal case prediction, salary estimation, and stock ranking tasks"
+        "Demonstrated significant leakage reduction across legal, salary, and stock ranking tasks"
       ]
     },
     {
@@ -37,12 +37,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2024-01-01",
       "endDate": "2025-05-01",
-      "summary": "Developed LAMP for interpreting black-box language models. Accepted as Spotlight paper at AISTATS 2026.",
+      "summary": "Developed LAMP for interpreting black-box LLMs. Accepted as Spotlight at AISTATS 2026.",
       "highlights": [
         "Developed LAMP framework for interpreting black-box LLMs by fitting locally linear surrogate models",
-        "Designed perturbation-based method to probe model sensitivity without accessing gradients, logits, or internal states",
+        "Designed perturbation-based method to probe model sensitivity without internal access",
         "Enabled practical interpretability for proprietary LLMs through self-reported explanations",
-        "Conducted extensive experiments across sentiment classification, controversial-topic detection, and harmful response auditing"
+        "Conducted experiments across sentiment, controversial-topic detection, and harmful auditing"
       ]
     },
     {
@@ -51,12 +51,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2024-06-01",
       "endDate": "2025-01-01",
-      "summary": "Comprehensive analysis of LLM memorization behaviors under SFT and DPO. Completed as qualifying examination paper.",
+      "summary": "Analysis of LLM memorization behaviors under SFT and DPO. Qualifying examination paper.",
       "highlights": [
         "Analyzed LLM memorization behaviors under SFT and DPO fine-tuning paradigms",
-        "Reproduced and extended findings from Stanford's Finetunebench, evaluating robustness to input rephrasings",
-        "Proposed formal distinction between passive and positive memorization, demonstrating superior efficiency of the latter",
-        "Designed temporal generalization experiments showing that lightweight system prompts can mitigate temporal overfitting"
+        "Reproduced and extended findings from Stanford's Finetunebench",
+        "Proposed formal distinction between passive and positive memorization",
+        "Designed temporal generalization experiments with system prompts to mitigate overfitting"
       ]
     },
     {
@@ -65,12 +65,12 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2023-09-01",
       "endDate": "2024-05-01",
-      "summary": "Formulated unified framework for off-policy Learning to Rank using reinforcement learning. Published at NeurIPS 2023.",
+      "summary": "Unified framework for off-policy Learning to Rank. Published at NeurIPS 2023.",
       "highlights": [
-        "Formulated unified framework modeling various click models in LTR as Markov Decision Process (MDP)",
+        "Formulated unified framework modeling various click models in LTR as MDP",
         "Proposed Click model-agnostic Unified Off-Policy Learning to Rank (CUOLR) algorithm",
         "Demonstrated effective application of offline RL methods (DQN, SAC, BCQ, CQL) to LTR",
-        "Achieved state-of-the-art performance and improved robustness across heterogeneous click models"
+        "Achieved state-of-the-art performance across heterogeneous click models"
       ]
     }
   ],
@@ -83,7 +83,10 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "summary": "Teaching assistant for Data Science 2. Course ongoing.",
-      "highlights": ["Grade all 5 homework assignments", "Grade two in-person exams"]
+      "highlights": [
+        "Grade all 5 homework assignments",
+        "Grade two in-person exams"
+      ]
     },
     {
       "organization": "Northwestern University",
@@ -108,7 +111,7 @@
       "endDate": "2025-06-01",
       "summary": "Teaching assistant for advanced data science course.",
       "highlights": [
-        "Introduced non-linear statistical models (splines) and tree-based methods (random forests, boosting)",
+        "Introduced non-linear statistical models and tree-based methods",
         "Taught statistical concepts including model bias and variance"
       ]
     },
@@ -120,7 +123,10 @@
       "startDate": "2025-01-01",
       "endDate": "2025-03-01",
       "summary": "Teaching assistant for Data Science 2.",
-      "highlights": ["Introduced supervised machine learning in Python", "Focus on linear and logistic regression"]
+      "highlights": [
+        "Introduced supervised machine learning in Python",
+        "Focus on linear and logistic regression"
+      ]
     },
     {
       "organization": "Northwestern University",
@@ -172,7 +178,10 @@
       "startDate": "2020-09-01",
       "endDate": "2023-06-01",
       "score": "3.93/4.30",
-      "courses": ["Talent Program in Artificial Intelligence", "Outstanding Undergraduate Honorary Rank (top 5%)"]
+      "courses": [
+        "Talent Program in Artificial Intelligence",
+        "Outstanding Undergraduate Honorary Rank (top 5%)"
+      ]
     }
   ],
   "awards": [
@@ -212,19 +221,43 @@
       "name": "Programming Languages",
       "level": "Advanced",
       "icon": "fa-solid fa-code",
-      "keywords": ["Python", "R", "C", "C++", "Java", "Verilog", "Bash", "LaTeX", "Markdown"]
+      "keywords": [
+        "Python",
+        "R",
+        "C",
+        "C++",
+        "Java",
+        "Verilog",
+        "Bash",
+        "LaTeX",
+        "Markdown"
+      ]
     },
     {
       "name": "Software & Platforms",
       "level": "Advanced",
       "icon": "fa-solid fa-laptop-code",
-      "keywords": ["Visual Studio Code", "Cursor", "RStudio", "HuggingFace", "GitHub", "Git", "OpenAI Platform"]
+      "keywords": [
+        "Visual Studio Code",
+        "Cursor",
+        "RStudio",
+        "HuggingFace",
+        "GitHub",
+        "Git",
+        "OpenAI Platform"
+      ]
     },
     {
       "name": "Soft Skills",
       "level": "Advanced",
       "icon": "fa-solid fa-users",
-      "keywords": ["Teamwork", "Event Management", "Writing", "Public Speaking", "Time Management"]
+      "keywords": [
+        "Teamwork",
+        "Event Management",
+        "Writing",
+        "Public Speaking",
+        "Time Management"
+      ]
     }
   ],
   "languages": [
@@ -254,17 +287,21 @@
     {
       "name": "Fitness & Sports",
       "icon": "fa-solid fa-basketball",
-      "keywords": ["Basketball", "Long-distance Running", "Structured Workout Programs"]
+      "keywords": [
+        "Basketball",
+        "Long-distance Running",
+        "Structured Workout Programs"
+      ]
     }
   ],
   "references": [],
   "projects": [
     {
       "name": "Signal Distortion Measurement Device Design",
-      "summary": "High-precision signal distortion measurement device achieving 0.5% error with 1kHz-100kHz bandwidth.",
+      "summary": "High-precision signal distortion measurement device achieving 0.5% error.",
       "highlights": [
         "Applied Hanning window functions to reduce spectrum leakage effectively",
-        "Designed algorithm to accurately detect center spectrum by aggregating energy from nearby spectrum lines",
+        "Designed algorithm to detect center spectrum by aggregating energy from nearby lines",
         "Developed LCD interface to visualize data and input analog signals"
       ],
       "startDate": "2021-04-01",
@@ -273,4 +310,3 @@
     }
   ]
 }
-
