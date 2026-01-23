@@ -419,16 +419,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
-          description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+            },},{id: "news-thrilled-to-announce-that-our-paper-lamp-extracting-locally-linear-decision-surfaces-from-llm-world-models-has-been-accepted-as-a-spotlight-at-aistats-2026-grateful-to-all-co-authors-for-the-amazing-collaboration",
+          title: '🎉 Thrilled to announce that our paper LAMP: Extracting Locally Linear Decision Surfaces...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
