@@ -5,7 +5,7 @@ date: 2026-01-24 10:00:00-0600
 description: Personal Experience of creating publication-quality architecture diagrams using AI
 tags: AI tools code image
 categories: tutorials
-giscus_comments: true
+giscus_comments: false
 related_posts: true
 toc:
   sidebar: left
@@ -170,7 +170,7 @@ Refine this academic figure for a temporal leakage evaluation pipeline. Make the
 **CORRECTIONS (CRITICAL):**
 
 1. In Phase 4, change "Shapley-based Dynamic Claims Leakage Rate" to "Shapley-weighted Decision-Critical Leakage Rate (Shapley-DCLR)"
-2. Fix the Shapley-DCLR formula to show the COMPLETE formula: $ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $. It MUST include the denominator and absolute values
+2. Fix the Shapley-DCLR formula to show the COMPLETE formula: $ \text{DCLR} = \frac{\sum_i \lvert\phi_i\rvert \cdot \ell_i}{\sum_i \lvert\phi_i\rvert} $. It MUST include the denominator and absolute values
 3. Change the informal callout "40-80% claims skip search, highly efficient!" to a more academic tone: "40-80% of claims determined without search"
 
 **IMPROVEMENTS:**
@@ -250,7 +250,7 @@ Claude found more issues:
 
 **Phase 4 - Metrics Aggregation:**
 - ✓ Name corrected to "Decision-Critical Leakage Rate"
-- ❌ CRITICAL: Shapley-DCLR formula is STILL INCOMPLETE - shows $ \sum(\phi_i \cdot \ell_i) $ but missing denominator $ \sum|\phi_i| $
+- ❌ CRITICAL: Shapley-DCLR formula is STILL INCOMPLETE - shows $ \sum(\phi_i \cdot \ell_i) $ but missing denominator $ \sum\lvert\phi_i\rvert $
 - ❌ Using words as left-hand side of equation looks unprofessional
 
 Claude generated another refinement prompt:
@@ -263,9 +263,9 @@ Further refine this academic figure with the following specific corrections:
 
 1. The Shapley-DCLR formula is INCOMPLETE. Replace the current formula with the COMPLETE equation:
 
-$$ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $$
+$$ \text{DCLR} = \frac{\sum_i \lvert\phi_i\rvert \cdot \ell_i}{\sum_i \lvert\phi_i\rvert} $$
 
-Show this as a proper fraction with numerator on top and denominator on bottom. The absolute value bars $ |\phi_i| $ are essential.
+Show this as a proper fraction with numerator on top and denominator on bottom. The absolute value bars $ \lvert\phi_i\rvert $ are essential.
 
 2. For OLR, show the complete equation:
 
@@ -324,7 +324,7 @@ Here's Claude's final assessment:
 | Phase 2 | ✓ | $ \phi_1, \phi_2, \ldots, \phi_n $ with Monte Carlo Sampling indicator |
 | Phase 3 | ✓ | Clean three-way branching, $ \tau(c) > t_{ref} $? shown, no redundant text |
 | Phase 4 - OLR | ✓ | Complete formula: $ \text{OLR} = \frac{1}{n} \sum_i \ell_i $ |
-| Phase 4 - DCLR | ✓ | Complete formula: $ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $ |
+| Phase 4 - DCLR | ✓ | Complete formula: $ \text{DCLR} = \frac{\sum_i \lvert\phi_i\rvert \cdot \ell_i}{\sum_i \lvert\phi_i\rvert} $ |
 | Layout | ✓ | Clear left-to-right flow, parallel processing indicated |
 | Style | ✓ | Clean, professional, no informal callouts |
 
@@ -339,7 +339,7 @@ Here's Claude's final assessment:
 
 ## What I Learned
 
-This whole process took about 40 minutes and 3 iterations. Compare that to multiple hours I would have spent manually drawing it in PowerPoint or Figma.
+This whole process took about 40 minutes and 3 iterations. Compare that to multiple hours I would have spent manually drawing it in PowerPoint, Keynotes or Figma.
 
 But more importantly, I think here's why this workflow actually works:
 
