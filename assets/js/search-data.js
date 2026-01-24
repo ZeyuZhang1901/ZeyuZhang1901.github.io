@@ -51,11 +51,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-generating-high-quality-paper-figures-with-gemini",
+        },{id: "post-how-i-generate-paper-figures-with-claude-and-gemini",
         
-          title: "Generating High-Quality Paper Figures with Gemini",
+          title: "How I Generate Paper Figures with Claude and Gemini",
         
-        description: "A guide to creating professional architecture and pipeline illustrations for research papers using AI image generation",
+        description: "A real story of creating publication-quality architecture diagrams using AI — showing every prompt, every iteration, and every mistake along the way",
         section: "Posts",
         handler: () => {
           
