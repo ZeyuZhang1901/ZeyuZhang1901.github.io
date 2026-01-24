@@ -13,11 +13,11 @@ toc:
 
 Recently I was working on my paper and needed to create some illustration figures. You know, one of those architecture diagrams with boxes and arrows that show how everything flows together. The kind of figure that takes hours to draw in PowerPoint, Keynotes or Figma, where you spend more time aligning boxes than actually thinking about your research.
 
-I really didn't want to draw it myself.
+I really didn't want to draw it myself!
 
 So I thought — why not try *AI image generation*? I heard Gemini's image generation model: `Gemini Banana Pro` is pretty good. Maybe it could save me some time.
 
-Spoiler: it did. But not in the way I initially expected.
+(Spoiler: it did. But not in the way I initially expected.)
 
 ---
 
@@ -25,7 +25,7 @@ Spoiler: it did. But not in the way I initially expected.
 
 My first instinct was simple: just describe what I want and let Gemini do its thing. I wrote something like "generate an evaluation pipeline with 4 phases, use boxes and arrows, make it look professional."
 
-The result was... let's just say creative. The flowchart looked more like abstract art than a technical diagram. Text was garbled, arrows pointed randomly, and it clearly had no idea what an "evaluation pipeline" actually meant in the context of my work.
+The result was... let's just say "creative". The flowchart looked more like abstract art than a technical diagram. Text was garbled, arrows pointed randomly, and it clearly had no idea what an "evaluation pipeline" actually meant in the context of my work.
 
 But here's the thing — I still didn't want to draw it myself (too lazy to be a good academic person lol). This failure actually motivated me to think deeper: *why* was Gemini failing?
 
@@ -35,15 +35,15 @@ But here's the thing — I still didn't want to draw it myself (too lazy to be a
 
 After staring at those failed attempts, I realized the problem:
 
-**Gemini doesn't understand my pipeline from a overall, hierarchical description.** It doesn't have access to my code, doesn't know the specific components, and can't infer the relationships between different parts. It's like asking someone to draw your house when they've never seen it — they'll draw *a* house, but not *your* house.
+**Gemini doesn't understand my pipeline from a overall, hierarchical description.** It doesn't have access to my code, doesn't know the specific components, and can't infer the relationships between different parts. It's like asking someone to draw your house when they've never seen it — they'll draw ***a*** house, but not ***your*** house.
 
-But then I thought about it more:
-- **I'm good at high-level understanding** — I know there are 4 phases, I know the overall flow, I know what's important
+But then I thought a little bit more:
+- **I'm good at high-level understanding** — I know what phases the pipeline has, I know the overall flow, I know what's important
 - **I'm terrible at writing exhaustive prompts** — listing every single component, every arrow, every label is tedious and I'll miss things
 - **LLMs can read my code in details** — SOTA LLMs can understand every function, every data flow, every detail in the code pretty well nowadays
 - **Gemini is good at generating images** — but only when given precise instructions
 
-The solution became obvious: **use LLMs to bridge the gap**. I provide the high-level structure, LLM (e.g. Claude Opus4.5) reads my code and generates a detailed prompt, then Gemini creates the image.
+The solution became obvious: **use LLMs to bridge the gap**. I provide the high-level structure, LLM (I use Claude Opus4.5, one of the SOTA models for now) reads my code and generates a detailed prompt, then Gemini creates the image.
 
 Let me show you exactly how this worked.
 
@@ -56,14 +56,14 @@ I started by giving Claude Opus4.5 the context about my pipeline. Claude had alr
 {% details Click to see the prompt %}
 I think now you are pretty clear about the evaluation pipeline. Now I want to create an illustrative image to show in the paper. It should show the readers the architecture, and let the reader quickly know how the pipeline work, and the image should highlight the contribution and special parts of the pipeline (to point out our innovation).
 
-Now please give me a professional, informative, rigorous and high-quality prompt for the image generation model: Nano Banana Pro from google to create a good illustrative image. This image will be shown on the top of the corresponding page of the evaluation pipeline section (section "Leakage Detection Pipeline"). It will take two columns on the top of that page, and then also give a detailed, rigorous and professional caption for the image. It should concisely describe the whole pipeline and highlight the important parts for the reader to quickly understand the pipeline. I will copy your prompt to that model directly and then see what image it generate.
+Now please give me a professional, informative, rigorous and high-quality prompt for the image generation model: Nano Banana Pro from google to create a good illustrative image. This image will be shown on the top of the corresponding page of the evaluation pipeline section. It will take two columns on the top of that page, and then also give a detailed, rigorous and professional caption for the image. It should concisely describe the whole pipeline and highlight the important parts for the reader to quickly understand the pipeline. I will copy your prompt to that model directly and then see what image it generate.
 {% enddetails %}
 
 Notice how my prompt is high-level — I'm describing *what* I want, not *how* to draw it. I mentioned there are phases, I mentioned highlighting contributions, but I didn't list every single component. That's Claude's job.
 
 Claude came back with this detailed prompt for Gemini:
 
-{% details Click to see Claude's generated prompt for Gemini %}
+{% details Click to see the prompt %}
 Create a professional academic figure showing a 4-phase evaluation pipeline for temporal knowledge leakage detection in LLM predictions. The figure should be horizontal, suitable for a two-column academic paper layout.
 
 Layout (left to right flow):
@@ -80,9 +80,9 @@ PARALLEL PROCESSING (Phase 2 and Phase 3 run simultaneously):
 
 PHASE 2 (upper parallel branch):
 - Box labeled "Phase 2: Shapley Computation"
-- Show mathematical symbol φ₁, φ₂, ... φₙ
+- Show mathematical symbol $$ \phi_1, \phi_2, \ldots, \phi_n $$
 - Small icon suggesting Monte Carlo sampling
-- Output: "Shapley values {φᵢ}"
+- Output: "Shapley values $$ \{\phi_i\} $$"
 
 PHASE 3 (lower parallel branch):
 - Box labeled "Phase 3: Leakage Detection"
@@ -90,7 +90,7 @@ PHASE 3 (lower parallel branch):
   - A4/A5 → "Always Leaked" (marked with red/warning color, NO search icon)
   - B1/B2 → "Never Leaked" (marked with green/safe color, NO search icon)
   - A1/A2/A3 → "Search Required" (with search/magnifying glass icon)
-- Output: "Leakage indicators {ℓᵢ}"
+- Output: "Leakage indicators $$ \{\ell_i\} $$"
 
 PHASE 4 (Metrics):
 - Box labeled "Phase 4: Metrics Aggregation"
@@ -124,13 +124,19 @@ I copied Claude's prompt directly to Gemini Banana Pro and got this:
     Version 1: The first attempt. Overall structure is there, but there are several issues...
 </div>
 
-Not bad for a first attempt! The overall flow is there, the parallel processing is shown, and the color coding looks reasonable. But when I looked closely, there were problems.
+Not bad for a first attempt! The overall flow is there, the parallel processing is shown, and the color coding looks reasonable. But when I looked closely, there were several problems:
+
+- **Naming issue**: Phase 4 shows "Shapley-based Dynamic Claims Leakage Rate" which is incorrect
+- **Equation issue**: The DCLR formula only shows the numerator, missing the denominator
+- **Phase 1 verbosity**: Claims are labeled as "Claim 1", "Claim 2", etc. with confusing category assignments
+- **Output verbosity**: The output box has unnecessary text like "other relevant aggregated metrics"
+- **Informal tone**: The callout says "highly efficient!" which is too promotional for an academic paper
 
 ---
 
 ## Step 2: Claude Analyzes the Problems
 
-I showed this image to Claude and asked it to analyze with a critical eye:
+As there's still some problems in the iamge, instead of writing the problems manually in the prompt, I showed this image to Claude and asked it to analyze with a critical eye:
 
 {% details Click to see the prompt %}
 Please carefully read it in a professional and rigorous view, think deeply about our pipeline, and then give out some advice to improve this pipeline image. You should form all the advice and modification into a prompt and then I will copy it to the image generation model to generate a refined image.
@@ -150,8 +156,8 @@ Claude came back with a detailed analysis. Here's what it found:
 |-------|---------|-----|
 | Phase 4 naming | "Shapley-based Dynamic Claims Leakage Rate" is WRONG | Should be "Decision-Critical Leakage Rate" |
 | DCLR formula | Only showing right hand side is incomplete | Should show full formula with denominator and absolute value |
-| Phase 1 claims | Claim numbering is confusing (shows Claim 6, 7, 8 with wrong categories) | Use cleaner representation: \(c_1, c_2, ..., c_n\) |
-| Missing detail | Phase 3 doesn't show comparison with \(t_{ref}\) | Add "\tau(c) > t_{ref} ?" for A1-A3 branch |
+| Phase 1 claims | Claim numbering is confusing (shows Claim 6, 7, 8 with wrong categories) | Use cleaner representation: $ c_1, c_2, \ldots, c_n $ |
+| Missing detail | Phase 3 doesn't show comparison with $ t_{ref} $ | Add "$ \tau(c) > t_{ref} $?" for A1-A3 branch |
 
 This is exactly why I use Claude for this — I might have noticed one or two issues, but Claude caught things like the incorrect metric naming and the incomplete formula that I could have easily missed.
 
@@ -164,13 +170,13 @@ Refine this academic figure for a temporal leakage evaluation pipeline. Make the
 **CORRECTIONS (CRITICAL):**
 
 1. In Phase 4, change "Shapley-based Dynamic Claims Leakage Rate" to "Shapley-weighted Decision-Critical Leakage Rate (Shapley-DCLR)"
-2. Fix the Shapley-DCLR formula to show the COMPLETE formula: \(\text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|}\). It MUST include the denominator and absolute values
+2. Fix the Shapley-DCLR formula to show the COMPLETE formula: $ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $. It MUST include the denominator and absolute values
 3. Change the informal callout "40-80% claims skip search, highly efficient!" to a more academic tone: "40-80% of claims determined without search"
 
 **IMPROVEMENTS:**
 
-4. In Phase 1, simplify the claim representation: show rationale \(R\) being decomposed into claims \(c_1, c_2, ..., c_n\), each with a single category tag (use colors: orange for A1-A3, red for A4-A5, green for B1-B2)
-5. In Phase 3, for the "SEARCH REQUIRED" branch (A1, A2, A3), add a small label showing the comparison: "\(\tau(c) > t_{ref}\)?" to indicate we're comparing determination date against reference time
+4. In Phase 1, simplify the claim representation: show rationale $ R $ being decomposed into claims $ c_1, c_2, \ldots, c_n $, each with a single category tag (use colors: orange for A1-A3, red for A4-A5, green for B1-B2)
+5. In Phase 3, for the "SEARCH REQUIRED" branch (A1, A2, A3), add a small label showing the comparison: "$ \tau(c) > t_{ref} $?" to indicate we're comparing determination date against reference time
 6. In the OUTPUT box, remove "other relevant aggregated metrics" - just show "OLR: X%" and "Shapley-DCLR: Y%"
 7. Make the parallel processing text more readable - either horizontal or use a cleaner vertical label
 8. Use consistent academic styling throughout - no exclamation marks, promotional language, or informal callouts
@@ -201,7 +207,18 @@ I fed this refinement prompt to Gemini and got:
     Version 2: Better! The naming is fixed, the callout is more academic, but there are still issues with the formula...
 </div>
 
-Better! But still not perfect.
+Better! But still not perfect. Here's what improved and what still needs work:
+
+**Fixed:**
+- Phase 4 naming corrected to "Decision-Critical Leakage Rate"
+- Added $ \tau(c) > t_{ref} $ comparison in Phase 3
+- Callout now uses academic tone
+- Output box is cleaner
+
+**Still problematic:**
+- Phase 1 claims still have duplicate numbering ($ c_3 $, $ c_6 $, $ c_7 $ appear twice)
+- DCLR formula still incomplete (missing denominator)
+- "NO search icon" text is redundant
 
 ---
 
@@ -218,26 +235,22 @@ Also I noticed that in phase 4, the equation is not complete. It use the words a
 Claude found more issues:
 
 **Phase 1 - Claim Extraction:**
-
-- ❌ Claim numbering is still problematic: \(c_3\) appears twice, \(c_6\) appears twice, \(c_7\) appears twice
-- Should be \(c_1, c_2, c_3, c_4, c_5, c_6, c_7\) each appearing exactly ONCE
+- ❌ Claim numbering is still problematic: $ c_3 $ appears twice, $ c_6 $ appears twice, $ c_7 $ appears twice
+- Should be $ c_1, c_2, c_3, c_4, c_5, c_6, c_7 $ each appearing exactly ONCE
 
 **Phase 2 - Shapley Computation:**
-
-- ✓ \(\phi_1, \phi_2, ..., \phi_n\) shown correctly
+- ✓ $ \phi_1, \phi_2, \ldots, \phi_n $ shown correctly
 - ✓ Monte Carlo Sampling indicated
 - ✓ Clean and correct
 
 **Phase 3 - Leakage Detection:**
-
-- ✓ \(\tau(c) > t_{ref}\)? added for A1-A3 branch (good!)
+- ✓ $ \tau(c) > t_{ref} $? added for A1-A3 branch (good!)
 - ✓ Callout is now academic tone
 - ❌ "NO search icon" text is redundant
 
 **Phase 4 - Metrics Aggregation:**
-
 - ✓ Name corrected to "Decision-Critical Leakage Rate"
-- ❌ CRITICAL: Shapley-DCLR formula is STILL INCOMPLETE - shows \(\sum(\phi_i \cdot \ell_i)\) but missing denominator \(\sum|\phi_i|\)
+- ❌ CRITICAL: Shapley-DCLR formula is STILL INCOMPLETE - shows $ \sum(\phi_i \cdot \ell_i) $ but missing denominator $ \sum|\phi_i| $
 - ❌ Using words as left-hand side of equation looks unprofessional
 
 Claude generated another refinement prompt:
@@ -248,15 +261,21 @@ Further refine this academic figure with the following specific corrections:
 
 **CRITICAL FORMULA CORRECTIONS IN PHASE 4:**
 
-1. The Shapley-DCLR formula is INCOMPLETE. Replace the current formula with the COMPLETE equation: \[\text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|}\] Show this as a proper fraction with numerator on top and denominator on bottom. The absolute value bars \(|\phi_i|\) are essential.
+1. The Shapley-DCLR formula is INCOMPLETE. Replace the current formula with the COMPLETE equation:
 
-2. For OLR, show the complete equation: \[\text{OLR} = \frac{1}{n} \sum_i \ell_i\]
+$$ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $$
+
+Show this as a proper fraction with numerator on top and denominator on bottom. The absolute value bars $ |\phi_i| $ are essential.
+
+2. For OLR, show the complete equation:
+
+$$ \text{OLR} = \frac{1}{n} \sum_i \ell_i $$
 
 3. Do NOT use words like "OLR (Overall Leakage Rate) =" as the left-hand side. Use proper mathematical notation. The metric names can be shown as labels above or beside the equations, but the equations themselves should be complete mathematical expressions.
 
 **PHASE 1 CORRECTIONS:**
 
-4. Fix the claim numbering - each claim should appear exactly ONCE. Show: \(c_1\)(A1), \(c_2\)(A2), \(c_3\)(A3), \(c_4\)(A4), \(c_5\)(A5), \(c_6\)(B1), \(c_7\)(B2). Arrange them in a cleaner grid or flow from \(R\), with no duplicate claim numbers.
+4. Fix the claim numbering - each claim should appear exactly ONCE. Show: $ c_1 $(A1), $ c_2 $(A2), $ c_3 $(A3), $ c_4 $(A4), $ c_5 $(A5), $ c_6 $(B1), $ c_7 $(B2). Arrange them in a cleaner grid or flow from $ R $, with no duplicate claim numbers.
 
 **PHASE 3 CORRECTIONS:**
 
@@ -266,7 +285,7 @@ Further refine this academic figure with the following specific corrections:
 - The overall layout and flow
 - The parallel processing indicator
 - The color scheme (blue phases, red for leaked, green for safe)
-- The \(\tau(c) > t_{ref}\)? label on the A1-A3 branch
+- The $ \tau(c) > t_{ref} $? label on the A1-A3 branch
 - The "40-80% of claims determined without search" callout
 - The clean OUTPUT box
 
@@ -278,7 +297,7 @@ Further refine this academic figure with the following specific corrections:
 
 ## The Final Image
 
-Finally we got this version:
+Finally we got this version, which looks good to me:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -301,11 +320,11 @@ Here's Claude's final assessment:
 
 | Element | Status | Details |
 |---------|--------|---------|
-| Phase 1 | ✓ | \(c_1\) through \(c_7\) each appears exactly once with correct category tags |
-| Phase 2 | ✓ | \(\phi_1, \phi_2, ..., \phi_n\) with Monte Carlo Sampling indicator |
-| Phase 3 | ✓ | Clean three-way branching, \(\tau(c) > t_{ref}\)? shown, no redundant text |
-| Phase 4 - OLR | ✓ | Complete formula: \(\text{OLR} = \frac{1}{n} \sum_i \ell_i\) |
-| Phase 4 - DCLR | ✓ | Complete formula: \(\text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|}\) |
+| Phase 1 | ✓ | $ c_1 $ through $ c_7 $ each appears exactly once with correct category tags |
+| Phase 2 | ✓ | $ \phi_1, \phi_2, \ldots, \phi_n $ with Monte Carlo Sampling indicator |
+| Phase 3 | ✓ | Clean three-way branching, $ \tau(c) > t_{ref} $? shown, no redundant text |
+| Phase 4 - OLR | ✓ | Complete formula: $ \text{OLR} = \frac{1}{n} \sum_i \ell_i $ |
+| Phase 4 - DCLR | ✓ | Complete formula: $ \text{DCLR} = \frac{\sum_i |\phi_i| \cdot \ell_i}{\sum_i |\phi_i|} $ |
 | Layout | ✓ | Clear left-to-right flow, parallel processing indicated |
 | Style | ✓ | Clean, professional, no informal callouts |
 
