@@ -5,7 +5,7 @@ date: 2026-01-24 10:00:00-0600
 description: Personal Experience of creating publication-quality architecture diagrams using AI
 tags: AI tools code image
 categories: tutorials
-giscus_comments: false
+giscus_comments: true
 related_posts: true
 toc:
   sidebar: left
