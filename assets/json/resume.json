@@ -83,10 +83,7 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "summary": "Teaching assistant for Data Science 2. Course ongoing.",
-      "highlights": [
-        "Grade all 5 homework assignments",
-        "Grade two in-person exams"
-      ]
+      "highlights": ["Grade all 5 homework assignments", "Grade two in-person exams"]
     },
     {
       "organization": "Northwestern University",
@@ -123,10 +120,7 @@
       "startDate": "2025-01-01",
       "endDate": "2025-03-01",
       "summary": "Teaching assistant for Data Science 2.",
-      "highlights": [
-        "Introduced supervised machine learning in Python",
-        "Focus on linear and logistic regression"
-      ]
+      "highlights": ["Introduced supervised machine learning in Python", "Focus on linear and logistic regression"]
     },
     {
       "organization": "Northwestern University",
@@ -178,10 +172,7 @@
       "startDate": "2020-09-01",
       "endDate": "2023-06-01",
       "score": "3.93/4.30",
-      "courses": [
-        "Talent Program in Artificial Intelligence",
-        "Outstanding Undergraduate Honorary Rank (top 5%)"
-      ]
+      "courses": ["Talent Program in Artificial Intelligence", "Outstanding Undergraduate Honorary Rank (top 5%)"]
     }
   ],
   "awards": [
@@ -221,43 +212,19 @@
       "name": "Programming Languages",
       "level": "Advanced",
       "icon": "fa-solid fa-code",
-      "keywords": [
-        "Python",
-        "R",
-        "C",
-        "C++",
-        "Java",
-        "Verilog",
-        "Bash",
-        "LaTeX",
-        "Markdown"
-      ]
+      "keywords": ["Python", "R", "C", "C++", "Java", "Verilog", "Bash", "LaTeX", "Markdown"]
     },
     {
       "name": "Software & Platforms",
       "level": "Advanced",
       "icon": "fa-solid fa-laptop-code",
-      "keywords": [
-        "Visual Studio Code",
-        "Cursor",
-        "RStudio",
-        "HuggingFace",
-        "GitHub",
-        "Git",
-        "OpenAI Platform"
-      ]
+      "keywords": ["Visual Studio Code", "Cursor", "RStudio", "HuggingFace", "GitHub", "Git", "OpenAI Platform"]
     },
     {
       "name": "Soft Skills",
       "level": "Advanced",
       "icon": "fa-solid fa-users",
-      "keywords": [
-        "Teamwork",
-        "Event Management",
-        "Writing",
-        "Public Speaking",
-        "Time Management"
-      ]
+      "keywords": ["Teamwork", "Event Management", "Writing", "Public Speaking", "Time Management"]
     }
   ],
   "languages": [
@@ -276,22 +243,12 @@
     {
       "name": "Research",
       "icon": "fa-solid fa-brain",
-      "keywords": [
-        "Large Language Models",
-        "Knowledge Leakage Detection",
-        "Reinforcement Learning",
-        "Model Interpretability",
-        "Trustworthy AI"
-      ]
+      "keywords": ["Large Language Models", "Knowledge Leakage Detection", "Reinforcement Learning", "Model Interpretability", "Trustworthy AI"]
     },
     {
       "name": "Fitness & Sports",
       "icon": "fa-solid fa-basketball",
-      "keywords": [
-        "Basketball",
-        "Long-distance Running",
-        "Structured Workout Programs"
-      ]
+      "keywords": ["Basketball", "Long-distance Running", "Structured Workout Programs"]
     }
   ],
   "references": [],

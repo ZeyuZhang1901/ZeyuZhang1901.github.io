@@ -15,7 +15,7 @@ Recently I was working on my paper and needed to create some illustration figure
 
 I really didn't want to draw it myself!
 
-So I thought — why not try *AI image generation*? I heard Gemini's image generation model: `Gemini Banana Pro` is pretty good. Maybe it could save me some time.
+So I thought — why not try _AI image generation_? I heard Gemini's image generation model: `Gemini Banana Pro` is pretty good. Maybe it could save me some time.
 
 (Spoiler: it did. But not in the way I initially expected.)
 
@@ -27,7 +27,7 @@ My first instinct was simple: just describe what I want and let Gemini do its th
 
 The result was... let's just say "creative". The flowchart looked more like abstract art than a technical diagram. Text was garbled, arrows pointed randomly, and it clearly had no idea what an "evaluation pipeline" actually meant in the context of my work.
 
-But here's the thing — I still didn't want to draw it myself (too lazy to be a good academic person lol). This failure actually motivated me to think deeper: *why* was Gemini failing?
+But here's the thing — I still didn't want to draw it myself (too lazy to be a good academic person lol). This failure actually motivated me to think deeper: _why_ was Gemini failing?
 
 ---
 
@@ -35,9 +35,10 @@ But here's the thing — I still didn't want to draw it myself (too lazy to be a
 
 After staring at those failed attempts, I realized the problem:
 
-**Gemini doesn't understand my pipeline from a overall, hierarchical description.** It doesn't have access to my code, doesn't know the specific components, and can't infer the relationships between different parts. It's like asking someone to draw your house when they've never seen it — they'll draw ***a*** house, but not ***your*** house.
+**Gemini doesn't understand my pipeline from a overall, hierarchical description.** It doesn't have access to my code, doesn't know the specific components, and can't infer the relationships between different parts. It's like asking someone to draw your house when they've never seen it — they'll draw **_a_** house, but not **_your_** house.
 
 But then I thought a little bit more:
+
 - **I'm good at high-level understanding** — I know what phases the pipeline has, I know the overall flow, I know what's important
 - **I'm terrible at writing exhaustive prompts** — listing every single component, every arrow, every label is tedious and I'll miss things
 - **LLMs can read my code in details** — SOTA LLMs can understand every function, every data flow, every detail in the code pretty well nowadays
@@ -59,7 +60,7 @@ I think now you are pretty clear about the evaluation pipeline. Now I want to cr
 Now please give me a professional, informative, rigorous and high-quality prompt for the image generation model: Nano Banana Pro from google to create a good illustrative image. This image will be shown on the top of the corresponding page of the evaluation pipeline section. It will take two columns on the top of that page, and then also give a detailed, rigorous and professional caption for the image. It should concisely describe the whole pipeline and highlight the important parts for the reader to quickly understand the pipeline. I will copy your prompt to that model directly and then see what image it generate.
 {% enddetails %}
 
-Notice how my prompt is high-level — I'm describing *what* I want, not *how* to draw it. I mentioned there are phases, I mentioned highlighting contributions, but I didn't list every single component. That's Claude's job.
+Notice how my prompt is high-level — I'm describing _what_ I want, not _how_ to draw it. I mentioned there are phases, I mentioned highlighting contributions, but I didn't list every single component. That's Claude's job.
 
 Claude came back with this detailed prompt for Gemini:
 
@@ -67,24 +68,29 @@ Claude came back with this detailed prompt for Gemini:
 Create a professional academic figure showing a 4-phase evaluation pipeline for temporal knowledge leakage detection in LLM predictions. The figure should be horizontal, suitable for a two-column academic paper layout.
 
 Layout (left to right flow):
+
 - Start with INPUT box on the left containing: "Rationale R", "Reference time t_ref", "Task context"
 
 PHASE 1 (Claim Extraction):
+
 - Box labeled "Phase 1: Claim Extraction"
 - Show rationale being decomposed into multiple small boxes representing claims
 - Each claim box has a category label tag (A1, A2, A3, A4, A5, B1, B2)
 - Output arrow splits into TWO parallel paths
 
 PARALLEL PROCESSING (Phase 2 and Phase 3 run simultaneously):
+
 - Use dashed vertical line or visual indicator showing these run in parallel
 
 PHASE 2 (upper parallel branch):
+
 - Box labeled "Phase 2: Shapley Computation"
 - Show mathematical symbol $$ \phi_1, \phi_2, \ldots, \phi_n $$
 - Small icon suggesting Monte Carlo sampling
 - Output: "Shapley values $$ \{\phi_i\} $$"
 
 PHASE 3 (lower parallel branch):
+
 - Box labeled "Phase 3: Leakage Detection"
 - IMPORTANT: Show a decision tree or branching logic:
   - A4/A5 → "Always Leaked" (marked with red/warning color, NO search icon)
@@ -93,19 +99,21 @@ PHASE 3 (lower parallel branch):
 - Output: "Leakage indicators $$ \{\ell_i\} $$"
 
 PHASE 4 (Metrics):
+
 - Box labeled "Phase 4: Metrics Aggregation"
 - Two arrows from Phase 2 and Phase 3 converge here
 - Show formulas or text: "OLR", "Shapley-DCLR"
 - Output box on right: "Leakage Report" with metrics
 
 Visual style:
+
 - Clean, minimalist academic style with light colors
 - Use arrows to show data flow
 - Highlight the parallel execution and category-based optimization as key innovations
 - Use consistent color coding: blue for processing phases, green for valid/safe, red/orange for leaked/warning
 - Professional typography suitable for academic publication
 - White or light gray background
-{% enddetails %}
+  {% enddetails %}
 
 See how detailed this is? Claude specified exact component names from my code, the mathematical notation, the color coding, etc. This is exactly the kind of exhaustive prompt I would never write myself.
 
@@ -145,6 +153,7 @@ Please carefully read it in a professional and rigorous view, think deeply about
 Claude came back with a detailed analysis. Here's what it found:
 
 **What works well:**
+
 - Overall left-to-right flow is clear
 - Parallel processing indicator between Phase 2 and 3
 - Category-based branching in Phase 3 with color coding
@@ -152,12 +161,12 @@ Claude came back with a detailed analysis. Here's what it found:
 
 **Issues that need fixing:**
 
-| Issue | Problem | Fix |
-|-------|---------|-----|
-| Phase 4 naming | "Shapley-based Dynamic Claims Leakage Rate" is WRONG | Should be "Decision-Critical Leakage Rate" |
-| DCLR formula | Only showing right hand side is incomplete | Should show full formula with denominator and absolute value |
-| Phase 1 claims | Claim numbering is confusing (shows Claim 6, 7, 8 with wrong categories) | Use cleaner representation: $ c_1, c_2, \ldots, c_n $ |
-| Missing detail | Phase 3 doesn't show comparison with $ t_{ref} $ | Add "$ \tau(c) > t_{ref} $?" for A1-A3 branch |
+| Issue          | Problem                                                                  | Fix                                                          |
+| -------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| Phase 4 naming | "Shapley-based Dynamic Claims Leakage Rate" is WRONG                     | Should be "Decision-Critical Leakage Rate"                   |
+| DCLR formula   | Only showing right hand side is incomplete                               | Should show full formula with denominator and absolute value |
+| Phase 1 claims | Claim numbering is confusing (shows Claim 6, 7, 8 with wrong categories) | Use cleaner representation: $ c_1, c_2, \ldots, c_n $        |
+| Missing detail | Phase 3 doesn't show comparison with $ t\_{ref} $                        | Add "$ \tau(c) > t\_{ref} $?" for A1-A3 branch               |
 
 This is exactly why I use Claude for this — I might have noticed one or two issues, but Claude caught things like the incorrect metric naming and the incomplete formula that I could have easily missed.
 
@@ -176,12 +185,13 @@ Refine this academic figure for a temporal leakage evaluation pipeline. Make the
 **IMPROVEMENTS:**
 
 4. In Phase 1, simplify the claim representation: show rationale $ R $ being decomposed into claims $ c_1, c_2, \ldots, c_n $, each with a single category tag (use colors: orange for A1-A3, red for A4-A5, green for B1-B2)
-5. In Phase 3, for the "SEARCH REQUIRED" branch (A1, A2, A3), add a small label showing the comparison: "$ \tau(c) > t_{ref} $?" to indicate we're comparing determination date against reference time
+5. In Phase 3, for the "SEARCH REQUIRED" branch (A1, A2, A3), add a small label showing the comparison: "$ \tau(c) > t\_{ref} $?" to indicate we're comparing determination date against reference time
 6. In the OUTPUT box, remove "other relevant aggregated metrics" - just show "OLR: X%" and "Shapley-DCLR: Y%"
 7. Make the parallel processing text more readable - either horizontal or use a cleaner vertical label
 8. Use consistent academic styling throughout - no exclamation marks, promotional language, or informal callouts
 
 **KEEP:**
+
 - The overall left-to-right flow structure
 - The phase box styling and colors
 - The three-way branching in Phase 3 (A4/A5 → Always Leaked, A1-A3 → Search, B1/B2 → Never Leaked)
@@ -210,12 +220,14 @@ I fed this refinement prompt to Gemini and got:
 Better! But still not perfect. Here's what improved and what still needs work:
 
 **Fixed:**
+
 - Phase 4 naming corrected to "Decision-Critical Leakage Rate"
-- Added $ \tau(c) > t_{ref} $ comparison in Phase 3
+- Added $ \tau(c) > t\_{ref} $ comparison in Phase 3
 - Callout now uses academic tone
 - Output box is cleaner
 
 **Still problematic:**
+
 - Phase 1 claims still have duplicate numbering ($ c_3 $, $ c_6 $, $ c_7 $ appear twice)
 - DCLR formula still incomplete (missing denominator)
 - "NO search icon" text is redundant
@@ -235,20 +247,24 @@ Also I noticed that in phase 4, the equation is not complete. It use the words a
 Claude found more issues:
 
 **Phase 1 - Claim Extraction:**
+
 - ❌ Claim numbering is still problematic: $ c_3 $ appears twice, $ c_6 $ appears twice, $ c_7 $ appears twice
 - Should be $ c_1, c_2, c_3, c_4, c_5, c_6, c_7 $ each appearing exactly ONCE
 
 **Phase 2 - Shapley Computation:**
+
 - ✓ $ \phi_1, \phi_2, \ldots, \phi_n $ shown correctly
 - ✓ Monte Carlo Sampling indicated
 - ✓ Clean and correct
 
 **Phase 3 - Leakage Detection:**
-- ✓ $ \tau(c) > t_{ref} $? added for A1-A3 branch (good!)
+
+- ✓ $ \tau(c) > t\_{ref} $? added for A1-A3 branch (good!)
 - ✓ Callout is now academic tone
 - ❌ "NO search icon" text is redundant
 
 **Phase 4 - Metrics Aggregation:**
+
 - ✓ Name corrected to "Decision-Critical Leakage Rate"
 - ❌ CRITICAL: Shapley-DCLR formula is STILL INCOMPLETE - shows $ \sum(\phi_i \cdot \ell_i) $ but missing denominator $ \sum\lvert\phi_i\rvert $
 - ❌ Using words as left-hand side of equation looks unprofessional
@@ -282,10 +298,11 @@ $$ \text{OLR} = \frac{1}{n} \sum_i \ell_i $$
 5. Remove the redundant "NO search icon" text under "ALWAYS LEAKED" and "NEVER LEAKED" boxes. The visual already clearly shows no magnifying glass - the text is unnecessary.
 
 **KEEP EVERYTHING ELSE:**
+
 - The overall layout and flow
 - The parallel processing indicator
 - The color scheme (blue phases, red for leaked, green for safe)
-- The $ \tau(c) > t_{ref} $? label on the A1-A3 branch
+- The $ \tau(c) > t\_{ref} $? label on the A1-A3 branch
 - The "40-80% of claims determined without search" callout
 - The clean OUTPUT box
 
@@ -318,17 +335,18 @@ Claude's response: **"This version meets the standards for a professional paper.
 
 Here's Claude's final assessment:
 
-| Element | Status | Details |
-|---------|--------|---------|
-| Phase 1 | ✓ | $ c_1 $ through $ c_7 $ each appears exactly once with correct category tags |
-| Phase 2 | ✓ | $ \phi_1, \phi_2, \ldots, \phi_n $ with Monte Carlo Sampling indicator |
-| Phase 3 | ✓ | Clean three-way branching, $ \tau(c) > t_{ref} $? shown, no redundant text |
-| Phase 4 - OLR | ✓ | Complete formula: $ \text{OLR} = \frac{1}{n} \sum_i \ell_i $ |
-| Phase 4 - DCLR | ✓ | Complete formula: $ \text{DCLR} = \frac{\sum_i \lvert\phi_i\rvert \cdot \ell_i}{\sum_i \lvert\phi_i\rvert} $ |
-| Layout | ✓ | Clear left-to-right flow, parallel processing indicated |
-| Style | ✓ | Clean, professional, no informal callouts |
+| Element        | Status | Details                                                                                                      |
+| -------------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| Phase 1        | ✓      | $ c_1 $ through $ c_7 $ each appears exactly once with correct category tags                                 |
+| Phase 2        | ✓      | $ \phi_1, \phi_2, \ldots, \phi_n $ with Monte Carlo Sampling indicator                                       |
+| Phase 3        | ✓      | Clean three-way branching, $ \tau(c) > t\_{ref} $? shown, no redundant text                                  |
+| Phase 4 - OLR  | ✓      | Complete formula: $ \text{OLR} = \frac{1}{n} \sum_i \ell_i $                                                 |
+| Phase 4 - DCLR | ✓      | Complete formula: $ \text{DCLR} = \frac{\sum_i \lvert\phi_i\rvert \cdot \ell_i}{\sum_i \lvert\phi_i\rvert} $ |
+| Layout         | ✓      | Clear left-to-right flow, parallel processing indicated                                                      |
+| Style          | ✓      | Clean, professional, no informal callouts                                                                    |
 
 **Why it meets publication standards:**
+
 - **Mathematical Rigor**: Both formulas are now complete and correctly formatted with proper fraction notation
 - **Visual Clarity**: The pipeline flow is immediately understandable — a reader can grasp the four phases and their relationships at a glance
 - **Technical Accuracy**: The category-based branching in Phase 3 correctly shows the key contribution
@@ -344,18 +362,18 @@ This whole process took about 40 minutes and 3 iterations. Compare that to multi
 But more importantly, I think here's why this workflow actually works:
 
 > **The key insight**: Humans are good at high-level thinking — understanding the overall structure, knowing what's important, deciding what looks "right." AI models are good at details — reading code, extracting every component, writing exhaustive prompts.
-{: .block-tip }
+> {: .block-tip }
 
 The workflow leverages each participant's strengths:
 
-| Task | Best Done By |
-|------|--------------|
-| Understanding overall structure | Me |
-| Extracting implementation details from code | Claude Opus4.5 |
-| Synthesizing into comprehensive prompt | Claude Opus4.5 |
-| Generating visual output | Gemini Banana Pro |
-| Identifying visual errors | Me + Claude Opus4.5 |
-| Making final quality decisions | Me |
+| Task                                        | Best Done By        |
+| ------------------------------------------- | ------------------- |
+| Understanding overall structure             | Me                  |
+| Extracting implementation details from code | Claude Opus4.5      |
+| Synthesizing into comprehensive prompt      | Claude Opus4.5      |
+| Generating visual output                    | Gemini Banana Pro   |
+| Identifying visual errors                   | Me + Claude Opus4.5 |
+| Making final quality decisions              | Me                  |
 
 You're not asking any single agent to do everything. You're orchestrating a collaboration where each participant does what they're best at.
 
@@ -369,7 +387,7 @@ If you want to try this for your own paper figures:
 
 2. **Feed LLM's prompt to Image Generator** — Copy it directly. Don't edit it (unless you spot something obviously wrong).
 
-3. **Show the result back to the LLM** — Ask it to analyze critically. Tell it to find *ALL* errors, not just the obvious ones.
+3. **Show the result back to the LLM** — Ask it to analyze critically. Tell it to find _ALL_ errors, not just the obvious ones.
 
 4. **Iterate 2-3 times** — In my experience, it usually converges within several iterations (no more than 5).
 
