@@ -178,6 +178,9 @@ collections:
     output: true
   teachings:
     output: true
+  tools:
+    output: true
+    permalink: /tools/:path/
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -200,6 +203,7 @@ kramdown:
 include: ["_pages", "_scripts"]
 exclude:
   - bin/
+  - tools-app/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile

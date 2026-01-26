@@ -1,0 +1,20 @@
+{
+  "name": "academic-image-generator",
+  "version": "1.0.0",
+  "description": "AI-powered academic figure generation pipeline",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static build - no build step needed'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "openai": "^4.28.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

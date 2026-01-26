@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Research Image Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <a href="https://zeyuzhang1901.github.io" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Website
+        </a>
+        <h1><i class="fa-solid fa-image"></i> Academic Research Image Generator</h1>
+        <p class="subtitle">Generate publication-quality figures using AI collaboration</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Step 1: Input Section -->
+      <section id="input-section" class="section">
+        <div class="section-header">
+          <span class="step-badge">Step 1</span>
+          <h2>Describe Your Figure</h2>
+        </div>
+        
+        <div class="form-group">
+          <label for="task-description">Task Description <span class="required">*</span></label>
+          <textarea 
+            id="task-description" 
+            placeholder="Describe the academic figure you want to create. For example: 'Create an evaluation pipeline diagram with 4 phases showing claim extraction, Shapley computation, leakage detection, and metrics aggregation. Highlight the parallel processing between phases 2 and 3.'"
+            rows="6"
+          ></textarea>
+          <p class="help-text">Be specific about the structure, components, and key elements you want to highlight.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="code-upload">Related Code (Optional)</label>
+          <div class="file-upload-area" id="file-upload-area">
+            <i class="fa-solid fa-cloud-upload-alt"></i>
+            <p>Drag & drop files here or <span class="browse-link">browse</span></p>
+            <p class="help-text">Upload code files for more accurate figure generation</p>
+            <input type="file" id="code-upload" multiple accept=".py,.js,.ts,.java,.cpp,.c,.h,.hpp,.rb,.go,.rs" hidden>
+          </div>
+          <div id="uploaded-files" class="uploaded-files"></div>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="code-content">Or paste code directly:</label>
+            <textarea 
+              id="code-content" 
+              placeholder="Paste your code here..."
+              rows="8"
+              class="code-textarea"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="interpreter-model">Interpreter Model</label>
+            <select id="interpreter-model">
+              <option value="anthropic/claude-opus-4.5">Claude Opus 4.5 (Recommended)</option>
+              <option value="anthropic/claude-sonnet-4.5">Claude Sonnet 4.5</option>
+              <option value="openai/gpt-5.2">GPT-5.2</option>
+            </select>
+          </div>
+          <div class="form-group half">
+            <label for="image-model">Image Generation Model</label>
+            <select id="image-model">
+              <option value="google/gemini-3-pro-image-preview">Gemini 3 Pro Image (Recommended)</option>
+              <option value="openai/gpt-5-image-mini">GPT-5 Image Mini</option>
+              <option value="black-forest-labs/flux.2-pro">FLUX.2 Pro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="iterations">Refinement Iterations</label>
+            <div class="iteration-selector">
+              <input type="range" id="iterations" min="1" max="10" value="2">
+              <span id="iteration-value" class="iteration-value">2</span>
+            </div>
+            <p class="help-text">N iterations = N+1 total images</p>
+          </div>
+          <div class="form-group half">
+            <label for="temperature">Image Temperature</label>
+            <div class="iteration-selector">
+              <input type="range" id="temperature" min="0" max="100" value="70" step="5">
+              <span id="temperature-value" class="iteration-value">0.7</span>
+            </div>
+            <p class="help-text">Higher = more creative, Lower = more precise</p>
+          </div>
+        </div>
+
+        <button id="start-generation" class="btn btn-primary btn-large">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Start Generation
+        </button>
+      </section>
+
+      <!-- Step 2: Processing Section -->
+      <section id="processing-section" class="section hidden">
+        <div class="section-header">
+          <h2>Processing Pipeline</h2>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+          <div class="progress-steps">
+            <div class="progress-step" id="step-interpret">
+              <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+              <span>Interpreting</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" id="step-generate">
+              <div class="step-icon"><i class="fa-solid fa-image"></i></div>
+              <span>Generating</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" id="step-refine">
+              <div class="step-icon"><i class="fa-solid fa-sync"></i></div>
+              <span>Refining</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" id="step-review">
+              <div class="step-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+              <span>Reviewing</span>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <p class="progress-text" id="progress-text">Initializing...</p>
+        </div>
+
+        <!-- Current Prompt Display -->
+        <div class="collapsible" id="prompt-container">
+          <button class="collapsible-header">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="prompt-label">Current Prompt (v1 - Original)</span>
+          </button>
+          <div class="collapsible-content">
+            <pre id="generated-prompt"></pre>
+          </div>
+        </div>
+
+        <!-- Current Image Display -->
+        <div class="image-container" id="current-image-container">
+          <h3>Current Image <span class="version-badge" id="version-badge">v1</span></h3>
+          <div class="image-wrapper">
+            <img id="current-image" src="" alt="Generated image">
+            <div class="image-placeholder" id="image-placeholder">
+              <i class="fa-solid fa-image"></i>
+              <p>Image will appear here</p>
+            </div>
+          </div>
+          <div class="image-actions-inline" id="current-image-actions">
+            <button id="download-current-image" class="btn btn-secondary btn-small">
+              <i class="fa-solid fa-download"></i> Download This Version
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section" id="feedback-section">
+          <h3>Provide Feedback</h3>
+          <p class="help-text">Review the generated image and provide feedback for refinement. Be specific about what needs to change. The AI supervisor will also find additional issues.</p>
+          <textarea 
+            id="user-feedback" 
+            placeholder="e.g., 'The equation in Phase 4 is incomplete - it's missing the denominator. Also, the claim labels in Phase 1 have duplicates.' (Leave empty to let the AI supervisor find issues automatically)"
+            rows="5"
+            style="width: 100%;"
+          ></textarea>
+          <div class="feedback-actions">
+            <span class="iteration-info">Refinement <span id="current-iteration">1</span> of <span id="total-iterations">2</span></span>
+            <button id="submit-feedback" class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane"></i> Get Refinement Prompt
+            </button>
+            <button id="skip-to-final" class="btn btn-secondary">
+              <i class="fa-solid fa-flag-checkered"></i> Skip to Final Review
+            </button>
+          </div>
+        </div>
+
+        <!-- Analysis Display -->
+        <div class="collapsible open" id="analysis-container" style="display: none;">
+          <button class="collapsible-header">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Supervisor Analysis</span>
+          </button>
+          <div class="collapsible-content">
+            <div id="analysis-content" class="markdown-content"></div>
+          </div>
+        </div>
+
+        <!-- Refinement Prompt Editor -->
+        <div class="refinement-section" id="refinement-section" style="display: none;">
+          <h3><i class="fa-solid fa-edit"></i> Refinement Prompt</h3>
+          <p class="help-text">This is the prompt that will be sent to the image generator. You can edit it before applying.</p>
+          <textarea 
+            id="refinement-prompt-editor" 
+            rows="10"
+            class="code-textarea"
+          ></textarea>
+          <div class="refinement-actions">
+            <button id="apply-refinement" class="btn btn-primary">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Apply & Generate New Image
+            </button>
+            <button id="edit-feedback" class="btn btn-secondary">
+              <i class="fa-solid fa-arrow-left"></i> Back to Feedback
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 3: Results Section -->
+      <section id="results-section" class="section hidden">
+        <div class="section-header">
+          <span class="step-badge success">Complete</span>
+          <h2>Final Results</h2>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery-container" id="image-gallery-container">
+          <h3><i class="fa-solid fa-images"></i> Generated Images</h3>
+          <p class="gallery-subtitle">Browse all generated versions and select one for professional review</p>
+          
+          <!-- Gallery Navigation -->
+          <div class="gallery-viewer">
+            <button class="gallery-nav gallery-prev" id="gallery-prev">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="gallery-main">
+              <div class="gallery-image-wrapper">
+                <img id="gallery-image" src="" alt="Generated image">
+                <span class="gallery-version-badge" id="gallery-version-badge">v1</span>
+              </div>
+              <div class="gallery-prompt-container">
+                <h4>Prompt Used</h4>
+                <pre id="gallery-prompt" class="gallery-prompt"></pre>
+              </div>
+            </div>
+            
+            <button class="gallery-nav gallery-next" id="gallery-next">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <!-- Gallery Dots -->
+          <div class="gallery-dots" id="gallery-dots">
+            <!-- Dots will be populated by JavaScript -->
+          </div>
+          
+          <!-- Review Model Selector -->
+          <div class="review-model-selector">
+            <label for="review-model">Review Model:</label>
+            <select id="review-model">
+              <option value="anthropic/claude-opus-4.5" selected>Claude Opus 4.5</option>
+              <option value="anthropic/claude-sonnet-4.5">Claude Sonnet 4.5</option>
+              <option value="openai/gpt-5.2">GPT-5.2</option>
+            </select>
+          </div>
+          
+          <!-- Gallery Actions -->
+          <div class="gallery-actions">
+            <button id="download-selected" class="btn btn-secondary">
+              <i class="fa-solid fa-download"></i> Download This Image
+            </button>
+            <button id="review-selected" class="btn btn-primary">
+              <i class="fa-solid fa-clipboard-check"></i> Review This Image
+            </button>
+            <button id="restart-pipeline" class="btn btn-outline">
+              <i class="fa-solid fa-redo"></i> Start New Generation
+            </button>
+          </div>
+          
+          <!-- Inline Review Section (hidden until user requests) -->
+          <div class="inline-review-container hidden" id="inline-review-container">
+            <div class="review-divider">
+              <span>Professional Review for <strong id="reviewed-version">v1</strong></span>
+            </div>
+            
+            <!-- Scores Grid -->
+            <div class="scores-grid" id="scores-grid">
+              <!-- Scores will be populated by JavaScript -->
+            </div>
+            
+            <!-- Publication Readiness Badge -->
+            <div class="publication-status" id="publication-status">
+              <!-- Will be populated by JavaScript -->
+            </div>
+            
+            <!-- Review Sections -->
+            <div class="review-sections" id="review-sections">
+              <!-- Overall Assessment -->
+              <div class="review-card" id="review-assessment">
+                <div class="review-card-header">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <h4>Overall Assessment</h4>
+                </div>
+                <div class="review-card-content" id="assessment-content"></div>
+              </div>
+              
+              <!-- Strengths -->
+              <div class="review-card success" id="review-strengths">
+                <div class="review-card-header">
+                  <i class="fa-solid fa-check-circle"></i>
+                  <h4>Strengths</h4>
+                </div>
+                <div class="review-card-content" id="strengths-content"></div>
+              </div>
+              
+              <!-- Areas for Improvement -->
+              <div class="review-card warning" id="review-improvements">
+                <div class="review-card-header">
+                  <i class="fa-solid fa-exclamation-triangle"></i>
+                  <h4>Areas for Improvement</h4>
+                </div>
+                <div class="review-card-content" id="improvements-content"></div>
+              </div>
+              
+              <!-- Recommendations -->
+              <div class="review-card info" id="review-recommendations">
+                <div class="review-card-header">
+                  <i class="fa-solid fa-lightbulb"></i>
+                  <h4>Recommendations</h4>
+                </div>
+                <div class="review-card-content" id="recommendations-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Built with <i class="fa-solid fa-heart"></i> by <a href="https://zeyuzhang1901.github.io">Zeyu Zhang</a></p>
+      <p class="footer-links">
+        <a href="https://zeyuzhang1901.github.io/blog/2026/generating-paper-figures-with-gemini/">Read the Blog Post</a>
+        <span class="separator">|</span>
+        <a href="https://zeyuzhang1901.github.io/tools/">All Tools</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-spinner">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <p id="loading-text">Processing...</p>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div id="error-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 800px;">
+      <div class="modal-header error">
+        <i class="fa-solid fa-exclamation-circle"></i>
+        <h3>Error</h3>
+      </div>
+      <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+        <pre id="error-message" style="white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 12px; background: #f5f5f5; padding: 15px; border-radius: 8px; text-align: left;"></pre>
+      </div>
+      <div class="modal-footer">
+        <button id="error-close" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
