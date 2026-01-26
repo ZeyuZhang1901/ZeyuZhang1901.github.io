@@ -16,7 +16,7 @@ nav_order: 5
     {% assign tools = site.tools | sort: "importance" | reverse %}
     {% for tool in tools %}
     <div class="tool-card">
-      <a href="{{ tool.url | default: tool.external_url }}" {% if tool.external_url %}target="_blank"{% endif %}>
+      <a href="{{ tool.external_url | default: tool.url }}" {% if tool.external_url %}target="_blank"{% endif %}>
         <div class="card hoverable">
           <div class="card-body">
             {% if tool.icon %}
