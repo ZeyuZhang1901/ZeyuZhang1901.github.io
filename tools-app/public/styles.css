@@ -40,7 +40,12 @@
 }
 
 body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background-color: var(--background);
   color: var(--text-color);
   line-height: 1.6;
@@ -81,7 +86,7 @@ body {
 }
 
 .header h1 {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -113,7 +118,7 @@ body {
 }
 
 .section-header h2 {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--text-color);
@@ -173,7 +178,7 @@ body {
 }
 
 .code-textarea {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 0.9rem;
   background: var(--background-alt);
   width: 100%;
@@ -387,8 +392,13 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .progress-line {
@@ -467,7 +477,7 @@ body {
 .collapsible-content pre {
   padding: 1rem;
   background: var(--background);
-  font-family: 'Monaco', 'Menlo', monospace;
+  font-family: "Monaco", "Menlo", monospace;
   font-size: 0.85rem;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -873,7 +883,6 @@ body {
   list-style-type: none;
 }
 
-
 .review-card-content li {
   margin-bottom: 0.2rem;
   list-style: none;
@@ -1099,7 +1108,7 @@ body {
 }
 
 .gallery-prompt {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 0.85rem;
   line-height: 1.5;
   white-space: pre-wrap;
@@ -1202,7 +1211,6 @@ body {
   background: var(--background-alt);
   border-color: var(--text-light);
 }
-
 
 /* Utility Classes */
 .hidden {

@@ -3,38 +3,32 @@
 
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const { 
-      imageBase64, 
-      originalTask,
-      conversationHistory,
-      totalIterations,
-      interpreterModel 
-    } = req.body;
+    const { imageBase64, originalTask, conversationHistory, totalIterations, interpreterModel } = req.body;
 
     if (!imageBase64) {
-      return res.status(400).json({ error: 'Final image is required' });
+      return res.status(400).json({ error: "Final image is required" });
     }
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured' });
+      return res.status(500).json({ error: "API key not configured" });
     }
 
     // Default to Claude Opus 4.5 if not specified
-    const model = interpreterModel || 'anthropic/claude-opus-4.5';
+    const model = interpreterModel || "anthropic/claude-opus-4.5";
 
     const systemPrompt = `You are a senior academic reviewer evaluating figures for publication in top-tier venues. You have extremely high standards and provide thorough, constructive evaluations.
 
@@ -45,7 +39,7 @@ Your evaluation should assess the figure against publication standards expected 
 This is the final version of an academic figure after ${totalIterations || 1} iteration(s) of refinement. Please provide a comprehensive evaluation.
 
 **Original Task:**
-${originalTask || 'Not provided'}
+${originalTask || "Not provided"}
 
 Please evaluate this final image based on the following criteria:
 
@@ -99,62 +93,62 @@ Please provide your evaluation in the following format:
 [State whether the figure is ready for publication as-is, needs minor revisions, or needs major revisions]`;
 
     const messages = [
-      { role: 'system', content: systemPrompt },
+      { role: "system", content: systemPrompt },
       {
-        role: 'user',
+        role: "user",
         content: [
           {
-            type: 'text',
-            text: userMessage
+            type: "text",
+            text: userMessage,
           },
           {
-            type: 'image_url',
+            type: "image_url",
             image_url: {
-              url: imageBase64.startsWith('data:') ? imageBase64 : `data:image/png;base64,${imageBase64}`
-            }
-          }
-        ]
-      }
+              url: imageBase64.startsWith("data:") ? imageBase64 : `data:image/png;base64,${imageBase64}`,
+            },
+          },
+        ],
+      },
     ];
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://academic-image-generator.vercel.app',
-        'X-Title': 'Academic Image Generator'
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://academic-image-generator.vercel.app",
+        "X-Title": "Academic Image Generator",
       },
       body: JSON.stringify({
         model: model,
         messages: messages,
         temperature: 0.3,
-        max_tokens: 3000
-      })
+        max_tokens: 3000,
+      }),
     });
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('OpenRouter API error:', error);
-      return res.status(response.status).json({ error: 'Failed to generate review', details: error });
+      console.error("OpenRouter API error:", error);
+      return res.status(response.status).json({ error: "Failed to generate review", details: error });
     }
 
     const data = await response.json();
     const review = data.choices[0]?.message?.content;
 
     if (!review) {
-      return res.status(500).json({ error: 'No review generated' });
+      return res.status(500).json({ error: "No review generated" });
     }
 
     // Parse scores from the review
     // Handle various formats: "9/10", "**9/10**", "9 / 10", "**9**/10"
     const scores = {};
     const scorePatterns = [
-      { key: 'requirements', pattern: /Requirements\s*Fulfillment[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
-      { key: 'rigor', pattern: /Academic\s*Rigor[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
-      { key: 'accuracy', pattern: /Accuracy[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
-      { key: 'clarity', pattern: /Visual\s*Clarity[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
-      { key: 'overall', pattern: /Overall\s*Score[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i }
+      { key: "requirements", pattern: /Requirements\s*Fulfillment[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
+      { key: "rigor", pattern: /Academic\s*Rigor[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
+      { key: "accuracy", pattern: /Accuracy[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
+      { key: "clarity", pattern: /Visual\s*Clarity[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
+      { key: "overall", pattern: /Overall\s*Score[:\s]*\**(\d+(?:\.\d+)?)\**\s*\/\s*10/i },
     ];
 
     for (const { key, pattern } of scorePatterns) {
@@ -164,16 +158,16 @@ Please provide your evaluation in the following format:
       }
     }
 
-    console.log('Parsed scores:', scores);
+    console.log("Parsed scores:", scores);
 
     // Determine publication readiness
-    let publicationReadiness = 'unknown';
-    if (review.toLowerCase().includes('ready for publication as-is')) {
-      publicationReadiness = 'ready';
-    } else if (review.toLowerCase().includes('minor revisions')) {
-      publicationReadiness = 'minor_revisions';
-    } else if (review.toLowerCase().includes('major revisions')) {
-      publicationReadiness = 'major_revisions';
+    let publicationReadiness = "unknown";
+    if (review.toLowerCase().includes("ready for publication as-is")) {
+      publicationReadiness = "ready";
+    } else if (review.toLowerCase().includes("minor revisions")) {
+      publicationReadiness = "minor_revisions";
+    } else if (review.toLowerCase().includes("major revisions")) {
+      publicationReadiness = "major_revisions";
     }
 
     return res.status(200).json({
@@ -181,11 +175,10 @@ Please provide your evaluation in the following format:
       review: review,
       scores: scores,
       publicationReadiness: publicationReadiness,
-      model: model
+      model: model,
     });
-
   } catch (error) {
-    console.error('Error in final-review endpoint:', error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    console.error("Error in final-review endpoint:", error);
+    return res.status(500).json({ error: "Internal server error", details: error.message });
   }
 }

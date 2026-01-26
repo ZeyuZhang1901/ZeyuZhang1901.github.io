@@ -23,27 +23,32 @@ This tool implements an iterative refinement pipeline:
 ### Setup
 
 1. Install dependencies:
+
    ```bash
    cd tools-app
    npm install
    ```
 
 2. Create a `.env` file from the example:
+
    ```bash
    cp .env.example .env
    ```
 
 3. Add your OpenRouter API key to `.env`:
+
    ```
    OPENROUTER_API_KEY=sk-or-v1-your-api-key-here
    ```
 
 4. Run locally with Vercel CLI:
+
    ```bash
    npx vercel dev
    ```
 
    Or use a simple HTTP server for the frontend (API calls will need to be mocked or proxied):
+
    ```bash
    npx serve public
    ```
@@ -64,22 +69,26 @@ This tool implements an iterative refinement pipeline:
 ### Option 2: Deploy from CLI
 
 1. Install Vercel CLI:
+
    ```bash
    npm install -g vercel
    ```
 
 2. Login to Vercel:
+
    ```bash
    vercel login
    ```
 
 3. Deploy:
+
    ```bash
    cd tools-app
    vercel
    ```
 
 4. Set the environment variable:
+
    ```bash
    vercel env add OPENROUTER_API_KEY
    ```
@@ -96,6 +105,7 @@ This tool implements an iterative refinement pipeline:
 Generates a detailed image prompt from user input.
 
 **Request Body:**
+
 ```json
 {
   "taskDescription": "Description of the figure to create",
@@ -109,6 +119,7 @@ Generates a detailed image prompt from user input.
 Generates an image from a prompt.
 
 **Request Body:**
+
 ```json
 {
   "prompt": "Detailed image generation prompt",
@@ -121,6 +132,7 @@ Generates an image from a prompt.
 Analyzes a generated image and creates refinement suggestions.
 
 **Request Body:**
+
 ```json
 {
   "imageBase64": "Base64 encoded image",
@@ -137,6 +149,7 @@ Analyzes a generated image and creates refinement suggestions.
 Generates a professional evaluation of the final image.
 
 **Request Body:**
+
 ```json
 {
   "imageBase64": "Base64 encoded image",
@@ -150,12 +163,14 @@ Generates a professional evaluation of the final image.
 ## Models Used
 
 ### Interpreter/Supervisor Models (via OpenRouter)
+
 - Claude Opus 4 (recommended)
 - Claude Sonnet 4
 - GPT-4o
 - Gemini 2.5 Pro
 
 ### Image Generation Models (via OpenRouter)
+
 - Gemini 2.0 Flash (free)
 - DALL-E 3
 

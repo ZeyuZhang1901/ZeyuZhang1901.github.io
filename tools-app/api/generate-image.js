@@ -3,32 +3,32 @@
 
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     const { prompt, imageModel, temperature } = req.body;
 
     if (!prompt) {
-      return res.status(400).json({ error: 'Prompt is required' });
+      return res.status(400).json({ error: "Prompt is required" });
     }
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured' });
+      return res.status(500).json({ error: "API key not configured" });
     }
 
-    const model = imageModel || 'google/gemini-3-pro-image-preview';
-    const temp = typeof temperature === 'number' ? temperature : 0.7;
+    const model = imageModel || "google/gemini-3-pro-image-preview";
+    const temp = typeof temperature === "number" ? temperature : 0.7;
 
     // Enhance the prompt for better academic figure generation
     const enhancedPrompt = `Generate an image: Create a professional academic figure with the following specifications:
@@ -43,36 +43,36 @@ Important requirements:
 - Use consistent color scheme throughout
 - Make sure arrows and connections are clear and properly directed`;
 
-    console.log('=== IMAGE GENERATION REQUEST ===');
-    console.log('Model:', model);
-    console.log('Temperature:', temp);
-    console.log('Prompt length:', enhancedPrompt.length);
+    console.log("=== IMAGE GENERATION REQUEST ===");
+    console.log("Model:", model);
+    console.log("Temperature:", temp);
+    console.log("Prompt length:", enhancedPrompt.length);
 
     // Use OpenRouter's /chat/completions endpoint
     // Image generation models return images in message.images array
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://academic-image-generator.vercel.app',
-        'X-Title': 'Academic Image Generator'
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://academic-image-generator.vercel.app",
+        "X-Title": "Academic Image Generator",
       },
       body: JSON.stringify({
         model: model,
         messages: [
           {
-            role: 'user',
-            content: enhancedPrompt
-          }
+            role: "user",
+            content: enhancedPrompt,
+          },
         ],
-        temperature: temp
-      })
+        temperature: temp,
+      }),
     });
 
     const responseText = await response.text();
-    console.log('OpenRouter response status:', response.status);
-    console.log('OpenRouter response (first 500 chars):', responseText.substring(0, 500));
+    console.log("OpenRouter response status:", response.status);
+    console.log("OpenRouter response (first 500 chars):", responseText.substring(0, 500));
 
     if (!response.ok) {
       let errorDetails = responseText;
@@ -84,9 +84,9 @@ Important requirements:
       }
       return res.status(response.status).json({
         success: false,
-        error: 'API request failed',
+        error: "API request failed",
         details: errorDetails,
-        model: model
+        model: model,
       });
     }
 
@@ -97,8 +97,8 @@ Important requirements:
     } catch (e) {
       return res.status(500).json({
         success: false,
-        error: 'Invalid JSON response',
-        details: responseText.substring(0, 500)
+        error: "Invalid JSON response",
+        details: responseText.substring(0, 500),
       });
     }
 
@@ -113,34 +113,34 @@ Important requirements:
         const img = message.images[0];
         if (img.image_url?.url) {
           imageData = img.image_url.url;
-          console.log('Found image in message.images[0].image_url.url');
+          console.log("Found image in message.images[0].image_url.url");
         } else if (img.url) {
           imageData = img.url;
-          console.log('Found image in message.images[0].url');
+          console.log("Found image in message.images[0].url");
         }
       }
 
       // CHECK 2: content as array (multimodal format)
       if (!imageData && Array.isArray(message.content)) {
         for (const part of message.content) {
-          if (part.type === 'image_url' && part.image_url?.url) {
+          if (part.type === "image_url" && part.image_url?.url) {
             imageData = part.image_url.url;
-            console.log('Found image in content array (image_url)');
+            console.log("Found image in content array (image_url)");
             break;
           }
-          if (part.type === 'image' && (part.url || part.data)) {
+          if (part.type === "image" && (part.url || part.data)) {
             imageData = part.url || `data:image/png;base64,${part.data}`;
-            console.log('Found image in content array (image)');
+            console.log("Found image in content array (image)");
             break;
           }
         }
       }
 
       // CHECK 3: content as URL/base64 string
-      if (!imageData && typeof message.content === 'string') {
-        if (message.content.startsWith('data:image/') || message.content.startsWith('http')) {
+      if (!imageData && typeof message.content === "string") {
+        if (message.content.startsWith("data:image/") || message.content.startsWith("http")) {
           imageData = message.content;
-          console.log('Found image in content string');
+          console.log("Found image in content string");
         }
       }
     }
@@ -148,11 +148,11 @@ Important requirements:
     // CHECK 4: Other possible locations
     if (!imageData && data.image) {
       imageData = data.image;
-      console.log('Found image in data.image');
+      console.log("Found image in data.image");
     }
     if (!imageData && data.data?.[0]?.url) {
       imageData = data.data[0].url;
-      console.log('Found image in data.data[0].url');
+      console.log("Found image in data.data[0].url");
     }
 
     // Return result
@@ -160,35 +160,34 @@ Important requirements:
       return res.status(200).json({
         success: true,
         image: imageData,
-        model: model
+        model: model,
       });
     } else {
       // No image found - return debug info
-      const textContent = typeof message?.content === 'string' ? message.content : null;
+      const textContent = typeof message?.content === "string" ? message.content : null;
       return res.status(200).json({
         success: false,
-        error: 'No image in response',
-        details: textContent 
-          ? 'Model returned text instead of image. This model may not support image generation.'
-          : 'Could not find image data in the response.',
+        error: "No image in response",
+        details: textContent
+          ? "Model returned text instead of image. This model may not support image generation."
+          : "Could not find image data in the response.",
         textResponse: textContent?.substring(0, 300),
         model: model,
         responseStructure: {
           hasMessage: !!message,
-          hasImages: !!(message?.images),
+          hasImages: !!message?.images,
           imagesLength: message?.images?.length,
           contentType: typeof message?.content,
-          contentIsArray: Array.isArray(message?.content)
-        }
+          contentIsArray: Array.isArray(message?.content),
+        },
       });
     }
-
   } catch (error) {
-    console.error('Error in generate-image endpoint:', error);
+    console.error("Error in generate-image endpoint:", error);
     return res.status(500).json({
       success: false,
-      error: 'Internal server error',
-      details: error.message
+      error: "Internal server error",
+      details: error.message,
     });
   }
 }

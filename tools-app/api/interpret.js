@@ -3,32 +3,32 @@
 
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     const { taskDescription, codeContent, interpreterModel } = req.body;
 
     if (!taskDescription) {
-      return res.status(400).json({ error: 'Task description is required' });
+      return res.status(400).json({ error: "Task description is required" });
     }
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured' });
+      return res.status(500).json({ error: "API key not configured" });
     }
 
     // Default to Claude Opus 4.5 if not specified
-    const model = interpreterModel || 'anthropic/claude-opus-4.5';
+    const model = interpreterModel || "anthropic/claude-opus-4.5";
 
     const systemPrompt = `You are an expert at creating detailed, professional prompts for academic image generation. Your task is to take a user's high-level description of an academic figure they want to create, and transform it into a comprehensive, detailed prompt that an image generation model can use to create a publication-quality figure.
 
@@ -77,36 +77,36 @@ Please generate a comprehensive, detailed prompt that an image generation model 
     const requestBody = {
       model: model,
       messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userMessage }
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
       ],
       temperature: 0.7,
-      max_tokens: 4000
+      max_tokens: 4000,
     };
 
-    console.log('Sending request to OpenRouter with model:', model);
+    console.log("Sending request to OpenRouter with model:", model);
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://academic-image-generator.vercel.app',
-        'X-Title': 'Academic Image Generator'
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://academic-image-generator.vercel.app",
+        "X-Title": "Academic Image Generator",
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody),
     });
 
     const responseText = await response.text();
-    console.log('OpenRouter response status:', response.status);
-    console.log('OpenRouter response:', responseText.substring(0, 1000));
+    console.log("OpenRouter response status:", response.status);
+    console.log("OpenRouter response:", responseText.substring(0, 1000));
 
     if (!response.ok) {
-      console.error('OpenRouter API error:', responseText);
-      return res.status(response.status).json({ 
-        error: 'Failed to generate prompt', 
+      console.error("OpenRouter API error:", responseText);
+      return res.status(response.status).json({
+        error: "Failed to generate prompt",
         details: responseText,
-        model: model
+        model: model,
       });
     }
 
@@ -115,15 +115,15 @@ Please generate a comprehensive, detailed prompt that an image generation model 
       data = JSON.parse(responseText);
     } catch (e) {
       return res.status(500).json({
-        error: 'Invalid JSON response from API',
-        details: responseText.substring(0, 500)
+        error: "Invalid JSON response from API",
+        details: responseText.substring(0, 500),
       });
     }
 
     const generatedPrompt = data.choices?.[0]?.message?.content;
 
     if (!generatedPrompt) {
-      return res.status(500).json({ error: 'No prompt generated' });
+      return res.status(500).json({ error: "No prompt generated" });
     }
 
     return res.status(200).json({
@@ -131,14 +131,13 @@ Please generate a comprehensive, detailed prompt that an image generation model 
       prompt: generatedPrompt,
       model: model,
       conversationHistory: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userMessage },
-        { role: 'assistant', content: generatedPrompt }
-      ]
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
+        { role: "assistant", content: generatedPrompt },
+      ],
     });
-
   } catch (error) {
-    console.error('Error in interpret endpoint:', error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    console.error("Error in interpret endpoint:", error);
+    return res.status(500).json({ error: "Internal server error", details: error.message });
   }
 }

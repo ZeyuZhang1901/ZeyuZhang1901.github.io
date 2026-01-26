@@ -3,39 +3,32 @@
 
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const { 
-      imageBase64, 
-      userFeedback, 
-      conversationHistory, 
-      originalTask,
-      iterationNumber,
-      interpreterModel 
-    } = req.body;
+    const { imageBase64, userFeedback, conversationHistory, originalTask, iterationNumber, interpreterModel } = req.body;
 
     if (!userFeedback && !imageBase64) {
-      return res.status(400).json({ error: 'Either image or feedback is required' });
+      return res.status(400).json({ error: "Either image or feedback is required" });
     }
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'API key not configured' });
+      return res.status(500).json({ error: "API key not configured" });
     }
 
     // Default to Claude Opus 4.5 if not specified
-    const model = interpreterModel || 'anthropic/claude-opus-4.5';
+    const model = interpreterModel || "anthropic/claude-opus-4.5";
 
     const systemPrompt = `You are an expert academic figure supervisor with extremely high standards for publication-quality visuals. Your task is to analyze generated academic figures and provide detailed refinement prompts.
 
@@ -87,14 +80,14 @@ You should follow the user's requirements rigorously and find ALL places that ne
 
     // Build the conversation messages
     let messages = [];
-    
+
     // Add system prompt
-    messages.push({ role: 'system', content: systemPrompt });
+    messages.push({ role: "system", content: systemPrompt });
 
     // Add conversation history if provided (to maintain context)
     if (conversationHistory && Array.isArray(conversationHistory)) {
       // Filter out system messages as we've already added our own
-      const filteredHistory = conversationHistory.filter(msg => msg.role !== 'system');
+      const filteredHistory = conversationHistory.filter((msg) => msg.role !== "system");
       messages = messages.concat(filteredHistory);
     }
 
@@ -104,30 +97,30 @@ You should follow the user's requirements rigorously and find ALL places that ne
 Please carefully analyze the generated image with a critical, professional eye. Think deeply about the original task requirements and evaluate every detail.
 
 **Original Task:**
-${originalTask || 'Not provided'}
+${originalTask || "Not provided"}
 
 **User Feedback:**
-${userFeedback || 'No specific feedback provided - please analyze the image thoroughly.'}`;
+${userFeedback || "No specific feedback provided - please analyze the image thoroughly."}`;
 
     // If image is provided, include it in the message
     if (imageBase64) {
       messages.push({
-        role: 'user',
+        role: "user",
         content: [
           {
-            type: 'text',
-            text: userMessage
+            type: "text",
+            text: userMessage,
           },
           {
-            type: 'image_url',
+            type: "image_url",
             image_url: {
-              url: imageBase64.startsWith('data:') ? imageBase64 : `data:image/png;base64,${imageBase64}`
-            }
-          }
-        ]
+              url: imageBase64.startsWith("data:") ? imageBase64 : `data:image/png;base64,${imageBase64}`,
+            },
+          },
+        ],
       });
     } else {
-      messages.push({ role: 'user', content: userMessage });
+      messages.push({ role: "user", content: userMessage });
     }
 
     // Add instruction for output format
@@ -158,47 +151,41 @@ Based on your THOROUGH and INDEPENDENT analysis (not just the user's feedback), 
 
 Format the refinement prompt clearly so it can be directly used for the next iteration.`;
 
-    messages.push({ role: 'user', content: outputInstruction });
+    messages.push({ role: "user", content: outputInstruction });
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://academic-image-generator.vercel.app',
-        'X-Title': 'Academic Image Generator'
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "https://academic-image-generator.vercel.app",
+        "X-Title": "Academic Image Generator",
       },
       body: JSON.stringify({
         model: model,
         messages: messages,
         temperature: 0.5,
-        max_tokens: 4000
-      })
+        max_tokens: 4000,
+      }),
     });
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('OpenRouter API error:', error);
-      return res.status(response.status).json({ error: 'Failed to analyze image', details: error });
+      console.error("OpenRouter API error:", error);
+      return res.status(response.status).json({ error: "Failed to analyze image", details: error });
     }
 
     const data = await response.json();
     const analysis = data.choices[0]?.message?.content;
 
     if (!analysis) {
-      return res.status(500).json({ error: 'No analysis generated' });
+      return res.status(500).json({ error: "No analysis generated" });
     }
 
     // Extract the refinement prompt from the analysis
     // Look for common patterns that indicate the refinement prompt section
     let refinementPrompt = analysis;
-    const promptMarkers = [
-      '**Refinement Prompt**',
-      '## Refinement Prompt',
-      '### Refinement Prompt',
-      'Refinement Prompt:',
-      '**REFINEMENT PROMPT**'
-    ];
+    const promptMarkers = ["**Refinement Prompt**", "## Refinement Prompt", "### Refinement Prompt", "Refinement Prompt:", "**REFINEMENT PROMPT**"];
 
     for (const marker of promptMarkers) {
       const markerIndex = analysis.indexOf(marker);
@@ -210,19 +197,18 @@ Format the refinement prompt clearly so it can be directly used for the next ite
 
     // Update conversation history
     const updatedHistory = [...(conversationHistory || [])];
-    updatedHistory.push({ role: 'user', content: userMessage });
-    updatedHistory.push({ role: 'assistant', content: analysis });
+    updatedHistory.push({ role: "user", content: userMessage });
+    updatedHistory.push({ role: "assistant", content: analysis });
 
     return res.status(200).json({
       success: true,
       analysis: analysis,
       refinementPrompt: refinementPrompt,
       model: model,
-      conversationHistory: updatedHistory
+      conversationHistory: updatedHistory,
     });
-
   } catch (error) {
-    console.error('Error in supervise endpoint:', error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    console.error("Error in supervise endpoint:", error);
+    return res.status(500).json({ error: "Internal server error", details: error.message });
   }
 }
