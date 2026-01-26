@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
+        },{id: "nav-tools",
+          title: "Tools",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/tools/";
+          },
         },{id: "nav-blog",
           title: "blog",
           description: "",
@@ -145,6 +152,11 @@ ninja.data = [{
           description: "Supervised machine learning in Python with focus on linear and logistic regression.",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/26winter-data-science-2/";
+            },},{id: "tools-academic-research-image-generator",
+          title: 'Academic Research Image Generator',
+          description: "Generate publication-quality architecture diagrams and figures using AI collaboration between LLMs and image generation models. Iteratively refine images with professional feedback.",
+          section: "Tools",handler: () => {
+              window.location.href = "/tools/academic-image-generator/";
             },},{
         id: 'social-cv',
         title: 'CV',
