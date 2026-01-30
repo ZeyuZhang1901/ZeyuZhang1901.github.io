@@ -30,6 +30,8 @@ class AcademicImageGenerator {
       galleryIndex: 0,
       selectedImageForReview: null,
       reviews: {}, // Store reviews keyed by image version
+      lastPhaseA: null, // Store last Phase A analysis
+      lastPhaseB: null, // Store last Phase B modification script
     };
 
     // DOM Elements
@@ -339,21 +341,36 @@ class AcademicImageGenerator {
     const baseProgress = 25; // After interpret step
     const generateProgress = baseProgress + ((imageCount + 1) / totalImages) * 50;
 
-    this.updateProgress("generate", `Generating image (v${imageCount + 1})...`, Math.min(generateProgress, 75));
-    this.showLoading("Creating your academic figure...");
+    const isRefinement = this.state.imageHistory.length > 0;
+    const modeText = isRefinement ? "Refining" : "Generating";
+
+    this.updateProgress("generate", `${modeText} image (v${imageCount + 1})...`, Math.min(generateProgress, 75));
+    this.showLoading(isRefinement ? "Refining your academic figure based on feedback..." : "Creating your academic figure...");
 
     try {
       // Use generatedPrompt for first image, refinementPrompt for subsequent
-      const promptToUse = this.state.imageHistory.length === 0 ? this.state.generatedPrompt : this.state.refinementPrompt;
+      const promptToUse = isRefinement ? this.state.refinementPrompt : this.state.generatedPrompt;
+
+      // For refinements, pass the previous image so the model can see what to modify
+      const previousImage = isRefinement ? this.state.currentImage : null;
+
+      const requestBody = {
+        prompt: promptToUse,
+        imageModel: this.state.imageModel,
+        temperature: this.state.imageTemperature,
+        isRefinement: isRefinement,
+      };
+
+      // Include previous image for refinements
+      if (previousImage) {
+        requestBody.previousImage = previousImage;
+        console.log("Sending refinement request with previous image");
+      }
 
       const response = await fetch("/api/generate-image", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: promptToUse,
-          imageModel: this.state.imageModel,
-          temperature: this.state.imageTemperature,
-        }),
+        body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
@@ -455,8 +472,8 @@ class AcademicImageGenerator {
     const totalImages = this.state.maxIterations + 1;
     const superviseProgress = 25 + (imageCount / totalImages) * 60 + 5;
 
-    this.updateProgress("refine", `Analyzing image v${imageCount}...`, Math.min(superviseProgress, 85));
-    this.showLoading("Analyzing your image with AI supervisor...");
+    this.updateProgress("refine", `Analyzing image v${imageCount} (Phase A: Structure)...`, Math.min(superviseProgress, 85));
+    this.showLoading("Phase A: Analyzing image structure...");
 
     try {
       const response = await fetch("/api/supervise", {
@@ -481,8 +498,90 @@ class AcademicImageGenerator {
       this.state.conversationHistory = data.conversationHistory;
       this.state.refinementPrompt = data.refinementPrompt;
 
-      // Update UI with analysis
-      this.elements.analysisContent.innerHTML = this.renderMarkdown(data.analysis);
+      // Store phase data for display
+      this.state.lastPhaseA = data.phaseA;
+      this.state.lastPhaseB = data.phaseB;
+
+      // Build analysis display with both phases
+      let analysisHTML = "";
+
+      // Phase A: Structural Inventory
+      if (data.phaseA && data.phaseA.inventory) {
+        const inventory = data.phaseA.inventory;
+        analysisHTML += "<h3>Phase A: Structural Analysis</h3>";
+        analysisHTML += `<p><strong>Image Description:</strong> ${inventory.image_description || "N/A"}</p>`;
+
+        // Summary
+        if (inventory.summary) {
+          analysisHTML += "<h4>Summary</h4>";
+          analysisHTML += `<p>Total Elements: ${inventory.summary.total_elements || 0}</p>`;
+          analysisHTML += `<p>Correct: ${inventory.summary.correct_elements || 0}</p>`;
+          analysisHTML += `<p>Needs Fix: ${inventory.summary.elements_needing_fix || 0}</p>`;
+
+          if (inventory.summary.issue_summary && inventory.summary.issue_summary.length > 0) {
+            analysisHTML += "<p><strong>Issues Found:</strong></p><ul>";
+            inventory.summary.issue_summary.forEach((issue) => {
+              analysisHTML += `<li>${issue}</li>`;
+            });
+            analysisHTML += "</ul>";
+          }
+        }
+
+        // Elements needing fix
+        const elementsNeedingFix = [];
+        if (inventory.blocks) {
+          inventory.blocks.forEach((block) => {
+            if (block.status === "NEEDS_FIX" && block.issues && block.issues.length > 0) {
+              elementsNeedingFix.push({
+                id: block.id,
+                name: block.name,
+                issues: block.issues,
+              });
+            }
+          });
+        }
+        if (inventory.connections) {
+          inventory.connections.forEach((conn) => {
+            if (conn.status === "NEEDS_FIX" && conn.issues && conn.issues.length > 0) {
+              elementsNeedingFix.push({
+                id: conn.id,
+                name: `Connection ${conn.id}`,
+                issues: conn.issues,
+              });
+            }
+          });
+        }
+        if (inventory.text_elements) {
+          inventory.text_elements.forEach((text) => {
+            if (text.status === "NEEDS_FIX" && text.issues && text.issues.length > 0) {
+              elementsNeedingFix.push({
+                id: text.id,
+                name: `Text: "${text.content}"`,
+                issues: text.issues,
+              });
+            }
+          });
+        }
+
+        if (elementsNeedingFix.length > 0) {
+          analysisHTML += "<h4>Elements Requiring Modification</h4>";
+          elementsNeedingFix.forEach((el) => {
+            analysisHTML += `<p><strong>[${el.id}] ${el.name}</strong></p><ul>`;
+            el.issues.forEach((issue) => {
+              analysisHTML += `<li>${issue}</li>`;
+            });
+            analysisHTML += "</ul>";
+          });
+        }
+      }
+
+      // Phase B: Modification Script
+      if (data.phaseB && data.phaseB.modificationScript) {
+        analysisHTML += "<hr><h3>Phase B: Modification Script</h3>";
+        analysisHTML += `<pre style="white-space: pre-wrap; font-size: 0.85em; background: #f5f5f5; padding: 1rem; border-radius: 4px; max-height: 400px; overflow-y: auto;">${this.escapeHtml(data.phaseB.modificationScript)}</pre>`;
+      }
+
+      this.elements.analysisContent.innerHTML = analysisHTML;
       this.elements.analysisContainer.classList.add("open");
 
       const analyzeProgress = 25 + (this.state.imageHistory.length / (this.state.maxIterations + 1)) * 60 + 10;
@@ -490,6 +589,12 @@ class AcademicImageGenerator {
     } finally {
       this.hideLoading();
     }
+  }
+
+  escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   showFeedbackSection() {
@@ -972,6 +1077,8 @@ class AcademicImageGenerator {
       galleryIndex: 0,
       selectedImageForReview: null,
       reviews: {}, // Clear all stored reviews
+      lastPhaseA: null,
+      lastPhaseB: null,
     };
 
     // Reset prompt label

@@ -4,9 +4,7 @@
   "description": "AI-powered academic figure generation pipeline",
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Static build - no build step needed'",
-    "start": "vercel dev"
+    "build": "echo 'Static build - no build step needed'"
   },
   "dependencies": {
     "openai": "^4.28.0"

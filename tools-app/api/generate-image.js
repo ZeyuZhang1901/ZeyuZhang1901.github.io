@@ -1,5 +1,6 @@
 // API endpoint: /api/generate-image
 // Takes a prompt and generates an image using OpenRouter's chat/completions API
+// Supports image-to-image refinement by passing previousImage
 
 export default async function handler(req, res) {
   // Enable CORS
@@ -16,7 +17,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt, imageModel, temperature } = req.body;
+    const { prompt, imageModel, temperature, previousImage, isRefinement } = req.body;
 
     if (!prompt) {
       return res.status(400).json({ error: "Prompt is required" });
@@ -30,8 +31,47 @@ export default async function handler(req, res) {
     const model = imageModel || "google/gemini-3-pro-image-preview";
     const temp = typeof temperature === "number" ? temperature : 0.7;
 
-    // Enhance the prompt for better academic figure generation
-    const enhancedPrompt = `Generate an image: Create a professional academic figure with the following specifications:
+    // Build the message content based on whether this is a refinement or initial generation
+    let messageContent;
+
+    if (isRefinement && previousImage) {
+      // REFINEMENT MODE: Include the previous image and refinement instructions
+      console.log("=== IMAGE REFINEMENT REQUEST ===");
+      console.log("Mode: Refinement (with previous image)");
+
+      const refinementPrompt = `You are refining an existing academic figure. The current version of the image is provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Look at the provided image carefully - this is the current version that needs refinement.
+2. Make ONLY the specific changes requested below.
+3. Keep everything else in the image EXACTLY the same - same layout, same colors, same positions, same text (unless specifically asked to change).
+4. Do not regenerate from scratch - refine the existing image.
+
+REQUESTED CHANGES:
+${prompt}
+
+CRITICAL: Preserve all elements that are not mentioned for change. The goal is surgical refinement, not regeneration.`;
+
+      messageContent = [
+        {
+          type: "image_url",
+          image_url: {
+            url: previousImage.startsWith("data:")
+              ? previousImage
+              : `data:image/png;base64,${previousImage}`,
+          },
+        },
+        {
+          type: "text",
+          text: refinementPrompt,
+        },
+      ];
+    } else {
+      // INITIAL GENERATION MODE: Text-only prompt
+      console.log("=== IMAGE GENERATION REQUEST ===");
+      console.log("Mode: Initial generation (no previous image)");
+
+      const enhancedPrompt = `Generate an image: Create a professional academic figure with the following specifications:
 
 ${prompt}
 
@@ -43,10 +83,12 @@ Important requirements:
 - Use consistent color scheme throughout
 - Make sure arrows and connections are clear and properly directed`;
 
-    console.log("=== IMAGE GENERATION REQUEST ===");
+      messageContent = enhancedPrompt;
+    }
+
     console.log("Model:", model);
     console.log("Temperature:", temp);
-    console.log("Prompt length:", enhancedPrompt.length);
+    console.log("Has previous image:", !!previousImage);
 
     // Use OpenRouter's /chat/completions endpoint
     // Image generation models return images in message.images array
@@ -63,7 +105,7 @@ Important requirements:
         messages: [
           {
             role: "user",
-            content: enhancedPrompt,
+            content: messageContent,
           },
         ],
         temperature: temp,
