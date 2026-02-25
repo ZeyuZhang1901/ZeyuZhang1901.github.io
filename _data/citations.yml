@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2026-02-06'
+  last_updated: '2026-02-25'
 papers:
   dr-xetEAAAAJ:u-x6o8ySG0sC:
-    citations: 0
+    citations: 1
     title: 'LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models'
     year: '2025'
   dr-xetEAAAAJ:u5HHmVD_uO8C:
