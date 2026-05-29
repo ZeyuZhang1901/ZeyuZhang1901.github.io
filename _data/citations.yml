@@ -1,9 +1,13 @@
 metadata:
-  last_updated: '2026-05-13'
+  last_updated: '2026-05-29'
 papers:
+  dr-xetEAAAAJ:2osOgNQ5qMEC:
+    citations: 0
+    title: 'TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting'
+    year: '2026'
   dr-xetEAAAAJ:9yKSN-GCB0IC:
     citations: 2
-    title: 'LAMP: Extracting Local Decision Surfaces from Large Language Models'
+    title: 'LAMP: Extracting Local Decision Surfaces From Large Language Models'
     year: Unknown Year
   dr-xetEAAAAJ:d1gkVwhDpl0C:
     citations: 0
