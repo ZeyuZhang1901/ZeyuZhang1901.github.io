@@ -1,16 +1,16 @@
 metadata:
-  last_updated: '2026-07-06'
+  last_updated: '2026-07-22'
 papers:
   dr-xetEAAAAJ:2osOgNQ5qMEC:
     citations: 0
     title: 'TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting'
     year: '2026'
   dr-xetEAAAAJ:9yKSN-GCB0IC:
-    citations: 3
+    citations: 2
     title: 'LAMP: Extracting Local Decision Surfaces From Large Language Models'
     year: '2026'
   dr-xetEAAAAJ:d1gkVwhDpl0C:
-    citations: 1
+    citations: 2
     title: 'All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection in LLM Backtesting'
     year: '2026'
   dr-xetEAAAAJ:u5HHmVD_uO8C:
