@@ -331,22 +331,24 @@ ul.task-list input[type="checkbox"] {
 
 // Shared name styling (About hero + navbar brand)
 .site-name-given {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   background: linear-gradient(
     105deg,
     var(--global-text-color) 0%,
-    var(--global-text-color) 58%,
+    var(--global-text-color) 52%,
     var(--global-theme-color) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important;
   font-weight: 700;
 }
 
 .site-name-nick {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   font-style: italic;
   font-weight: 600;
-  color: var(--global-text-color-light);
+  color: var(--global-text-color-light) !important;
   letter-spacing: 0;
 }
 
@@ -362,8 +364,10 @@ ul.task-list input[type="checkbox"] {
   }
 
   .navbar-brand.site-name-brand {
-    font-size: 1.35rem;
-    letter-spacing: -0.01em;
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
     line-height: 1.15;
 
     .site-name-given,
