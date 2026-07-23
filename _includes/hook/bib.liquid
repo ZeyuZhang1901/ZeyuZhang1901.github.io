@@ -1,0 +1,8 @@
+{% comment %}
+  When additional_info already includes the full venue/status line (e.g. preprints
+  under review), skip appending the year so it does not appear twice.
+{% endcomment %}
+{% if entry.additional_info contains 'Under review' or entry.additional_info contains 'Preprint' %}
+  {% assign entryyear = '' %}
+  {% assign entrymonth = '' %}
+{% endif %}
