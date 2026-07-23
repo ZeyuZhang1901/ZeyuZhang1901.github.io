@@ -16,7 +16,7 @@ profile:
 
 selected_papers: false
 research_stories: true
-social: true
+social: false
 
 announcements:
   enabled: true

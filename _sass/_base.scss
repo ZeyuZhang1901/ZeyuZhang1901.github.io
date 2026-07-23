@@ -329,6 +329,27 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// Shared name styling (About hero + navbar brand)
+.site-name-given {
+  background: linear-gradient(
+    105deg,
+    var(--global-text-color) 0%,
+    var(--global-text-color) 58%,
+    var(--global-theme-color) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.site-name-nick {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--global-text-color-light);
+  letter-spacing: 0;
+}
+
 .navbar.navbar-light {
   a {
     &:hover {
@@ -338,6 +359,17 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-brand {
     color: var(--global-text-color);
+  }
+
+  .navbar-brand.site-name-brand {
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+
+    .site-name-given,
+    .site-name-nick {
+      font-size: inherit;
+    }
   }
 
   .navbar-nav .nav-item .nav-link {

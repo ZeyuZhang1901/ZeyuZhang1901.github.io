@@ -39,25 +39,6 @@ $about-theme-line: rgba($purple-color, 0.22);
     margin-bottom: 0.25rem;
   }
 
-  .about-name-given {
-    background: linear-gradient(
-      105deg,
-      var(--global-text-color) 0%,
-      var(--global-text-color) 58%,
-      var(--global-theme-color) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .about-name-nick {
-    font-style: italic;
-    font-weight: 600;
-    color: var(--global-text-color-light);
-    letter-spacing: 0;
-  }
-
   .about-intro {
     p {
       margin-bottom: 0.65rem;
