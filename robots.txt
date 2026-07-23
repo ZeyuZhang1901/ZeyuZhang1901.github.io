@@ -1,4 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /projects/
+Disallow: /repositories/
+Disallow: /tools/
 
 Sitemap: https://ZeyuZhang1901.github.io/sitemap.xml
