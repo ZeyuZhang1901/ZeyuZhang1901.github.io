@@ -31,9 +31,10 @@
           </div>
           <div class="about-paper-title">All Leaks Count, Some Count More</div>
           <p class="about-paper-blurb">
-            Quantifies decision-critical leakage at the claim level (Shapley-DCLR), then mitigates it
-            without retraining via TimeSPEC—an external supervisor that regenerates predictions from
-            temporally filtered evidence so outputs stay pre-cutoff.
+            Backtesting assumes models use only pre-cutoff evidence, but pretrained LLMs routinely leak
+            later knowledge into their rationales. We introduce Shapley-DCLR to measure how much
+            decision-critical reasoning is contaminated at the claim level, and TimeSPEC, an inference-time
+            supervisor that regenerates predictions from temporally filtered evidence without retraining.
           </p>
           <div class="about-paper-venue">Preprint · Under review at EMNLP 2026</div>
           <div class="links">
@@ -67,9 +68,9 @@
           </div>
           <div class="about-paper-title">Temporal Enforcement via Mode-Separated Policy Optimization</div>
           <p class="about-paper-blurb">
-            Attacks the same contamination problem inside the model: RL fine-tuning that enforces
-            temporal discipline as a hard prerequisite (drive post-cutoff claims toward zero), then
-            optimizes task performance once predictions stay temporally clean.
+            Temporal leakage lets LLMs recall post-cutoff outcomes during backtesting, so reported accuracy
+            is often invalid. TEMPO trains temporal discipline with a two-mode RL objective that first
+            drives leaked claims to zero, then optimizes prediction quality once reasoning stays pre-cutoff.
           </p>
           <div class="about-paper-venue">Preprint · Under review at NeurIPS 2026</div>
           <div class="links">
@@ -116,9 +117,9 @@
             </div>
             <div class="about-paper-title">Extracting Locally Linear Decision Surfaces from LLM World Models</div>
             <p class="about-paper-blurb">
-              A first step in this line: treat the model’s own stated factors as coordinates and fit a
-              local linear surrogate (LAMP) that tests whether predictions move consistently when those
-              factors change—auditing explanation–decision alignment without model internals.
+              Fluent LLM explanations need not track what actually drives the prediction. LAMP treats the
+              model’s own stated factors as coordinates and fits a local linear decision surface—without
+              gradients or internal access—to test whether predictions move consistently when those factors change.
             </p>
             <div class="about-paper-venue">
               <span class="about-spotlight">Spotlight paper</span> in AISTATS 2026
