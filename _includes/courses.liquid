@@ -1,37 +1,34 @@
 {% if site.teachings %}
-  <div class="courses">
-    {% assign courses_by_year = site.teachings | sort: 'year' | reverse | group_by: 'year' %}
+  <div class="teaching-experience">
+    <div class="ta-timeline">
+      {% assign courses_by_year = site.teachings | sort: 'year' | reverse | group_by: 'year' %}
 
-    {% for year_group in courses_by_year %}
-      <h2 class="year">{{ year_group.name }}</h2>
-      <div class="course-list">
-        {% assign year_courses = year_group.items | sort: 'term' %}
-        {% for course in year_courses %}
-          <div class="course-item">
-            <h3 class="course-title">
-              <a href="{{ course.url | relative_url }}">{{ course.title }}</a>
-            </h3>
-
-            <div class="course-meta">
-              {% if course.term %}
-                <span class="course-term">{{ course.term }}</span>
-              {% endif %}
-
-              {% if course.instructor %}
-                <span class="course-instructor">{{ course.instructor }}</span>
-              {% endif %}
-            </div>
-
-            {% if course.description %}
-              <div class="course-description">
-                {{ course.description | markdownify }}
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-    {% endfor %}
+      {% for year_group in courses_by_year %}
+        <div class="ta-year-block">
+          <h2 class="ta-year">{{ year_group.name }}</h2>
+          <ul class="ta-list">
+            {% assign year_courses = year_group.items | sort: 'term_order' | reverse %}
+            {% for course in year_courses %}
+              <li class="ta-item">
+                <div class="ta-top">
+                  <span class="ta-course">{{ course.title }}</span>
+                  {% if course.term and course.year %}
+                    <span class="ta-chip">{{ course.term }} {{ course.year }}</span>
+                  {% endif %}
+                  {% if course.instructor %}
+                    <span class="ta-instructor">TA for {{ course.instructor }}</span>
+                  {% endif %}
+                </div>
+                {% if course.role %}
+                  <p class="ta-role">{{ course.role }}</p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 {% else %}
-  <p>No courses available yet.</p>
+  <p>No teaching experience listed yet.</p>
 {% endif %}

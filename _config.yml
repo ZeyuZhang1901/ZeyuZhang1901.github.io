@@ -177,7 +177,7 @@ collections:
   projects:
     output: false # hidden from site (Projects page removed)
   teachings:
-    output: true
+    output: false # listed on Teaching Experience page only
   tools:
     output: false # hidden from site (Tools page removed)
     permalink: /tools/:path/
