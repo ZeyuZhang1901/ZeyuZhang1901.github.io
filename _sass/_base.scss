@@ -771,31 +771,38 @@ footer.sticky-bottom {
         box-shadow: 0 8px 22px color-mix(in srgb, var(--global-theme-color) 12%, transparent);
       }
 
-      .preview {
+      .preview-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .preview-frame {
+        width: 100%;
+        min-height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-frame .preview,
+      .preview-frame img,
+      .preview-frame picture,
+      .preview-frame figure {
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        display: block;
       }
 
       .abbr {
         margin-bottom: 0.5rem;
+      }
 
-        abbr {
-          display: inline-block;
-          background-color: var(--global-theme-color);
-          margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
-
-          a {
-            color: white;
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
-        }
-
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
-        }
+      .periodical .venue-highlight {
+        color: var(--global-highlight-color);
+        font-weight: 700;
       }
 
       .nick {
