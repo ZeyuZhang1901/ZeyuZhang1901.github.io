@@ -13,7 +13,10 @@
                 <div class="ta-top">
                   <span class="ta-course">{{ course.title }}</span>
                   {% if course.term and course.year %}
-                    <span class="ta-chip">{{ course.term }} {{ course.year }}</span>
+                    <span class="ta-chip">
+                      {{- course.term }}
+                      {{ course.year -}}
+                    </span>
                   {% endif %}
                   {% if course.instructor %}
                     <span class="ta-instructor">TA for {{ course.instructor }}</span>

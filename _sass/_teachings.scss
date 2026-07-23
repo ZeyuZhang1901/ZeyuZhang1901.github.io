@@ -64,12 +64,7 @@
   margin-bottom: 0.65rem;
   border: 1px solid color-mix(in srgb, var(--global-theme-color) 14%, var(--global-divider-color));
   border-radius: 10px;
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color)),
-      var(--global-bg-color) 55%
-    );
+  background: linear-gradient(135deg, color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color)), var(--global-bg-color) 55%);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,

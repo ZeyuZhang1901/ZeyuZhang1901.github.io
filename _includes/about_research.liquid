@@ -2,14 +2,12 @@
   <section class="about-story" aria-labelledby="about-story-leakage">
     <h3 id="about-story-leakage">Temporal leakage in LLM backtesting</h3>
     <p>
-      A central challenge in evaluating an LLM’s <strong>prediction</strong> ability is that testing on the
-      true future is often impractical. The standard alternative is <strong>backtesting</strong>: ask the
-      model historical questions under a cutoff date, as if it were forecasting from that earlier time.
-      The hard problem is <strong>temporal leakage</strong>—a special form of data contamination in which
-      post-cutoff knowledge from pretraining seeps into the model’s reasoning, inflating backtest scores
-      and making the evaluation untrustworthy. My work in this line explains and addresses that failure
-      from complementary angles: how leakage breaks evaluation validity, how to block it at inference time,
-      and how to train models for temporal discipline.
+      A central challenge in evaluating an LLM’s <strong>prediction</strong> ability is that testing on the true future is often impractical. The
+      standard alternative is <strong>backtesting</strong>: ask the model historical questions under a cutoff date, as if it were forecasting from
+      that earlier time. The hard problem is <strong>temporal leakage</strong>—a special form of data contamination in which post-cutoff knowledge
+      from pretraining seeps into the model’s reasoning, inflating backtest scores and making the evaluation untrustworthy. My work in this line
+      explains and addresses that failure from complementary angles: how leakage breaks evaluation validity, how to block it at inference time, and
+      how to train models for temporal discipline.
     </p>
   </section>
 
@@ -31,9 +29,8 @@
           </div>
           <div class="about-paper-title">All Leaks Count, Some Count More</div>
           <p class="about-paper-blurb">
-            Backtesting assumes models use only pre-cutoff evidence, but pretrained LLMs routinely leak
-            later knowledge into their rationales. We introduce Shapley-DCLR to measure how much
-            decision-critical reasoning is contaminated at the claim level, and TimeSPEC, an inference-time
+            Backtesting assumes models use only pre-cutoff evidence, but pretrained LLMs routinely leak later knowledge into their rationales. We
+            introduce Shapley-DCLR to measure how much decision-critical reasoning is contaminated at the claim level, and TimeSPEC, an inference-time
             supervisor that regenerates predictions from temporally filtered evidence without retraining.
           </p>
           <div class="about-paper-venue">Preprint · Under review at EMNLP 2026</div>
@@ -68,9 +65,9 @@
           </div>
           <div class="about-paper-title">Temporal Enforcement via Mode-Separated Policy Optimization</div>
           <p class="about-paper-blurb">
-            Temporal leakage lets LLMs recall post-cutoff outcomes during backtesting, so reported accuracy
-            is often invalid. TEMPO trains temporal discipline with a two-mode RL objective that first
-            drives leaked claims to zero, then optimizes prediction quality once reasoning stays pre-cutoff.
+            Temporal leakage lets LLMs recall post-cutoff outcomes during backtesting, so reported accuracy is often invalid. TEMPO trains temporal
+            discipline with a two-mode RL objective that first drives leaked claims to zero, then optimizes prediction quality once reasoning stays
+            pre-cutoff.
           </p>
           <div class="about-paper-venue">Preprint · Under review at NeurIPS 2026</div>
           <div class="links">
@@ -92,10 +89,9 @@
     <section class="about-story" aria-labelledby="about-story-interp">
       <h3 id="about-story-interp">Interpretation: do explanations match decisions?</h3>
       <p>
-        LLMs often give fluent explanations for their predictions, but fluency is not faithfulness.
-        The hard question is whether the factors a model cites actually behave like they drive the
-        decision—and how to check that without gradients or internal access. That makes interpretation
-        both practically needed for trust and scientifically interesting as a window into model behavior.
+        LLMs often give fluent explanations for their predictions, but fluency is not faithfulness. The hard question is whether the factors a model
+        cites actually behave like they drive the decision—and how to check that without gradients or internal access. That makes interpretation both
+        practically needed for trust and scientifically interesting as a window into model behavior.
       </p>
     </section>
 
@@ -117,13 +113,11 @@
             </div>
             <div class="about-paper-title">Extracting Locally Linear Decision Surfaces from LLM World Models</div>
             <p class="about-paper-blurb">
-              Fluent LLM explanations need not track what actually drives the prediction. LAMP treats the
-              model’s own stated factors as coordinates and fits a local linear decision surface—without
-              gradients or internal access—to test whether predictions move consistently when those factors change.
+              Fluent LLM explanations need not track what actually drives the prediction. LAMP treats the model’s own stated factors as coordinates
+              and fits a local linear decision surface—without gradients or internal access—to test whether predictions move consistently when those
+              factors change.
             </p>
-            <div class="about-paper-venue">
-              <span class="about-spotlight">Spotlight paper</span> in AISTATS 2026
-            </div>
+            <div class="about-paper-venue"><span class="about-spotlight">Spotlight paper</span> in AISTATS 2026</div>
             <div class="links">
               <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
               <a href="https://arxiv.org/abs/2505.11772" class="btn btn-sm z-depth-0" role="button">arXiv</a>

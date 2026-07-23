@@ -332,12 +332,7 @@ ul.task-list input[type="checkbox"] {
 // Shared name styling (About hero + navbar brand)
 .site-name-given {
   font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  background: linear-gradient(
-    105deg,
-    var(--global-text-color) 0%,
-    var(--global-text-color) 52%,
-    var(--global-theme-color) 100%
-  );
+  background: linear-gradient(105deg, var(--global-text-color) 0%, var(--global-text-color) 52%, var(--global-theme-color) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
@@ -830,11 +825,7 @@ footer.sticky-bottom {
       padding: 1.05rem 1rem;
       border: 1px solid color-mix(in srgb, var(--global-theme-color) 16%, var(--global-divider-color));
       border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color)),
-        var(--global-bg-color) 55%
-      );
+      background: linear-gradient(135deg, color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color)), var(--global-bg-color) 55%);
       transition:
         transform 0.18s ease,
         box-shadow 0.18s ease,
