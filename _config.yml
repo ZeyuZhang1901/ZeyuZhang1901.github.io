@@ -225,6 +225,9 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - _preview_about_publications.html
+  - _preview_publications_option_a.html
+  - _preview_teaching_experience.html
   - vendor
   # Template posts (kept for reference but hidden from site)
   - _posts/2015-03-15-formatting-and-links.md
@@ -388,6 +391,8 @@ filtered_bibtex_keywords:
     hal,
     html,
     inspirehep_id,
+    nick,
+    blurb,
     pdf,
     pmid,
     poster,

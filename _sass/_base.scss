@@ -733,9 +733,16 @@ footer.sticky-bottom {
     }
   }
 
-  // Hide category headings for publications (Jekyll Scholar uses h2.bibliography for group_by headings)
+  // Category headings from Jekyll Scholar group_by
   h2.bibliography {
-    display: none;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--global-text-color);
+    border-bottom: 2px solid color-mix(in srgb, var(--global-theme-color) 25%, transparent);
+    padding-bottom: 0.4rem;
   }
 
   ol.bibliography {
@@ -745,6 +752,24 @@ footer.sticky-bottom {
 
     li {
       margin-bottom: 1rem;
+      padding: 1.05rem 1rem;
+      border: 1px solid color-mix(in srgb, var(--global-theme-color) 16%, var(--global-divider-color));
+      border-radius: 12px;
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color)),
+        var(--global-bg-color) 55%
+      );
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        border-color: color-mix(in srgb, var(--global-theme-color) 35%, var(--global-divider-color));
+        box-shadow: 0 8px 22px color-mix(in srgb, var(--global-theme-color) 12%, transparent);
+      }
 
       .preview {
       }
@@ -773,8 +798,31 @@ footer.sticky-bottom {
         }
       }
 
+      .nick {
+        display: inline-block;
+        background: color-mix(in srgb, var(--global-theme-color) 12%, var(--global-bg-color));
+        color: var(--global-theme-color);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.12rem 0.5rem;
+        border-radius: 999px;
+        margin-bottom: 0.35rem;
+      }
+
       .title {
         font-weight: bolder;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        margin-bottom: 0.25rem;
+      }
+
+      .blurb {
+        color: var(--global-text-color-light);
+        font-size: 0.94rem;
+        margin: 0.25rem 0 0.4rem;
+        line-height: 1.45;
       }
 
       .author {
@@ -806,21 +854,46 @@ footer.sticky-bottom {
 
       .links {
         a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
+          color: var(--global-theme-color);
+          border: 1px solid color-mix(in srgb, var(--global-theme-color) 45%, transparent);
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+          padding-top: 0.2rem;
+          padding-bottom: 0.2rem;
           margin-left: 0;
+          margin-right: 0.35rem;
+          margin-top: 0.25rem;
 
           &:hover {
-            color: var(--global-theme-color);
+            color: var(--global-bg-color);
+            background: var(--global-theme-color);
             border-color: var(--global-theme-color);
           }
         }
         a.award.btn {
           border-color: var(--global-highlight-color);
+          color: var(--global-highlight-color);
+
+          &:hover {
+            background: var(--global-highlight-color);
+            color: var(--global-bg-color);
+          }
+        }
+      }
+
+      div.abstract.hidden.open {
+        margin-top: 0.75rem;
+        padding: 0.75rem 0.85rem;
+        border-left: 3px solid var(--global-theme-color);
+        background: color-mix(in srgb, var(--global-theme-color) 5%, var(--global-bg-color));
+        border-radius: 0 8px 8px 0;
+
+        p {
+          margin-bottom: 0;
+        }
+
+        strong {
+          font-weight: 700;
         }
       }
 
@@ -872,11 +945,7 @@ footer.sticky-bottom {
       }
 
       div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
-      }
-
-      div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+        border: none;
       }
     }
     div.award.hidden {

@@ -47,6 +47,9 @@
 
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+    {% if entry.nick %}
+      <div class="nick">{{ entry.nick }}</div>
+    {% endif %}
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
@@ -147,6 +150,10 @@
         </i>
       {% endif %}
     </div>
+
+    {% if entry.blurb %}
+      <div class="blurb">{{ entry.blurb }}</div>
+    {% endif %}
 
     <!-- Journal/Book title and date -->
     {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
@@ -370,9 +377,9 @@
     {% endif %}
 
     {% if entry.abstract %}
-      <!-- Hidden abstract block -->
+      <!-- Hidden abstract block; markdownify for **bold**, MathJax for $...$ / \(...\) -->
       <div class="abstract hidden">
-        <p>{{ entry.abstract }}</p>
+        {{ entry.abstract | markdownify }}
       </div>
     {% endif %}
 

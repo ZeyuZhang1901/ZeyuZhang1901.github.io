@@ -1,9 +1,27 @@
 $(document).ready(function () {
+  // Re-typeset math when a previously-hidden abstract becomes visible.
+  function typesetAbstract($block) {
+    if (!$block.length || typeof window.MathJax === "undefined") return;
+    const node = $block.get(0);
+    if (window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([node]).catch(function (err) {
+        console.warn("MathJax typeset failed:", err);
+      });
+    } else if (window.MathJax.Hub) {
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, node]);
+    }
+  }
+
   // add toggle functionality to abstract, award and bibtex buttons
   $("a.abstract").click(function () {
-    $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
-    $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
+    const $parent = $(this).parent().parent();
+    const $abstract = $parent.find(".abstract.hidden");
+    $abstract.toggleClass("open");
+    $parent.find(".award.hidden.open").toggleClass("open");
+    $parent.find(".bibtex.hidden.open").toggleClass("open");
+    if ($abstract.hasClass("open")) {
+      typesetAbstract($abstract);
+    }
   });
   $("a.award").click(function () {
     $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
