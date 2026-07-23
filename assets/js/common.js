@@ -14,6 +14,17 @@ $(document).ready(function () {
 
   // add toggle functionality to abstract, award and bibtex buttons
   $("a.abstract").click(function () {
+    // About research cards: scope to the paper meta block
+    const $aboutMeta = $(this).closest(".about-paper-meta");
+    if ($aboutMeta.length) {
+      const $abstract = $aboutMeta.find(".abstract.hidden");
+      $abstract.toggleClass("open");
+      if ($abstract.hasClass("open")) {
+        typesetAbstract($abstract);
+      }
+      return;
+    }
+
     const $parent = $(this).parent().parent();
     const $abstract = $parent.find(".abstract.hidden");
     $abstract.toggleClass("open");

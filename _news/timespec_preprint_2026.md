@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-📄 New preprint: <a href="https://arxiv.org/abs/2602.17234">All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting</a> is now on arXiv. Code is available <a href="https://github.com/ZeyuZhang1901/TimeSPEC">here</a>.
+Our new preprint on <a href="https://arxiv.org/abs/2602.17234">catching models that “peek” at the future</a> is live on arXiv—with code to reproduce the claim-level leakage audit and TimeSPEC mitigation.

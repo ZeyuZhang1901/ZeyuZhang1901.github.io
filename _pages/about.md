@@ -7,26 +7,39 @@ subtitle: PhD Student, <a href='https://statistics.northwestern.edu/'>Statistics
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p style="font-size: 0.75rem; margin: 0.15rem 0;">🏛️ Statistics & Data Science</p>
-    <p style="font-size: 0.75rem; margin: 0.15rem 0;">🎓 Northwestern University</p>
-    <p style="font-size: 0.75rem; margin: 0.15rem 0;">📧 zeyuzhang2028@u.northwestern.edu</p>
+    <a class="about-email" href="mailto:zeyuzhang2028@u.northwestern.edu">
+      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      <span>zeyuzhang2028@u.northwestern.edu</span>
+    </a>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: false
+research_stories: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  enabled: false
+  scrollable: true
+  limit: 3
 ---
 
-I am a third-year Ph.D. student in the Department of Statistics and Data Science at Northwestern University. My research focuses on knowledge leakage in large language models, with particular emphasis on settings that involve complex reasoning and chain-of-thought processes. I study how and when sensitive or unintended information may be exposed during multi-step inference, and I am interested in principled methods for detecting, characterizing, and mitigating such leakage. In parallel, I work on fine-tuning language models using reinforcement learning–based approaches, including RLHF, Direct Preference Optimization (DPO), and related algorithms, with the goal of improving alignment, robustness, and controllability.
+I am a third-year Ph.D. student in Statistics and Data Science at Northwestern University, working with Prof. Bradly C. Stadie. My research sits at the intersection of statistics, machine learning, and large language models.
 
-Outside of research, I am deeply committed to an active lifestyle. I follow a structured workout program and train almost every day, viewing physical discipline as a natural complement to intellectual rigor. I enjoy a wide range of sports, with basketball being my favorite, and I am particularly drawn to long-distance running for both its physical demands and its meditative rhythm. These activities keep me grounded, energized, and continuously motivated—both on and off the track.
+I study how to make LLMs more **trustworthy** and **reliable** when they are used for prediction and reasoning—especially failure modes such as **hallucination**, temporal contamination in evaluation, and explanations that look fluent but may not track the model's actual decisions. I am particularly interested in **interpretation** of LLMs and in methods that help us audit, constrain, and improve model behavior under realistic deployment conditions.
+
+<div class="about-interests">
+  <div class="about-interests-label">Research interests</div>
+  <div class="about-chips">
+    <span class="about-chip">Trustworthy LLMs</span>
+    <span class="about-chip">Reliability</span>
+    <span class="about-chip">Hallucination</span>
+    <span class="about-chip">Interpretation</span>
+    <span class="about-chip">LLM forecasting</span>
+  </div>
+</div>

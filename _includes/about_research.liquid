@@ -1,0 +1,140 @@
+<div class="about-research">
+  <section class="about-story" aria-labelledby="about-story-leakage">
+    <h3 id="about-story-leakage">Temporal leakage in LLM backtesting</h3>
+    <p>
+      A central challenge in evaluating an LLM’s <strong>prediction</strong> ability is that testing on the
+      true future is often impractical. The standard alternative is <strong>backtesting</strong>: ask the
+      model historical questions under a cutoff date, as if it were forecasting from that earlier time.
+      The hard problem is <strong>temporal leakage</strong>—a special form of data contamination in which
+      post-cutoff knowledge from pretraining seeps into the model’s reasoning, inflating backtest scores
+      and making the evaluation untrustworthy. My work in this line explains and addresses that failure
+      from complementary angles: how leakage breaks evaluation validity, how to block it at inference time,
+      and how to train models for temporal discipline.
+    </p>
+  </section>
+
+  <div class="about-works-label">Selected works in this line</div>
+
+  <article class="about-paper">
+    <div class="about-paper-inner">
+      <div class="about-paper-body">
+        <div class="about-paper-figure">
+          <img
+            src="{{ '/assets/img/about_story/theme_timespec.png' | relative_url }}"
+            alt="TimeSPEC claim-level leakage pipeline"
+          >
+        </div>
+        <div class="about-paper-meta">
+          <div>
+            <span class="about-paper-role">Measure &amp; mitigate at inference</span>
+            <span class="about-paper-nick">TimeSPEC</span>
+          </div>
+          <div class="about-paper-title">All Leaks Count, Some Count More</div>
+          <p class="about-paper-blurb">
+            Quantifies decision-critical leakage at the claim level (Shapley-DCLR), then mitigates it
+            without retraining via TimeSPEC—an external supervisor that regenerates predictions from
+            temporally filtered evidence so outputs stay pre-cutoff.
+          </p>
+          <div class="about-paper-venue">Preprint · Under review at EMNLP 2026</div>
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="https://arxiv.org/abs/2602.17234" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+            <a href="{{ '/assets/pdf/2602.17234v2.pdf' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+            <a href="https://github.com/ZeyuZhang1901/TimeSPEC" class="btn btn-sm z-depth-0" role="button">Code</a>
+          </div>
+          <div class="abstract hidden">
+            {% capture timespec_abs %}Backtesting LLMs on resolved events assumes models reason only from pre-cutoff knowledge, yet pretrained models inevitably leak post-cutoff knowledge. We introduce a claim-level evaluation framework that decomposes prediction rationales into atomic claims and applies Shapley values to quantify each claim's decision impact, yielding **Shapley-DCLR** (Shapley-weighted Decision-Critical Leakage Rate) – an interpretable metric measuring what fraction of decision-driving reasoning is contaminated. We further propose **TimeSPEC** (Time-Supervised Prediction with Extracted Claims), an inference-time architecture that interleaves temporally-filtered retrieval with claim-level supervision, producing predictions grounded entirely in pre-cutoff evidence. Across three LLMs, the ablation experiments confirm retrieval and supervision are jointly necessary; and a three-task probe further illstrates that the performance cost of temporal enforcement scales with each task's reliance on post-cutoff information.{% endcapture %}
+            {{ timespec_abs | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="about-paper">
+    <div class="about-paper-inner">
+      <div class="about-paper-body">
+        <div class="about-paper-figure">
+          <img
+            src="{{ '/assets/img/about_story/theme_tempo.png' | relative_url }}"
+            alt="TEMPO training pipeline"
+          >
+        </div>
+        <div class="about-paper-meta">
+          <div>
+            <span class="about-paper-role">Mitigate via training</span>
+            <span class="about-paper-nick">TEMPO</span>
+          </div>
+          <div class="about-paper-title">Temporal Enforcement via Mode-Separated Policy Optimization</div>
+          <p class="about-paper-blurb">
+            Attacks the same contamination problem inside the model: RL fine-tuning that enforces
+            temporal discipline as a hard prerequisite (drive post-cutoff claims toward zero), then
+            optimizes task performance once predictions stay temporally clean.
+          </p>
+          <div class="about-paper-venue">Preprint · Under review at NeurIPS 2026</div>
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="https://arxiv.org/abs/2605.18843" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+            <a href="{{ '/assets/pdf/2605.18843v1.pdf' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+            <a href="https://github.com/nu-snail/TEMPO" class="btn btn-sm z-depth-0" role="button">Code</a>
+          </div>
+          <div class="abstract hidden">
+            {% capture tempo_abs %}Backtesting large language models on historical events requires reasoning exclusively from information available before a specified cutoff date. Yet models routinely leak post-cutoff knowledge from pre-training into their reasoning, inflating apparent accuracy and undermining evaluation validity. Prompt-based constraints fail when suppressed content is causally related to the prediction, and knowledge unlearning cannot address this problem because temporal compliance is instance-specific: the same fact may be legitimate evidence for one cutoff date and a violation for another. Rather than erasing knowledge, the model must learn temporal discipline: selecting evidence conditioned on each instance's cutoff date. We propose TEMPO (Temporal Enforcement via Mode-separated Policy Optimization), which trains this discipline via two contributions: (1) a two-mode reward where a leakage mode drives post-cutoff claims to zero as a hard prerequisite before a performance mode optimizes task performance; and (2) a GRPO-based training pipeline that enables the model to discover temporally valid reasoning strategies. We prove that training monotonically decreases leakage, converges to the leak-free optimum, and improves task performance once compliance is achieved. On three prediction tasks and two models, TEMPO reduces leakage from 2–13% to 0.6–3.7% across all conditions, with task performance improving 6–13% where strong pre-cutoff signals exist and maintained where the prediction task is inherently difficult from valid information alone.{% endcapture %}
+            {{ tempo_abs | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="about-research-line">
+    <section class="about-story" aria-labelledby="about-story-interp">
+      <h3 id="about-story-interp">Interpretation: do explanations match decisions?</h3>
+      <p>
+        LLMs often give fluent explanations for their predictions, but fluency is not faithfulness.
+        The hard question is whether the factors a model cites actually behave like they drive the
+        decision—and how to check that without gradients or internal access. That makes interpretation
+        both practically needed for trust and scientifically interesting as a window into model behavior.
+      </p>
+    </section>
+
+    <div class="about-works-label">Selected works in this line</div>
+
+    <article class="about-paper about-paper-secondary">
+      <div class="about-paper-inner">
+        <div class="about-paper-body">
+          <div class="about-paper-figure">
+            <img
+              src="{{ '/assets/img/about_story/theme_lamp.png' | relative_url }}"
+              alt="LAMP local decision surface"
+            >
+          </div>
+          <div class="about-paper-meta">
+            <div>
+              <span class="about-paper-role">Local decision surfaces</span>
+              <span class="about-paper-nick">LAMP</span>
+            </div>
+            <div class="about-paper-title">Extracting Locally Linear Decision Surfaces from LLM World Models</div>
+            <p class="about-paper-blurb">
+              A first step in this line: treat the model’s own stated factors as coordinates and fit a
+              local linear surrogate (LAMP) that tests whether predictions move consistently when those
+              factors change—auditing explanation–decision alignment without model internals.
+            </p>
+            <div class="about-paper-venue">
+              <span class="about-spotlight">Spotlight paper</span> in AISTATS 2026
+            </div>
+            <div class="links">
+              <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+              <a href="https://arxiv.org/abs/2505.11772" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+              <a href="{{ '/assets/pdf/2044_LAMP_Extracting_Local_Dec.pdf' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+            </div>
+            <div class="abstract hidden">
+              {% capture lamp_abs %}We introduce LAMP (Local Attribution Mapping Probe), a method that shines light onto a black-box language model's decision surface and studies how reliably a model maps its stated reasons to its reported predictions by approximating a decision surface. LAMP treats the model's own self-reported explanations as a coordinate system and fits a locally linear surrogate that links those weights to the model's output. By doing so, it reveals how much the stated factors steer the model's decisions. We apply LAMP to three tasks: sentiment analysis, controversial-topic detection, and safety-prompt auditing. Across these tasks, LAMP reveals that many language models' locally approximated linear decision landscapes overall agree with human judgments on explanation quality and, on a clinical case-file data set, align with expert assessments. Since LAMP operates without requiring access to model gradients, logits, or internal activations, it serves as a practical and lightweight framework for auditing proprietary language models, and enabling assessment of whether a model appears to behave consistently with the explanations it provides.{% endcapture %}
+              {{ lamp_abs | markdownify }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

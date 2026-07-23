@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🎉 **Thrilled to announce** that our paper <a href="https://arxiv.org/abs/2505.11772">LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models</a> has been accepted as a **Spotlight** at <a href="https://aistats.org/aistats2026/">AISTATS 2026</a>! Grateful to all co-authors for the amazing collaboration. 🚀
+Thrilled that <a href="https://arxiv.org/abs/2505.11772">LAMP</a> was selected as a <strong>Spotlight</strong> at <a href="https://aistats.org/aistats2026/">AISTATS 2026</a>—a lightweight way to audit whether a model’s explanations behave like they matter.

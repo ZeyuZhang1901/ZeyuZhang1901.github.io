@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-📄 New preprint: <a href="https://arxiv.org/abs/2605.18843">TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting</a> is now on arXiv. Code is available <a href="https://github.com/nu-snail/TEMPO">here</a>.
+<a href="https://arxiv.org/abs/2605.18843">TEMPO</a> is out: a training approach that teaches LLMs temporal discipline for trustworthy backtesting. Code released.
