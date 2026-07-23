@@ -225,7 +225,9 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - _preview_about_option_c.html
   - _preview_about_publications.html
+  - _preview_about_rich.html
   - _preview_publications_option_a.html
   - _preview_teaching_experience.html
   - vendor
@@ -523,7 +525,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400,500,600,700,400i,600i,700i|Material+Icons&display=swap"
   highlightjs:
     integrity:
       css:

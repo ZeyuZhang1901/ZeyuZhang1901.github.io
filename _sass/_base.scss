@@ -2,7 +2,46 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
-// Typography
+// Typography — Cormorant Garamond site-wide (overrides MDB Roboto defaults).
+// Applies to About, Publications, Teaching Experience, Blog, CV, News, etc.
+$html-font-stack: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+
+html {
+  font-family: $html-font-stack;
+}
+
+body {
+  font-family: $html-font-stack !important; // beat MDB's body { font-family: Roboto }
+  font-size: 1.12rem;
+  font-weight: 400;
+}
+
+button,
+input,
+select,
+textarea,
+.btn,
+.navbar,
+.nav-link,
+.dropdown-item,
+.post,
+.post-title,
+.publications,
+.bibliography,
+.news,
+.courses,
+.teachings {
+  font-family: $html-font-stack;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $html-font-stack;
+}
 
 p,
 h1,
