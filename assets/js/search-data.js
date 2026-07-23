@@ -16,8 +16,8 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-teaching",
-          title: "Teaching",
+        },{id: "nav-teaching-experience",
+          title: "Teaching Experience",
           description: "",
           section: "Navigation",
           handler: () => {
@@ -112,29 +112,34 @@ ninja.data = [{
           description: "High-precision device achieving 0.5% error with 1kHz-100kHz bandwidth",
           section: "Projects",handler: () => {
               window.location.href = "/projects/signal_distortion/";
-            },},{id: "teachings-introduction-to-probability-and-statistics-210-0-20",
-          title: 'Introduction to Probability and Statistics (210-0-20)',
-          description: "Foundational course in probability and statistical methods.",
+            },},{id: "teachings-introduction-to-probability-and-statistics-stat-210-0-20",
+          title: 'Introduction to Probability and Statistics (STAT 210-0-20)',
+          description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/24fall-probability-statistics/";
             },},{id: "teachings-applied-multivariate-analysis-stat-348",
           title: 'Applied Multivariate Analysis (STAT 348)',
-          description: "Statistical methods for multivariate data analysis.",
+          description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/25fall-multivariate-analysis/";
-            },},{id: "teachings-data-science-3-with-python-303-3-21",
-          title: 'Data Science 3 with Python (303-3-21)',
-          description: "Non-linear statistical models and tree-based methods in data science.",
+            },},{id: "teachings-data-science-3-with-python-stat-303-3-21",
+          title: 'Data Science 3 with Python (STAT 303-3-21)',
+          description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/25spring-data-science-3/";
-            },},{id: "teachings-data-science-2-with-python-303-2-22",
-          title: 'Data Science 2 with Python (303-2-22)',
-          description: "Supervised machine learning in Python with focus on linear and logistic regression.",
+            },},{id: "teachings-data-science-2-with-python-stat-303-2-22",
+          title: 'Data Science 2 with Python (STAT 303-2-22)',
+          description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/25winter-data-science-2/";
-            },},{id: "teachings-data-science-2-with-python-303-2-22",
-          title: 'Data Science 2 with Python (303-2-22)',
-          description: "Supervised machine learning in Python with focus on linear and logistic regression.",
+            },},{id: "teachings-data-science-3-with-python-stat-303-3",
+          title: 'Data Science 3 with Python (STAT 303-3)',
+          description: "",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/26spring-data-science-3/";
+            },},{id: "teachings-data-science-2-with-python-stat-303-2-22",
+          title: 'Data Science 2 with Python (STAT 303-2-22)',
+          description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/26winter-data-science-2/";
             },},{id: "tools-academic-research-image-generator",
