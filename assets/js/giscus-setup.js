@@ -1,15 +1,6 @@
 function determineGiscusTheme() {
   
-    let theme =
-      localStorage.getItem("theme") ||
-      document.documentElement.getAttribute("data-theme") ||
-      "system";
-
-    if (theme === "dark") return "preferred_color_scheme";
-    if (theme === "light") return "preferred_color_scheme";
-
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "preferred_color_scheme" : "preferred_color_scheme";
+    return "preferred_color_scheme";
   
 }
 
