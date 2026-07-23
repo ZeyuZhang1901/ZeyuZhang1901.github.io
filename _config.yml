@@ -175,11 +175,11 @@ collections:
       layout: post
     output: true
   projects:
-    output: true
+    output: false # hidden from site (Projects page removed)
   teachings:
     output: true
   tools:
-    output: true
+    output: false # hidden from site (Tools page removed)
     permalink: /tools/:path/
 
 # -----------------------------------------------------------------------------
@@ -218,6 +218,10 @@ exclude:
   - package.json
   - package-lock.json
   - _pages/about_einstein.md
+  # Hidden sections (not published)
+  - _pages/projects.md
+  - _pages/repositories.md
+  - _pages/tools.md
   - purgecss.config.js
   - README.md
   - readme_preview/

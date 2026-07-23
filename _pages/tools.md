@@ -2,7 +2,7 @@
 layout: default
 permalink: /tools/
 title: Tools
-nav: true
+nav: false
 nav_order: 5
 ---
 
