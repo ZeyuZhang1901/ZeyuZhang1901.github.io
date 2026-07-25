@@ -23,13 +23,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "nav-blog",
-          title: "blog",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
         },{id: "nav-cv",
           title: "cv",
           description: "",
@@ -37,18 +30,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-academic-image-generation-with-llm-collabration",
-        
-          title: "Academic Image Generation with LLM Collabration",
-        
-        description: "Personal Experience of creating publication-quality architecture diagrams using AI",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2026/generating-paper-figures-with-gemini/";
-          
-        },
-      },{id: "books-the-godfather",
+        },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
