@@ -205,6 +205,7 @@ exclude:
   - bin/
   - tools-app/
   - CV/
+  - _posts/ # blog hidden for now; remove this line to build posts again
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile

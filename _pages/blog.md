@@ -2,7 +2,8 @@
 layout: default
 permalink: /blog/
 title: blog
-nav: true
+published: false # hidden for now; set back to true (and nav: true) to restore the blog
+nav: false
 nav_order: 6
 pagination:
   enabled: true
