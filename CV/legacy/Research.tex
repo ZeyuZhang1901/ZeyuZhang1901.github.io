@@ -1,0 +1,66 @@
+\section{Research}
+\resumeSubHeadingListStart
+
+        \resumeSubheading
+        {Temporal Knowledge Leakage in LLM Prediction Tasks}{Northwestern University}
+        {Advisor: Prof. Bradly C. Stadie}{Sep 2025 – Present}
+        \resumeItemListStart
+        \item\small
+        Formalized \textbf{temporal knowledge leakage}—the inadvertent use of information not publicly available at a specified reference time—in LLM-based prediction tasks such as legal case outcomes, salary estimation, and stock ranking.
+        \item\small
+        Introduced a four-phase detection pipeline with well-defined Shapley-weighted metric. 
+        \item\small
+        Proposed the \textbf{Temporal LLM Agent}, a multi-phase architecture that proactively prevents leakage during generation through iterative claim verification and regeneration.
+        \item\small
+        Demonstrated substantial leakage reduction while maintaining prediction quality across legal case prediction, salary estimation, and stock ranking benchmarks.
+        % \item\small
+        % \textit{\textbf{Targeting KDD 2026.}}
+        \resumeItemListEnd
+
+        \resumeSubheading
+        {LAMP: Linear Attribution Mapping Probe}{Northwestern University}
+        {Advisor: Prof. Bradly C. Stadie}{Jan 2024 – Jan 2025}
+        \resumeItemListStart
+        \item\small
+        Developed \textsc{\textbf{L}inear \textbf{A}ttribution \textbf{M}apping \textbf{P}robe (\textbf{LAMP})}, a framework for interpreting black-box language models by fitting locally linear surrogate models grounded in the model's own self-reported explanations.
+        \item\small
+        Designed a perturbation-based method to probe model prediction sensitivity and extract decision surfaces without accessing gradients, logits, or internal states—enabling practical interpretability for proprietary LLMs.
+        \item\small
+        Implemented extensive experiments across sentiment classification, controversial-topic detection, and harmful response auditing.
+        \item\small
+        \textit{\textbf{Accepted as Spotlight at AISTATS 2026.}} \href{https://openreview.net/forum?id=mynHcPXsMv}{(\texttt{Link}: LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models)}
+        \resumeItemListEnd
+
+        \resumeSubheading
+        {Factual Memorization and Learning in Large Language Models}{Northwestern University}
+        {Advisor: Prof. Bradly C. Stadie}{Jan 2024 – Jan 2025}
+        \resumeItemListStart
+        \item\small
+        Conducted a comprehensive analysis of LLM memorization behaviors under different fine-tuning paradigms, including \textsc{SFT} and \textsc{DPO}, building upon and extending insights from \textsc{FinetuneBench}.
+        \item\small
+        Reproduced key experimental findings from Stanford's \textsc{FinetuneBench}, and systematically evaluated LLM robustness to input rephrasings and temporal shifts in question formulation.
+        \item\small
+        Proposed a formal distinction between \textbf{passive memorization} (from exposure) and \textbf{positive memorization} (via direct QA supervision), demonstrating that the latter achieves superior memorization efficiency.
+        \item\small
+        Designed temporal generalization experiments by injecting future-dated facts into the training set. Found no generalization beyond training, but demonstrated that a lightweight system prompt enforcing temporal consistency can mitigate this overfitting.
+        % \item\small
+        % \textit{\textbf{Qualifying Exam Paper, Northwestern University.}}
+        \resumeItemListEnd
+        
+        \resumeSubheading
+        {CUOLR: Unified Off-Policy Learning to Rank}{Princeton University}
+        {Mentors: Prof. Mengdi Wang, Prof. Huazheng Wang}{May 2022 – Dec 2023}
+        \resumeItemListStart
+        \item\small
+        Formulated a unified framework that models various click models in off-policy Learning to Rank (LTR) as a \textit{Markov Decision Process (MDP)}, enabling principled application of offline reinforcement learning.
+        \item\small
+        Proposed the \textsc{\textbf{C}lick model-agnostic \textbf{U}nified \textbf{O}ff-policy \textbf{L}earning to \textbf{R}ank (\textbf{CUOLR})} algorithm that adapts to a wide range of click models \textit{without requiring explicit debiasing or prior knowledge}.
+        \item\small
+        Demonstrated that offline RL methods (e.g., DQN, SAC, BCQ, CQL) can be applied effectively to LTR by leveraging the MDP formulation, maintaining consistency and robustness under diverse click model assumptions.
+        \item\small
+        Validated CUOLR on large-scale real-world datasets, achieving state-of-the-art performance and significantly improved robustness across heterogeneous click models.
+        \item\small
+        \textit{\textbf{Published at NeurIPS 2023.}} \href{https://openreview.net/pdf?id=oDcWnfZyZW}{(\texttt{Link}: Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective)}
+        \resumeItemListEnd
+ 
+\resumeSubHeadingListEnd

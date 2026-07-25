@@ -204,6 +204,7 @@ include: ["_pages", "_scripts"]
 exclude:
   - bin/
   - tools-app/
+  - CV/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile
@@ -723,5 +724,4 @@ jsonresume:
   - certificates
   - skills
   - languages
-  - interests
   - references

@@ -1,0 +1,252 @@
+%-------------------------------------------------------------------------------
+% Curriculum Vitae — Zeyu (Steven) Zhang
+% Single-file academic CV, targeted at research internship applications.
+% Compile with: tectonic main.tex   (or pdflatex main.tex)
+%-------------------------------------------------------------------------------
+
+\documentclass[10.5pt]{article}
+
+\usepackage[a4paper, margin=1.55cm, bottom=1.7cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{XCharter}          % Charter — crisp, professional serif
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+
+%--------------------------- Colors & links ------------------------------------
+\definecolor{accent}{HTML}{8D0886}     % darkened site purple (#b509ac)
+\definecolor{bodygray}{HTML}{2B2B2B}
+\definecolor{metagray}{HTML}{5A5A5A}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  pdftitle={Zeyu Zhang - Curriculum Vitae},
+  pdfauthor={Zeyu Zhang},
+}
+
+\color{bodygray}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedbottom
+
+%--------------------------- Section styling -----------------------------------
+\titleformat{\section}
+  {\large\scshape\color{accent}}
+  {}{0em}{}
+  [\vspace{-7pt}\rule{\textwidth}{0.7pt}]
+\titlespacing*{\section}{0pt}{11pt}{6pt}
+
+%--------------------------- Helper macros -------------------------------------
+% Entry heading: {left bold}{right bold}{left italic}{right italic}
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}X@{}r@{}}
+    \textbf{#1} & \textbf{#2} \\
+    {\itshape\color{metagray}#3} & {\itshape\color{metagray}#4} \\
+  \end{tabularx}\vspace{1pt}}
+
+% One-line entry: {left bold}{right}
+\newcommand{\entryline}[2]{%
+  \par\noindent
+  \begin{tabularx}{\textwidth}{@{}X@{}r@{}}
+    #1 & {\itshape\color{metagray}#2} \\
+  \end{tabularx}\par\vspace{1.5pt}}
+
+% Publication entry: {label}{title}{authors}{venue line}
+\newcommand{\pub}[4]{%
+  \item[{[#1]}] \textbf{#2}\\
+  {\small #3}\\
+  {\small\itshape #4}}
+
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.35em, topsep=2pt, itemsep=1.5pt, parsep=0pt,
+                   label=\textcolor{accent}{\footnotesize$\bullet$}]\small}
+  {\end{itemize}}
+
+\newenvironment{publist}
+  {\begin{itemize}[leftmargin=2.5em, topsep=2pt, itemsep=5pt, parsep=0pt]}
+  {\end{itemize}}
+
+\newcommand{\me}{\textbf{Zeyu Zhang}}
+
+%===============================================================================
+\begin{document}
+
+%--------------------------- Header --------------------------------------------
+\begin{center}
+  {\Huge\scshape Zeyu (Steven) Zhang}\\[5pt]
+  {\color{metagray}Ph.D.\ Student in Statistics and Data Science, Northwestern University}\\[5pt]
+  {\small
+    \faEnvelope\ \href{mailto:zeyuzhang2028@u.northwestern.edu}{zeyuzhang2028@u.northwestern.edu}
+    \;$|$\;
+    \faGlobe\ \href{https://zeyuzhang1901.github.io}{zeyuzhang1901.github.io}
+    \;$|$\;
+    \faGithub\ \href{https://github.com/ZeyuZhang1901}{ZeyuZhang1901}
+    \;$|$\;
+    \faGraduationCap\ \href{https://scholar.google.com/citations?user=dr-xetEAAAAJ}{Google Scholar}
+  }
+\end{center}
+
+%--------------------------- Research Interests ---------------------------------
+\section{Research Interests}
+Trustworthy and reliable large language models. My current research centers on
+\textbf{temporal knowledge leakage in LLM backtesting}: detecting and attributing
+contamination in model reasoning with interpretable, claim-level metrics, and
+eliminating it through inference-time supervision and reinforcement-learning
+post-training. Related interests include black-box LLM interpretability and
+auditing, RL-based fine-tuning (GRPO, DPO, RLHF), and factual memorization in LLMs.
+
+%--------------------------- Education ------------------------------------------
+\section{Education}
+
+\entry{Northwestern University}{Evanston, IL, USA}
+  {Ph.D.\ in Statistics and Data Science \quad GPA: 3.95/4.00}{Sept 2023 -- Present}
+\begin{bullets}
+  \item Advisor: Prof.\ Bradly C.\ Stadie. Expected graduation: June 2028.
+\end{bullets}
+
+\vspace{4pt}
+\entry{University of Science and Technology of China (USTC)}{Hefei, China}
+  {B.Eng.\ in Electronic Information Engineering; Minor in Artificial Intelligence \quad GPA: 3.93/4.30}{Sept 2019 -- Jun 2023}
+\begin{bullets}
+  \item Rank 5/213 in the School of Information Science and Technology.
+  \item China National Scholarship, Ministry of Education of the PRC (top 1\%).
+  \item Wang Xiaomo Talent Program in Cyber Science and Technology; Talent Program in Artificial Intelligence.
+\end{bullets}
+
+%--------------------------- Publications ---------------------------------------
+\section{Publications \& Preprints}
+
+\textbf{Conference Proceedings}
+\begin{publist}
+  \pub{C1}{LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models}
+    {Ryan Chen, Youngmin Ko, \me, Catherine Cho, Sunny Chung, Mauro Giuffr\'e, Dennis L.\ Shung, Bradly C.\ Stadie}
+    {International Conference on Artificial Intelligence and Statistics (AISTATS), 2026.
+     \textbf{\textcolor{accent}{Spotlight}} \;
+     {\upshape\small\href{https://arxiv.org/abs/2505.11772}{[arXiv]}
+     \href{https://openreview.net/forum?id=mynHcPXsMv}{[OpenReview]}}}
+  \pub{C2}{Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective}
+    {\me, Yi Su, Hui Yuan, Yiran Wu, Rishab Balasubramanian, Qingyun Wu, Huazheng Wang, Mengdi Wang}
+    {Advances in Neural Information Processing Systems (NeurIPS), 2023. \;
+     {\upshape\small\href{https://arxiv.org/abs/2306.07528}{[arXiv]}
+     \href{https://openreview.net/forum?id=oDcWnfZyZW}{[OpenReview]}
+     \href{https://github.com/ZeyuZhang1901/Unified-Off-Policy-LTR-Neurips2023}{[Code]}}}
+\end{publist}
+
+\vspace{5pt}
+\textbf{Preprints (Under Review)}
+\begin{publist}
+  \pub{P1}{Temporal Leakage in LLM Backtesting: From Statistical Modeling to Leakage-Adjusted Evaluation}
+    {\me, Bradly C.\ Stadie}
+    {In submission to TMLR.}
+  \pub{P2}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
+    {\me, Bradly C.\ Stadie}
+    {Under review at NeurIPS 2026. \;
+     {\upshape\small\href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}
+     \href{https://github.com/nu-snail/TEMPO}{[Code]}}}
+  \pub{P3}{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
+    {\me, Ryan Chen, Bradly C.\ Stadie}
+    {Under review at EMNLP 2026. \;
+     {\upshape\small\href{https://arxiv.org/abs/2602.17234}{[arXiv:2602.17234]}
+     \href{https://github.com/ZeyuZhang1901/TimeSPEC}{[Code]}}}
+\end{publist}
+
+%--------------------------- Research Experience ---------------------------------
+\section{Research Experience}
+
+\entry{Trustworthy LLM Backtesting: Leakage Theory, Detection \& Enforcement}
+  {Northwestern University}
+  {Advisor: Prof.\ Bradly C.\ Stadie \quad$\rightarrow$ papers [P1], [P2], [P3]}{Sept 2025 -- Present}
+\begin{bullets}
+  \item Formalized \textbf{temporal knowledge leakage} in LLM backtesting: models exploit post-cutoff
+        pre-training knowledge when evaluated on historical prediction tasks (legal case outcomes,
+        salary estimation, stock ranking), inflating reported accuracy and invalidating evaluation.
+  \item Built the statistical foundation of the program: proved the leakage inflation is
+        \emph{non-identifiable} from passive backtest scores (entangled with skill and recency), and showed
+        one external reference (a clean control model or the training-cutoff discontinuity) restores
+        identification---yielding a \textbf{leakage-adjusted score} with confidence intervals.
+  \item Introduced \textbf{Shapley-DCLR}, a claim-level metric that decomposes prediction rationales into
+        atomic claims and applies Shapley values to quantify what fraction of \emph{decision-critical}
+        reasoning is contaminated---making contamination measurable and interpretable.
+  \item Designed \textbf{TimeSPEC}, an inference-time architecture that interleaves temporally filtered
+        retrieval with claim-level supervision, grounding predictions entirely in pre-cutoff evidence
+        without any retraining; ablations across three LLMs show retrieval and supervision are jointly necessary.
+  \item Developed \textbf{TEMPO}, a GRPO-based post-training method with a two-mode reward that drives
+        leaked claims to zero as a hard prerequisite before optimizing task performance; proved the training
+        procedure monotonically decreases leakage and converges to the leak-free optimum.
+  \item Reduced leakage from 2--13\% to 0.6--3.7\% across three prediction tasks and two models, while
+        \emph{improving} task performance by 6--13\% where strong pre-cutoff signals exist.
+\end{bullets}
+
+\vspace{4pt}
+\entry{LAMP: Black-Box Interpretability via Locally Linear Decision Surfaces}
+  {Northwestern University}
+  {Advisor: Prof.\ Bradly C.\ Stadie \quad$\rightarrow$ paper [C1], AISTATS 2026 Spotlight}{Jan 2024 -- Jan 2025}
+\begin{bullets}
+  \item Co-developed the \textbf{Linear Attribution Mapping Probe (LAMP)}, which treats an LLM's
+        self-reported explanations as a coordinate system and fits locally linear surrogates to test
+        whether stated factors actually steer the model's predictions.
+  \item Designed perturbation-based probing that extracts decision surfaces \emph{without} gradients,
+        logits, or internal activations---enabling practical auditing of proprietary LLMs.
+  \item Ran experiments across sentiment analysis, controversial-topic detection, and safety-prompt
+        auditing; extracted surfaces align with human judgments and, on a clinical case-file dataset,
+        with expert assessments.
+\end{bullets}
+
+\vspace{4pt}
+\entry{Factual Memorization and Learning in Large Language Models}{Northwestern University}
+  {Advisor: Prof.\ Bradly C.\ Stadie \quad (Qualifying Exam research)}{Jan 2024 -- Jan 2025}
+\begin{bullets}
+  \item Analyzed LLM memorization under SFT and DPO fine-tuning, reproducing and extending
+        Stanford's \textsc{FinetuneBench}; evaluated robustness to rephrasings and temporal shifts.
+  \item Proposed a formal distinction between \textbf{passive memorization} (exposure) and
+        \textbf{positive memorization} (direct QA supervision), showing the latter is markedly more efficient.
+  \item Showed injected future-dated facts do not generalize beyond training, and that a lightweight
+        system prompt enforcing temporal consistency mitigates the resulting overfitting.
+\end{bullets}
+
+\vspace{4pt}
+\entry{CUOLR: Unified Off-Policy Learning to Rank}{Princeton University (remote)}
+  {Mentors: Prof.\ Mengdi Wang, Prof.\ Huazheng Wang \quad$\rightarrow$ paper [C2], NeurIPS 2023}{May 2022 -- Dec 2023}
+\begin{bullets}
+  \item Unified ranking under general stochastic click models as a \textbf{Markov Decision Process},
+        enabling principled application of offline RL to off-policy learning to rank.
+  \item Proposed \textbf{CUOLR}, a click-model-agnostic algorithm requiring no explicit debiasing or
+        prior knowledge of the click process; instantiated with DQN, SAC, BCQ, and CQL.
+  \item Achieved state-of-the-art performance on large-scale real-world benchmarks with consistent
+        robustness across heterogeneous click models.
+\end{bullets}
+
+%--------------------------- Teaching -------------------------------------------
+\section{Teaching Experience}
+Graduate Teaching Assistant, Department of Statistics and Data Science, Northwestern University.
+\vspace{3pt}
+\entryline{\makebox[6em][l]{STAT 303-3}Data Science 3 with Python \; {\small\itshape\color{metagray}(Prof.\ Emre Besler)}}{Spring 2025, Spring 2026}
+\entryline{\makebox[6em][l]{STAT 303-2}Data Science 2 with Python \; {\small\itshape\color{metagray}(Prof.\ Emre Besler)}}{Winter 2025, Winter 2026}
+\entryline{\makebox[6em][l]{STAT 348}Applied Multivariate Analysis \; {\small\itshape\color{metagray}(Prof.\ Thomas Severini)}}{Fall 2025}
+\entryline{\makebox[6em][l]{STAT 210}Introduction to Probability and Statistics \; {\small\itshape\color{metagray}(Prof.\ Maxim Sinitsyn)}}{Fall 2024}
+
+%--------------------------- Honors ---------------------------------------------
+\section{Honors \& Awards}
+\begin{bullets}
+  \item \textbf{Spotlight Presentation}, AISTATS 2026 (LAMP). \hfill 2026
+  \item \textbf{China National Scholarship}, Ministry of Education of the PRC (top 1\%). \hfill 2020
+  \item \textbf{Outstanding Student Scholarship} (Class A, top 1\%), USTC. \hfill 2020
+  \item National Undergraduate Electronic Design Contest: 2nd Prize (national), 1st in Anhui Province. \hfill 2021
+  \item Scholarship for Talent Program in Basic Disciplines (Class A, top 3\%), USTC. \hfill 2020
+\end{bullets}
+
+%--------------------------- Skills ---------------------------------------------
+\section{Skills}
+\begin{bullets}
+  \item \textbf{Programming:} Python (PyTorch, Hugging Face Transformers), R, C/C++, Bash, Git, \LaTeX.
+  \item \textbf{ML / LLM:} RL post-training (GRPO, DPO, RLHF), LLM evaluation and benchmarking,
+        retrieval-augmented pipelines, offline reinforcement learning, API-based LLM systems (OpenAI platform).
+\end{bullets}
+
+\end{document}

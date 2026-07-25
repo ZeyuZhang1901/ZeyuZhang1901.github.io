@@ -19,3 +19,5 @@ vendor
 .env.local
 .env.development
 .env.production
+CV/*.pdf
+_preview_*.html
