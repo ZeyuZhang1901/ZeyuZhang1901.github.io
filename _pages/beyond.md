@@ -15,12 +15,11 @@ map: true
   </div>
 
   <p class="beyond-intro">
-    A backtest can only tell you about the past; to meet the world, you have to go. So when I&rsquo;m not
-    proving things about leakage, I&rsquo;m chasing a sunrise up a volcano, wading an icy river until my legs
-    go numb, learning to ski (badly, then less badly), or befriending every cat between Evanston and
-    Guatemala. Think of this page as my other research program &mdash; ongoing fieldwork on how wide and
-    generous the world is. Every pin on the map below comes from the photos themselves: a place I have
-    actually stood.
+    There&rsquo;s a version of me that proves theorems and runs experiments &mdash; and then there&rsquo;s this
+    page. Beyond research, I&rsquo;m someone who simply loves being alive: chasing a sunrise up a volcano,
+    learning things badly until I learn them well, trading a quiet weekend for a new trail, a new city, a new
+    dish, a new friend. New experiences are how I keep life colorful, and my camera is how I keep the
+    evidence. Every pin on the map below comes straight from the photos: a place I have actually stood.
   </p>
 
   <div class="beyond-map-wrap" markdown="1">
