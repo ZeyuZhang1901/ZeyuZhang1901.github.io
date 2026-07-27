@@ -13,6 +13,16 @@ profile:
       <i class="fa-solid fa-envelope" aria-hidden="true"></i>
       <span>zeyuzhang2028@u.northwestern.edu</span>
     </a>
+    <div class="about-links">
+      <a class="about-link" href="https://www.linkedin.com/in/zeyu-zhang-42813a271/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a class="about-link" href="https://scholar.google.com/citations?user=dr-xetEAAAAJ" target="_blank" rel="noopener noreferrer">
+        <i class="ai ai-google-scholar" aria-hidden="true"></i>
+        <span>Google Scholar</span>
+      </a>
+    </div>
 
 selected_papers: false
 research_stories: true

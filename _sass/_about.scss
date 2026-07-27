@@ -82,6 +82,12 @@ $about-theme-line: rgba($purple-color, 0.22);
     padding: 8px;
     background: linear-gradient(160deg, $about-theme-soft, var(--global-bg-color) 60%);
     box-shadow: 0 8px 22px rgba($purple-color, 0.1);
+
+    // Bootstrap gives <figure> a 1rem bottom margin, which leaves a gap
+    // between the photo and the bottom edge of the frame.
+    figure {
+      margin: 0;
+    }
   }
 
   .about-photo {
@@ -113,6 +119,31 @@ $about-theme-line: rgba($purple-color, 0.22);
 
     i {
       font-size: 0.9rem;
+    }
+  }
+
+  .about-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-top: 0.45rem;
+  }
+
+  .about-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--global-text-color-light);
+    font-size: 0.86rem;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+
+    i {
+      font-size: 0.95rem;
     }
   }
 
