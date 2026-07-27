@@ -21,3 +21,4 @@ vendor
 .env.production
 CV/*.pdf
 _preview_*.html
+photos_raw/

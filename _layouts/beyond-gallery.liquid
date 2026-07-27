@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{% if page.gallery_id == 'postcards' %}
+  {% assign g = site.data.beyond.postcards %}
+{% elsif page.gallery_id == 'moments' %}
+  {% assign g = site.data.beyond.moments %}
+{% else %}
+  {% assign g = site.data.beyond.trips | where: 'id', page.gallery_id | first %}
+{% endif %}
+
+<div class="beyond">
+  <a class="beyond-back" href="{{ '/beyond/' | relative_url }}"><i class="fa-solid fa-arrow-left"></i> beyond research</a>
+
+  <section class="beyond-trip">
+    <div class="beyond-trip-head">
+      <h2><i class="{{ g.icon }}"></i>{{ g.title }}</h2>
+      {% if g.when -%}
+        <span class="beyond-when">{{ g.when }}</span>
+      {%- endif %}
+    </div>
+    <p class="beyond-trip-story">{{ g.story }}</p>
+    <div class="beyond-wall">
+      <div class="beyond-gutter-sizer"></div>
+      {% for photo in g.photos %}
+        <div class="beyond-photo">
+          <div class="beyond-photo-frame">
+            <img
+              src="{{ '/assets/img/beyond/' | append: photo.file | relative_url }}"
+              alt="{{ g.title }} photo {{ forloop.index }}"
+              loading="lazy"
+            >
+            {% if photo.place -%}
+              <span class="beyond-place-tag"><i class="fa-solid fa-location-dot"></i>{{ photo.place }}</span>
+            {%- endif %}
+            <span class="beyond-photo-id">
+              {{- g.id }}
+              {{ forloop.index -}}
+            </span>
+          </div>
+          {% if photo.caption %}
+            <div class="beyond-caption">{{ photo.caption }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <p class="beyond-next">
+    <a href="{{ '/beyond/' | relative_url }}"><i class="fa-solid fa-map"></i>back to the map</a>
+  </p>
+</div>

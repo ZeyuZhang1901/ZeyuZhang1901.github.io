@@ -206,6 +206,7 @@ exclude:
   - tools-app/
   - CV/
   - _posts/ # blog hidden for now; remove this line to build posts again
+  - photos_raw/ # original photo drop-off; processed copies go to assets/img/beyond/
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile
@@ -562,7 +563,7 @@ third_party_libraries:
     version: "3.6.0"
   leaflet:
     integrity:
-      css: "sha256-q9ba7o845pMPFU+zcAll8rv+gC+fSovKsOoNQ6cynuQ="
+      css: "sha256-QZFpF9DkpabUBLoCc7fQJVCmtag/LaVAfAkUJSfuNyY=" # updated: CDN content changed, old hash broke the map
       js: "sha256-MgH13bFTTNqsnuEoqNPBLDaqxjGH+lCpqrukmXc8Ppg="
       js_map: "sha256-YAoQ3FzREN4GmVENMir8vgHHypC0xfSK3CAxTHCqx1M="
     local:

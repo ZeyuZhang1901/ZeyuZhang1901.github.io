@@ -1,0 +1,371 @@
+/*******************************************************************************
+ * Beyond Research page: travel stories with polaroid-style photo galleries.
+ ******************************************************************************/
+
+.beyond {
+  .beyond-hero {
+    text-align: center;
+    margin: 0.5rem 0 1.6rem;
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.35rem;
+    }
+
+    .beyond-tagline {
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--global-text-color-light);
+    }
+  }
+
+  .beyond-intro {
+    max-width: 46rem;
+    margin: 0 auto 1.8rem;
+    text-align: center;
+    font-size: 1.13rem;
+  }
+
+  .beyond-map-wrap {
+    margin: 0 0 2.4rem;
+
+    .map {
+      height: 320px;
+      border-radius: 14px;
+      overflow: hidden; // clip tiles to the rounded corners
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+      z-index: 1; // keep leaflet below the sticky navbar
+    }
+
+    .beyond-map-note {
+      text-align: center;
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--global-text-color-light);
+      margin-top: 0.5rem;
+    }
+  }
+
+  // ---- Group titles on the index page (Trips / Postcards / Small moments) ----
+  .beyond-group-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    text-align: center;
+    margin: 2.6rem 0 1.4rem;
+
+    i {
+      color: var(--global-theme-color);
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  // ---- Back link on gallery subpages ----
+  .beyond-back {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0.4rem 0 1.2rem;
+    color: var(--global-theme-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    i {
+      margin-right: 0.35rem;
+    }
+  }
+
+  // ---- Trip sections ----
+  .beyond-trip {
+    margin-bottom: 3rem;
+
+    .beyond-trip-head {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+
+      h2,
+      h3 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: 0;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--global-theme-color);
+          }
+        }
+
+        i {
+          color: var(--global-theme-color);
+          font-size: 1.3rem;
+          margin-right: 0.35rem;
+        }
+      }
+
+      .beyond-when {
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--global-theme-color);
+        background: color-mix(in srgb, var(--global-theme-color) 11%, transparent);
+        border-radius: 999px;
+        padding: 0.18rem 0.75rem;
+      }
+    }
+
+    .beyond-trip-story {
+      max-width: 50rem;
+      font-size: 1.08rem;
+      margin-bottom: 1.1rem;
+    }
+  }
+
+  // ---- Masonry photo wall ----
+  // Laid out by Masonry JS (see assets/js/masonry.js): each photo drops into the
+  // shortest column, so column bottoms stay balanced. Widths must sum with gutters:
+  // 3 cols: 3 x 31.6% + 2 x 2.6% = 100%; 4 cols: 4 x 23.5% + 3 x 2% = 100%.
+  .beyond-wall {
+    position: relative;
+
+    .beyond-photo {
+      width: 31.6%;
+    }
+
+    .beyond-gutter-sizer {
+      width: 2.6%;
+    }
+
+    &.beyond-wall-small {
+      .beyond-photo {
+        width: 23.5%;
+      }
+
+      .beyond-gutter-sizer {
+        width: 2%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .beyond-photo,
+      &.beyond-wall-small .beyond-photo {
+        width: 48%;
+      }
+
+      .beyond-gutter-sizer,
+      &.beyond-wall-small .beyond-gutter-sizer {
+        width: 4%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .beyond-photo,
+      &.beyond-wall-small .beyond-photo {
+        width: 100%;
+      }
+    }
+  }
+
+  .beyond-photo {
+    margin: 0 0 1rem;
+    background: var(--global-card-bg-color, #fff);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 6px;
+    padding: 0.45rem 0.45rem 0.5rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.09);
+    transform: rotate(-0.7deg);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+    display: block;
+
+    &:nth-child(2n) {
+      transform: rotate(0.8deg);
+    }
+
+    &:nth-child(3n) {
+      transform: rotate(-0.4deg);
+    }
+
+    &:nth-child(5n) {
+      transform: rotate(1.1deg);
+    }
+
+    &:hover {
+      transform: rotate(0deg) translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      z-index: 2;
+      position: relative;
+
+      .beyond-photo-id {
+        opacity: 1;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+      display: block;
+    }
+
+    .beyond-caption {
+      font-size: 0.92rem;
+      font-style: italic;
+      text-align: center;
+      color: var(--global-text-color);
+      padding-top: 0.45rem;
+      line-height: 1.35;
+    }
+  }
+
+  .beyond-moments .beyond-photo .beyond-caption {
+    font-size: 0.85rem;
+  }
+
+  // ---- Overlays on the photo itself ----
+  .beyond-photo-frame {
+    position: relative;
+
+    // small photo ID (e.g. "alaska 3"), shown on hover — used to reference photos
+    // when writing captions; harmless for visitors
+    .beyond-photo-id {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 4px;
+      padding: 0.08rem 0.4rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .beyond-place-tag {
+      position: absolute;
+      left: 0.45rem;
+      bottom: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 999px;
+      padding: 0.12rem 0.6rem;
+      backdrop-filter: blur(2px);
+
+      i {
+        margin-right: 0.3rem;
+        font-size: 0.72rem;
+      }
+    }
+  }
+
+  // ---- Preview strips on the index page ----
+  .beyond-teaser {
+    margin-bottom: 2.4rem;
+  }
+
+  .beyond-preview {
+    display: flex;
+    gap: 0.6rem;
+
+    .beyond-preview-item {
+      flex: 1;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      display: block;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .beyond-preview-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
+      color: var(--global-theme-color);
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-decoration: none;
+
+      &:hover {
+        background: color-mix(in srgb, var(--global-theme-color) 20%, transparent);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .beyond-preview-item {
+        height: 90px;
+      }
+
+      // keep the strip readable on small screens: hide the 4th and 5th thumbs
+      .beyond-preview-item:nth-child(4),
+      .beyond-preview-item:nth-child(5) {
+        display: none;
+      }
+
+      .beyond-preview-more {
+        display: flex;
+      }
+    }
+  }
+
+  // ---- Footer teaser ----
+  .beyond-next {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--global-text-color-light);
+    margin-top: 0.6rem;
+
+    i {
+      color: var(--global-theme-color);
+      margin-right: 0.4rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-theme-color);
+      }
+    }
+  }
+}

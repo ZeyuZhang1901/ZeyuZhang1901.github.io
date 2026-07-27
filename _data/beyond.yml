@@ -1,0 +1,275 @@
+# Content for the "Beyond Research" section (/beyond/ and its subpages).
+#
+# Structure:
+#   trips     - each has its own subpage (/beyond/<id>/) with story + full gallery
+#   postcards - the view: places and scenery, grouped by place  (/beyond/postcards/)
+#   moments   - the life: people, animals, food, and firsts     (/beyond/moments/)
+#
+# The main /beyond/ page shows each section's story plus a thumbnail strip.
+# Photo `file` is a path under assets/img/beyond/; thumbnails mirror the same path
+# under assets/img/beyond/thumbs/. Photos are ordered in thematic clusters.
+#
+# Each photo shows a small ID chip on hover (e.g. "alaska 3") — reference that ID when
+# asking for caption changes.
+
+trips:
+  - id: alaska
+    title: Alaska
+    icon: fa-solid fa-mountain
+    when: March 2025
+    story: >
+      Alaska in March is a world with the color turned down and the volume turned up. We
+      rode the old Alaska Railroad north, watched sea lions bicker over a sunny rock near
+      Seward, and stepped inside a glacier hole so blue it didn't look real. In North Pole
+      the reindeer never stopped eating; on the Dalton Highway we drove until the map said
+      Arctic Circle. And when the aurora finally spilled green over Fairbanks, nobody
+      remembered the cold. Denali saw us off with a proper blizzard — and the softest snow
+      I've ever fallen into.
+    photos:
+      - file: alaska/1.jpg
+        caption: The engine at the head of the Alaska Railroad — machinery from another century, still proud.
+      - file: alaska/2.jpg
+        caption: Prime real estate on this rock, and the sea lions know it.
+      - file: alaska/3.jpg
+        caption: The night Fairbanks turned green. Worth every frozen minute of waiting.
+      - file: alaska/4.jpg
+      - file: alaska/5.jpg
+      - file: alaska/6.jpg
+        caption: A casual stroll on the Matanuska Glacier, as one does.
+      - file: alaska/7.jpg
+        caption: Inside the glacier everything glows blue. No filter — the ice really does this.
+      - file: alaska/8.jpg
+        caption: Santa Claus House, North Pole. Here, Christmas simply never ends.
+      - file: alaska/9.jpg
+        caption: At the reindeer farm, every hour is lunch hour.
+      - file: alaska/10.jpg
+        caption: We drove the Dalton Highway until the Earth said, "Arctic Circle."
+      - file: alaska/11.jpg
+        caption: Denali National Park & Preserve, wearing its winter best.
+      - file: alaska/12.jpg
+        caption: One small cabin versus all that snow and wind — and the cabin is winning.
+      - file: alaska/13.jpg
+        caption: Snow this soft demands to be lain in. I obliged.
+      - file: alaska/14.jpg
+
+  - id: southwest
+    title: "Zion & Grand Canyon"
+    icon: fa-solid fa-hill-rockslide
+    when: March 2026
+    story: >
+      A March loop through Utah and Arizona: red rock, cold rivers, and a lot of staring.
+      In Zion we waded the river until our legs went numb and laughed the whole way. In
+      Page, Lower Antelope Canyon turned out to be a sculpture that light re-carves every
+      hour, and Horseshoe Bend showed us the river's slowest, grandest U-turn. Then the
+      Grand Canyon itself — no photo prepares you for the moment the ground simply stops.
+      Wild, enormous, and completely indifferent to us. I loved it.
+    photos:
+      - file: southwest/1.jpg
+        caption: Sunset duty in Zion. My friend swears this belongs in an outdoor-gear ad, lol.
+      - file: southwest/2.jpg
+        caption: The Zion river walk — freezing water, zero regrets.
+      - file: southwest/3.jpg
+        caption: A cup that says Zion. It came home with me, obviously.
+      - file: southwest/4.jpg
+        caption: A natural gate outside Page, Arizona — nature showing off its doorways.
+      - file: southwest/5.jpg
+        caption: Out in the wild and feeling strong. My favorite version of me.
+      - file: southwest/6.jpg
+      - file: southwest/7.jpg
+        caption: Round two in the river. Still cold. Still fun.
+      - file: southwest/8.jpg
+      - file: southwest/9.jpg
+      - file: southwest/10.jpg
+        caption: Lower Antelope Canyon — light and sandstone carving art out of each other.
+      - file: southwest/11.jpg
+      - file: southwest/12.jpg
+        caption: The Grand Canyon doesn't pose for photos. It just sits there, being magnificent.
+      - file: southwest/13.jpg
+      - file: southwest/14.jpg
+      - file: southwest/15.jpg
+        caption: Horseshoe Bend, where the river takes its grandest U-turn.
+
+  - id: guatemala
+    title: Guatemala
+    icon: fa-solid fa-volcano
+    when: May 2026
+    story: >
+      Guatemala doesn't do quiet. Tuk-tuks buzz around Lake Atitlán, markets spill into the
+      streets, and a wedding can simply take over a corner in Antigua — everyone approves.
+      We drifted between lakeside towns, found hippie yoga in San Marcos and an artist's
+      studio I left three paintings richer, then climbed Acatenango for seven relentless
+      hours. That night Fuego erupted over and over, like the mountain had something to
+      say. At sunrise, above the clouds, it stopped feeling like a view and started feeling
+      like a blessing.
+    photos:
+      - file: guatemala/1.jpg
+        caption: Fuego, mid-eruption. This one moment is why I climbed uphill for seven hours.
+      - file: guatemala/2.jpg
+        caption: The mighty tuk-tuk — undisputed king of transport around Lake Atitlán.
+      - file: guatemala/3.jpg
+        caption: The basin never wobbles. I don't understand the physics. Respect.
+      - file: guatemala/4.jpg
+        caption: Our first Guatemalan meal. That beef in the middle — the sauce alone justifies the flight.
+      - file: guatemala/5.jpg
+        caption: Another tuk-tuk, lol. They really do run this place.
+      - file: guatemala/6.jpg
+        caption: San Marcos La Laguna, the lake's hippie capital — you can feel it. The yoga and meditation are the real thing, too.
+      - file: guatemala/7.jpg
+        caption: Living the life I aspire to.
+      - file: guatemala/8.jpg
+        caption: A local painter whose lake scenes were so good I surrendered and bought three.
+      - file: guatemala/9.jpg
+        caption: Kitty, kitty. So cuteeeee.
+      - file: guatemala/10.jpg
+        caption: Saint James the Knight, keeping watch over Antigua.
+      - file: guatemala/11.jpg
+        caption: A wedding on a street corner. Antigua does romance casually.
+      - file: guatemala/12.jpg
+        caption: Step one of several thousand, straight up a volcano.
+      - file: guatemala/13.jpg
+        caption: Above the clouds, chasing the sunrise. It felt sacred — like being let into heaven a little early.
+      - file: guatemala/14.jpg
+        caption: The summit at last. A stubborn heart, paid in full by this sunrise.
+      - file: guatemala/15.jpg
+        caption: Fuego erupted all night, tireless. Honestly? I want that energy.
+
+# The view: places and scenery, grouped by place.
+postcards:
+  id: postcards
+  title: Postcards
+  icon: fa-solid fa-envelopes-bulk
+  story: >
+    Some places I pass through once; some keep pulling me back — and all of them leave
+    something behind. There's no grand itinerary here, just views that made me pull over,
+    look up, or take the long way on purpose. Postcards from wherever the road decided
+    to go.
+  photos:
+    # -- Algonquin & Muskoka in the fall --
+    - file: canada/1.jpg
+      place: Ontario
+      caption: Maple season in full flame.
+    - file: canada/4.jpg
+      place: Algonquin Park, ON
+      caption: Algonquin doing its October thing — peace, in color.
+    - file: canada/5.jpg
+      place: Algonquin Park, ON
+      caption: A beaver dam holding back a mirror.
+    - file: canada/6.jpg
+      place: Algonquin Park, ON
+      caption: From the lookout, autumn all the way to the horizon.
+    - file: canada/7.jpg
+      place: Huntsville, ON
+      caption: Huntsville from above, dressed for fall.
+    # -- Niagara Falls, day and night --
+    - file: canada/12.jpg
+      place: Niagara Falls, ON
+      caption: Niagara by night, dressed in light. Amazing.
+    - file: canada/20.jpg
+      place: Niagara Falls, ON
+      caption: Horseshoe Falls glowing through its own mist.
+    - file: canada/21.jpg
+      place: Niagara Falls, ON
+      caption: The American Falls in blue, seen from the Canadian side.
+    - file: canada/22.jpg
+      place: Niagara Falls, ON
+      caption: A rainbow at night — Niagara doesn't follow the usual rules.
+    - file: canada/23.jpg
+      place: Niagara Falls, ON
+      caption: And a morning rainbow for balance. The mist makes its own weather.
+    # -- Cities: Ottawa, Montréal, Québec --
+    - file: canada/15.jpg
+      place: Ottawa, ON
+      caption: Parliament Hill, Ottawa.
+    - file: canada/16.jpg
+      place: Ottawa, ON
+    - file: canada/17.jpg
+      place: Montréal, QC
+      caption: Old Montréal at night — monuments in stage lighting.
+    - file: canada/18.jpg
+      place: Montréal, QC
+    - file: canada/19.jpg
+      place: Québec City, QC
+      caption: Québec's parliament lit up for the holidays.
+    # -- San Diego --
+    - file: postcards/3.jpg
+      place: San Diego, CA
+      caption: Harbor lights across the bay, from the deck of a boat.
+
+# The life: people, animals, food, and firsts — grouped by theme.
+moments:
+  id: moments
+  title: Small moments
+  icon: fa-solid fa-camera-retro
+  story: >
+    The best photos are never the planned ones. A cat that decides to trust you, a finish
+    line you weren't sure about, a dish too good to eat right away, a friend mid-laugh —
+    life keeps handing out these small gifts, and I try to catch as many as I can. This
+    wall is where I keep them.
+  photos:
+    # -- The Chicago race --
+    - file: moments/4.jpg
+      caption: First half marathon, Chicago. 2:14:20 — I'll take it.
+    - file: moments/5.jpg
+      caption: Post-race recovery, by the book.
+    - file: moments/17.jpg
+      caption: We claimed the podium for photo purposes only, lol.
+    # -- Fishing on Lake Scugog --
+    - file: canada/9.jpg
+      caption: Dusk on Lake Scugog, rod ready.
+    - file: canada/3.jpg
+      caption: My first bass! Never return empty-handed.
+    # -- Hiking in Ontario --
+    - file: canada/11.jpg
+      caption: A boardwalk through the marsh — Ontario summer at its greenest.
+    - file: canada/13.jpg
+      caption: Lion's Head lookout. For one moment up there, I was the lion king.
+    - file: canada/14.jpg
+      caption: Trail friends — kind, funny, full of bear warnings, lol. The bear never showed.
+    # -- Firsts --
+    - file: canada/24.jpg
+      caption: First day on skis. Amateur hour, but that speed and freedom hooked me instantly.
+    - file: moments/11.jpg
+      caption: First woodfire — backyard edition, logs split ourselves.
+    - file: moments/12.jpg
+      caption: Today I learned this exists. Strange knowledge, mind blown.
+    # -- People --
+    - file: moments/3.jpg
+      caption: Reunion at UMass. Miss you guys.
+    - file: moments/10.jpg
+      caption: Birthday boy that day. Happy birthday!
+    - file: canada/10.jpg
+      caption: I love my aunt~
+    - file: postcards/1.jpg
+      caption: The lab. Love you guys — may we keep getting better.
+    - file: postcards/4.jpg
+      caption: A ninja at first glance. My professor at second, lol.
+    # -- Animals --
+    - file: moments/1.jpg
+      caption: A Guatemalan cat on a Guatemalan textile. Excellent taste.
+    - file: moments/7.jpg
+      caption: Morning latte, under supervision.
+    - file: moments/6.jpg
+      caption: The Chinese on the back reads roughly "a breathtaking beauty." Why is this in Guatemala? Maybe the kitty is the breathtaking beauty, lol.
+    - file: moments/2.jpg
+    - file: canada/2.jpg
+      caption: Fresh out of the lake — this guy swims better than I do.
+    - file: moments/16.jpg
+      caption: Professional couch guardian, on duty.
+    - file: moments/15.jpg
+      caption: Are you hungry, babe?
+    # -- Statues, real and otherwise --
+    - file: moments/18.jpg
+      caption: "Statue: actual."
+    - file: moments/9.jpg
+      caption: "Statue: fake. Looked carved for a second — fully alive."
+    # -- Food --
+    - file: canada/8.jpg
+      caption: Cherry season. Juicier and sweeter than anything from a market, and I'll die on this hill.
+    - file: postcards/2.jpg
+      caption: San Diego tacos. Sooooo good.
+    - file: moments/14.jpg
+      caption: Old fashioned, old fashion. I like it!
+    - file: moments/13.jpg
+      caption: The onion bangle, lol.
+    - file: moments/8.jpg
+      caption: Believe it or not, this is the top of the volcano — so chill, so lovely.
