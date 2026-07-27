@@ -1,0 +1,307 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> beyond research | Zeyu (Steven) Zhang </title> <meta name="author" content="Zeyu (Steven) Zhang"> <meta name="description" content="I am a third-year Ph.D. student in the Department of Statistics and Data Science at Northwestern University. My research focuses on knowledge leakage in large language models, with particular emphasis on settings that involve complex reasoning and chain-of-thought processes. I study how and when sensitive or unintended information may be exposed during multi-step inference, and I am interested in principled methods for detecting, characterizing, and mitigating such leakage. In parallel, I work on fine-tuning language models using reinforcement learning–based approaches, including RLHF, Direct Preference Optimization (DPO), and related algorithms, with the goal of improving alignment, robustness, and controllability. Outside of research, I am deeply committed to an active lifestyle. I follow a structured workout program and train almost every day, viewing physical discipline as a natural complement to intellectual rigor. I enjoy a wide range of sports, with basketball being my favorite, and I am particularly drawn to long-distance running for both its physical demands and its meditative rhythm. These activities keep me grounded, energized, and continuously motivated—both on and off the track. "> <meta name="keywords" content="LLM Fine-Tuning, Knowledge Leakage Detection, Reinforcement Learning based Fine-Tuning"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400,500,600,700,400i,600i,700i|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%8E%93&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=b4a9222a6e9e65188cb83a3b1326fc15"> <link rel="canonical" href="https://zeyuzhang1901.github.io/beyond/"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" integrity="sha256-QZFpF9DkpabUBLoCc7fQJVCmtag/LaVAfAkUJSfuNyY=" crossorigin="anonymous"> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title site-name-brand" href="/"> <span class="site-name-given">Zeyu</span> <span class="site-name-nick">(Steven)</span> <span class="site-name-given">Zhang</span> </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">Teaching Experience </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item active"> <a class="nav-link" href="/beyond/">beyond research <span class="sr-only">(current)</span> </a> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="beyond"> <div class="beyond-hero"> <h1> <span class="site-name-given">Beyond</span> <span class="site-name-nick">Research</span> </h1> <div class="beyond-tagline">field notes from the parts of life that don’t fit in a BibTeX entry</div> </div> <p class="beyond-intro"> A backtest can only tell you about the past; to meet the world, you have to go. So when I’m not proving things about leakage, I’m chasing a sunrise up a volcano, wading an icy river until my legs go numb, learning to ski (badly, then less badly), or befriending every cat between Evanston and Guatemala. Think of this page as my other research program — ongoing fieldwork on how wide and generous the world is. Every pin on the map below comes from the photos themselves: a place I have actually stood. </p> <div class="beyond-map-wrap"> <pre><code class="language-geojson">{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anchorage, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.8905,
+          61.2214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seward &amp; Kenai Fjords, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -149.2945,
+          59.8822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Matanuska Glacier, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -147.752,
+          61.773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fairbanks &amp; North Pole, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -147.72,
+          64.84
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arctic Circle, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -150.811,
+          66.556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Denali National Park, AK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -148.99,
+          63.728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Zion National Park, UT"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.02,
+          37.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Page, AZ — Horseshoe Bend &amp; Antelope Canyon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.46,
+          36.93
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grand Canyon, AZ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.04,
+          36.045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lake Atitlán, Guatemala"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.22,
+          14.70
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Antigua Guatemala"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.733,
+          14.563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Acatenango volcano, Guatemala"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.876,
+          14.51
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Algonquin Park &amp; Muskoka, ON"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.89,
+          45.44
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Toronto, ON"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.384,
+          43.638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Niagara Falls, ON"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.078,
+          43.084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lion's Head, ON"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.25,
+          44.99
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ottawa, ON"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.698,
+          45.424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Montréal, QC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.554,
+          45.507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Québec City, QC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.213,
+          46.809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Diego, CA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.17,
+          32.703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chicago, IL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.619,
+          41.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Northampton, MA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.64,
+          42.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Evanston, IL (home base)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6877,
+          42.0451
+        ]
+      }
+    }
+  ]
+}
+</code></pre> <div class="beyond-map-note">every pin is a place these photos were taken — read from the photos themselves</div> </div> <h2 class="beyond-group-title"> <i class="fa-solid fa-route"></i>Trips</h2> <section class="beyond-trip beyond-teaser"> <div class="beyond-trip-head"> <h3><a href="/beyond/alaska/"><i class="fa-solid fa-mountain"></i>Alaska</a></h3> <span class="beyond-when">March 2025</span> </div> <p class="beyond-trip-story">Alaska in March is a world with the color turned down and the volume turned up. We rode the old Alaska Railroad north, watched sea lions bicker over a sunny rock near Seward, and stepped inside a glacier hole so blue it didn't look real. In North Pole the reindeer never stopped eating; on the Dalton Highway we drove until the map said Arctic Circle. And when the aurora finally spilled green over Fairbanks, nobody remembered the cold. Denali saw us off with a proper blizzard — and the softest snow I've ever fallen into. </p> <div class="beyond-preview"> <a class="beyond-preview-item" href="/beyond/alaska/"> <img src="/assets/img/beyond/thumbs/alaska/1.jpg" alt="Alaska preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/alaska/"> <img src="/assets/img/beyond/thumbs/alaska/2.jpg" alt="Alaska preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/alaska/"> <img src="/assets/img/beyond/thumbs/alaska/3.jpg" alt="Alaska preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/alaska/"> <img src="/assets/img/beyond/thumbs/alaska/4.jpg" alt="Alaska preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/alaska/"> <img src="/assets/img/beyond/thumbs/alaska/5.jpg" alt="Alaska preview" loading="lazy"> </a> <a class="beyond-preview-item beyond-preview-more" href="/beyond/alaska/"> <span>+9 more<br><i class="fa-solid fa-arrow-right"></i></span> </a> </div> </section> <section class="beyond-trip beyond-teaser"> <div class="beyond-trip-head"> <h3><a href="/beyond/southwest/"><i class="fa-solid fa-hill-rockslide"></i>Zion &amp; Grand Canyon</a></h3> <span class="beyond-when">March 2026</span> </div> <p class="beyond-trip-story">A March loop through Utah and Arizona: red rock, cold rivers, and a lot of staring. In Zion we waded the river until our legs went numb and laughed the whole way. In Page, Lower Antelope Canyon turned out to be a sculpture that light re-carves every hour, and Horseshoe Bend showed us the river's slowest, grandest U-turn. Then the Grand Canyon itself — no photo prepares you for the moment the ground simply stops. Wild, enormous, and completely indifferent to us. I loved it. </p> <div class="beyond-preview"> <a class="beyond-preview-item" href="/beyond/southwest/"> <img src="/assets/img/beyond/thumbs/southwest/1.jpg" alt="Zion &amp; Grand Canyon preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/southwest/"> <img src="/assets/img/beyond/thumbs/southwest/2.jpg" alt="Zion &amp; Grand Canyon preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/southwest/"> <img src="/assets/img/beyond/thumbs/southwest/3.jpg" alt="Zion &amp; Grand Canyon preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/southwest/"> <img src="/assets/img/beyond/thumbs/southwest/4.jpg" alt="Zion &amp; Grand Canyon preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/southwest/"> <img src="/assets/img/beyond/thumbs/southwest/5.jpg" alt="Zion &amp; Grand Canyon preview" loading="lazy"> </a> <a class="beyond-preview-item beyond-preview-more" href="/beyond/southwest/"> <span>+10 more<br><i class="fa-solid fa-arrow-right"></i></span> </a> </div> </section> <section class="beyond-trip beyond-teaser"> <div class="beyond-trip-head"> <h3><a href="/beyond/guatemala/"><i class="fa-solid fa-volcano"></i>Guatemala</a></h3> <span class="beyond-when">May 2026</span> </div> <p class="beyond-trip-story">Guatemala doesn't do quiet. Tuk-tuks buzz around Lake Atitlán, markets spill into the streets, and a wedding can simply take over a corner in Antigua — everyone approves. We drifted between lakeside towns, found hippie yoga in San Marcos and an artist's studio I left three paintings richer, then climbed Acatenango for seven relentless hours. That night Fuego erupted over and over, like the mountain had something to say. At sunrise, above the clouds, it stopped feeling like a view and started feeling like a blessing. </p> <div class="beyond-preview"> <a class="beyond-preview-item" href="/beyond/guatemala/"> <img src="/assets/img/beyond/thumbs/guatemala/1.jpg" alt="Guatemala preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/guatemala/"> <img src="/assets/img/beyond/thumbs/guatemala/2.jpg" alt="Guatemala preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/guatemala/"> <img src="/assets/img/beyond/thumbs/guatemala/3.jpg" alt="Guatemala preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/guatemala/"> <img src="/assets/img/beyond/thumbs/guatemala/4.jpg" alt="Guatemala preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/guatemala/"> <img src="/assets/img/beyond/thumbs/guatemala/5.jpg" alt="Guatemala preview" loading="lazy"> </a> <a class="beyond-preview-item beyond-preview-more" href="/beyond/guatemala/"> <span>+10 more<br><i class="fa-solid fa-arrow-right"></i></span> </a> </div> </section> <h2 class="beyond-group-title"> <i class="fa-solid fa-envelopes-bulk"></i>Postcards</h2> <section class="beyond-trip beyond-teaser"> <p class="beyond-trip-story">Some places I pass through once; some keep pulling me back — and all of them leave something behind. There's no grand itinerary here, just views that made me pull over, look up, or take the long way on purpose. Postcards from wherever the road decided to go. </p> <div class="beyond-preview"> <a class="beyond-preview-item" href="/beyond/postcards/"> <img src="/assets/img/beyond/thumbs/canada/1.jpg" alt="Postcards preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/postcards/"> <img src="/assets/img/beyond/thumbs/canada/4.jpg" alt="Postcards preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/postcards/"> <img src="/assets/img/beyond/thumbs/canada/5.jpg" alt="Postcards preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/postcards/"> <img src="/assets/img/beyond/thumbs/canada/6.jpg" alt="Postcards preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/postcards/"> <img src="/assets/img/beyond/thumbs/canada/7.jpg" alt="Postcards preview" loading="lazy"> </a> <a class="beyond-preview-item beyond-preview-more" href="/beyond/postcards/"> <span>+11 more<br><i class="fa-solid fa-arrow-right"></i></span> </a> </div> </section> <h2 class="beyond-group-title"> <i class="fa-solid fa-camera-retro"></i>Small moments</h2> <section class="beyond-trip beyond-teaser"> <p class="beyond-trip-story">The best photos are never the planned ones. A cat that decides to trust you, a finish line you weren't sure about, a dish too good to eat right away, a friend mid-laugh — life keeps handing out these small gifts, and I try to catch as many as I can. This wall is where I keep them. </p> <div class="beyond-preview"> <a class="beyond-preview-item" href="/beyond/moments/"> <img src="/assets/img/beyond/thumbs/moments/4.jpg" alt="Small moments preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/moments/"> <img src="/assets/img/beyond/thumbs/moments/5.jpg" alt="Small moments preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/moments/"> <img src="/assets/img/beyond/thumbs/moments/17.jpg" alt="Small moments preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/moments/"> <img src="/assets/img/beyond/thumbs/canada/9.jpg" alt="Small moments preview" loading="lazy"> </a> <a class="beyond-preview-item" href="/beyond/moments/"> <img src="/assets/img/beyond/thumbs/canada/3.jpg" alt="Small moments preview" loading="lazy"> </a> <a class="beyond-preview-item beyond-preview-more" href="/beyond/moments/"> <span>+25 more<br><i class="fa-solid fa-arrow-right"></i></span> </a> </div> </section> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Zeyu (Steven) Zhang. © Copyright 2026 Zeyu Zhang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=a0b50f53a3105d8c378c64c7244d57c5" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js" integrity="sha256-MgH13bFTTNqsnuEoqNPBLDaqxjGH+lCpqrukmXc8Ppg=" crossorigin="anonymous"></script> <script defer src="/assets/js/leaflet-setup.js?v=b6313931e203b924523e2d8b75fe8874" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?v=85ddb88934d28b74e78031fd54cf8308"></script> <script src="/assets/js/no_defer.js?v=2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?v=d7607263f3e7e7927a9329eaee33452d"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?v=a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/progress-bar.js?v=2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> </body> </html>

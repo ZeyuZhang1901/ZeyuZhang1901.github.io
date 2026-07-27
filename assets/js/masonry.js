@@ -1,1 +1,1 @@
-$(document).ready(function(){var r=$(".grid").masonry({gutter:10,horizontalOrder:!0,itemSelector:".grid-item"});r.imagesLoaded().progress(function(){r.masonry("layout")})});
+$(document).ready(function(){var o=$(".grid").masonry({gutter:10,horizontalOrder:!0,itemSelector:".grid-item"});o.imagesLoaded().progress(function(){o.masonry("layout")}),$(".beyond-wall").each(function(){var o=$(this).masonry({itemSelector:".beyond-photo",percentPosition:!0,gutter:".beyond-gutter-sizer",horizontalOrder:!0});o.imagesLoaded().progress(function(){o.masonry("layout")})})});
