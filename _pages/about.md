@@ -19,7 +19,7 @@ profile:
         <span>LinkedIn</span>
       </a>
       <a class="about-link" href="https://scholar.google.com/citations?user=dr-xetEAAAAJ" target="_blank" rel="noopener noreferrer">
-        <i class="ai ai-google-scholar" aria-hidden="true"></i>
+        <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
         <span>Google Scholar</span>
       </a>
     </div>
