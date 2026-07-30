@@ -317,30 +317,4 @@ $about-theme-line: rgba($purple-color, 0.22);
     font-weight: 700;
   }
 
-  .about-paper-meta {
-    .links {
-      .btn {
-        margin: 0.15rem 0.3rem 0.15rem 0;
-      }
-    }
-
-    div.abstract.hidden {
-      display: none;
-
-      &.open {
-        display: block;
-        margin-top: 0.55rem;
-        padding: 0.65rem 0.75rem;
-        background: var(--global-bg-color);
-        border: 1px solid var(--global-divider-color);
-        border-radius: 8px;
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-
-      p {
-        margin: 0;
-      }
-    }
-  }
 }
