@@ -88,7 +88,7 @@
     \;$|$\;
     \faGlobe\ \href{https://zeyuzhang1901.github.io}{zeyuzhang1901.github.io}
     \;$|$\;
-    \faGithub\ \href{https://github.com/ZeyuZhang1901}{ZeyuZhang1901}
+    \faLinkedin\ \href{https://www.linkedin.com/in/zeyu-zhang-42813a271/}{LinkedIn}
     \;$|$\;
     \faGraduationCap\ \href{https://scholar.google.com/citations?user=dr-xetEAAAAJ}{Google Scholar}
   }
@@ -100,8 +100,9 @@ Working on \textbf{trustworthy LLMs}: can we trust what LLMs report? My research
 whether a model's stated explanations actually drive its predictions (\textbf{LAMP},
 AISTATS 2026 \textbf{Spotlight}), and whether its evaluations can be believed. My current
 focus is \textbf{LLM backtesting}---evaluating LLM forecasting ability on historical
-data---where temporal leakage from pretraining silently inflates scores: I prove when the
-inflation can be identified and corrected at all (leakage-adjusted evaluation), measure the
+data---where temporal leakage from pretraining silently inflates scores and the standard
+pre/post check cannot see it: I prove when the inflation can be measured at all and correct
+the score with one external reference (leakage-adjusted evaluation), measure the
 contamination interpretably (\textbf{TimeSPEC}), and train it away with RL post-training
 (\textbf{TEMPO}). Three first-author papers under review or in submission (NeurIPS /
 EMNLP 2026, TMLR), plus a first-author NeurIPS 2023 paper on offline RL.
@@ -142,11 +143,12 @@ EMNLP 2026, TMLR), plus a first-author NeurIPS 2023 paper on offline RL.
   {Advisor: Prof.\ Bradly C.\ Stadie}{Sept 2025 -- Present}
 \story{Backtesting---asking a model historical questions under a cutoff date, as if it were forecasting
   from that earlier time---is the standard way to evaluate LLM prediction ability. Its validity breaks
-  silently: \textbf{temporal leakage}, a special form of data contamination in which post-cutoff knowledge
-  from pretraining seeps into the model's reasoning, inflates backtest scores. My work treats this as one
-  program: a \textbf{statistical theory} of why the inflation is systematic and how to correct the score
-  [P1], an \textbf{interpretable audit} and inference-time defense [P3], and a \textbf{training method}
-  that instills temporal discipline [P2].}
+  silently: \textbf{temporal leakage}, post-cutoff knowledge from pretraining seeping into the model's
+  reasoning, inflates backtest scores---and the standard pre/post audit cannot see it, because legitimate
+  recency produces the same signature. My work treats this as one program: a \textbf{statistical theory}
+  of what a backtest can reveal and how one reference restores a corrected score [P1], an
+  \textbf{interpretable audit} and inference-time defense [P3], and a \textbf{training method} that
+  instills temporal discipline [P2].}
 \begin{bullets}
   \item \facet{Formalize the mechanism [P1].} Modeled leakage causally and derived an exact decomposition
         of its score inflation: the inflation is systematic, not noise---it follows the

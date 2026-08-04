@@ -87,7 +87,7 @@
     \;$|$\;
     \faGlobe\ \href{https://zeyuzhang1901.github.io}{zeyuzhang1901.github.io}
     \;$|$\;
-    \faGithub\ \href{https://github.com/ZeyuZhang1901}{ZeyuZhang1901}
+    \faLinkedin\ \href{https://www.linkedin.com/in/zeyu-zhang-42813a271/}{LinkedIn}
     \;$|$\;
     \faGraduationCap\ \href{https://scholar.google.com/citations?user=dr-xetEAAAAJ}{Google Scholar}
   }
@@ -131,10 +131,12 @@ offline reinforcement learning; fluent in Python.
 \story{Backtesting is how every forecasting system is validated---and LLM forecasters, increasingly
   deployed for financial prediction, are no exception. But a pretrained LLM has already read the future:
   post-cutoff knowledge from pretraining leaks into its reasoning, a model-internal form of
-  \textbf{look-ahead bias} that no date filter on the data can remove, silently inflating backtest scores.
-  My research treats this as one program: a \textbf{statistical theory} of why the inflation is
-  systematic and how to subtract it from the score, an \textbf{interpretable audit} and inference-time
-  defense, and a \textbf{training method} that instills point-in-time discipline.}
+  \textbf{look-ahead bias} that no date filter on the data can remove. Worse, the standard audit---%
+  comparing performance before and after the training cutoff---is uninformative: legitimate recency
+  reproduces the leakage pattern, flagging even provably clean models. My research treats this as one
+  program: a \textbf{statistical theory} of what a backtest can reveal and how one defensible reference
+  restores a corrected score, an \textbf{interpretable audit} and inference-time defense, and a
+  \textbf{training method} that instills point-in-time discipline.}
 \begin{bullets}
   \item \facet{Formalize the mechanism.} Modeled leakage causally and proved the inflation is systematic,
         not random: it obeys a stakes $\times$ extraction law and concentrates where the outcome surprised

@@ -20,5 +20,6 @@ vendor
 .env.development
 .env.production
 CV/*.pdf
+CV/summer-intern/
 _preview_*.html
 photos_raw/
