@@ -141,9 +141,10 @@ auditing, RL-based fine-tuning (GRPO, DPO, RLHF), and factual memorization in LL
 \vspace{5pt}
 \textbf{Preprints (Under Review)}
 \begin{publist}
-  \pub{P1}{Temporal Leakage in LLM Backtesting: From Statistical Modeling to Leakage-Adjusted Evaluation}
+  \pub{P1}{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
     {\me, Bradly C.\ Stadie}
-    {In submission to TMLR.}
+    {In submission to TMLR. \;
+     {\upshape\small\href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}}
   \pub{P2}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
     {\me, Bradly C.\ Stadie}
     {Under review at NeurIPS 2026. \;
@@ -164,12 +165,14 @@ auditing, RL-based fine-tuning (GRPO, DPO, RLHF), and factual memorization in LL
   {Advisor: Prof.\ Bradly C.\ Stadie \quad$\rightarrow$ papers [P1], [P2], [P3]}{Sept 2025 -- Present}
 \begin{bullets}
   \item Formalized \textbf{temporal knowledge leakage} in LLM backtesting: models exploit post-cutoff
-        pre-training knowledge when evaluated on historical prediction tasks (legal case outcomes,
-        salary estimation, stock ranking), inflating reported accuracy and invalidating evaluation.
-  \item Built the statistical foundation of the program: proved the leakage inflation is
-        \emph{non-identifiable} from passive backtest scores (entangled with skill and recency), and showed
-        one external reference (a clean control model or the training-cutoff discontinuity) restores
-        identification---yielding a \textbf{leakage-adjusted score} with confidence intervals.
+        pre-training knowledge when evaluated on historical prediction tasks, inflating reported
+        accuracy and invalidating evaluation.
+  \item Built the statistical foundation of the program: showed the standard pre/post contamination check
+        is uninformative (recency alone reproduces the leakage signature; four flagships fail it on
+        questions they cannot have memorized), proved the inflation is \emph{non-identifiable} from
+        passive scores, and showed one external reference restores a \textbf{leakage-adjusted score}
+        with confidence intervals---validated by planting leakage in twin models and deployed to audit
+        frontier systems.
   \item Introduced \textbf{Shapley-DCLR}, a claim-level metric that decomposes prediction rationales into
         atomic claims and applies Shapley values to quantify what fraction of \emph{decision-critical}
         reasoning is contaminated---making contamination measurable and interpretable.

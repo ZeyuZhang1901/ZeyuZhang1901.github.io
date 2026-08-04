@@ -145,10 +145,11 @@ offline reinforcement learning; fluent in Python.
         profile does \emph{not} certify a clean backtest---and that one practical external reference
         restores identification (\textbf{difference-in-differences} against a clean control model, or
         \textbf{regression discontinuity} at the training cutoff), yielding a \textbf{leakage-adjusted
-        score} with confidence intervals. Estimators track controlled contamination doses monotonically,
-        localize real inflation at frontier models' cutoffs (GPT-4o pass@1 $0.534 \to 0.444$), and
-        correctly shrink an apparent forecasting advantage to zero on 1{,}199 prediction-market questions
-        (Polymarket, Metaculus, Manifold, INFER).
+        score} with confidence intervals. Estimators recover leakage planted in twin models in dose,
+        location, and per-question profile, return null on the clean twin, and, deployed on frontier
+        models over a 1{,}646-question prediction-market panel (Polymarket, Metaculus, Manifold, INFER),
+        detect one cutoff-localized signature while clearing five models whose apparent forecasting edge
+        was recency alone.
   \item \facet{Audit any black box.} \textbf{Shapley-DCLR}: decomposes each rationale into atomic claims
         and attributes each claim's decision impact with \textbf{Shapley values} (near-linear
         leverage-score estimation), measuring what fraction of the reasoning that \emph{actually drives} a
@@ -199,9 +200,9 @@ offline reinforcement learning; fluent in Python.
 %--------------------------- Publications ---------------------------------------
 \section{Publications \& Preprints}
 \begin{publist}
-  \pub{Temporal Leakage in LLM Backtesting: From Statistical Modeling to Leakage-Adjusted Evaluation}
+  \pub{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
     {\chip{In submission, TMLR}}
-    {\me, B.\ C.\ Stadie}
+    {\me, B.\ C.\ Stadie \; \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
   \pub{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
     {\chip{Under review, NeurIPS 2026}}
     {\me, B.\ C.\ Stadie \; \href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}}

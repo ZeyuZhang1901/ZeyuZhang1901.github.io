@@ -109,9 +109,10 @@ EMNLP 2026, TMLR), plus a first-author NeurIPS 2023 paper on offline RL.
 %--------------------------- Publications ---------------------------------------
 \section{Publications \& Preprints}
 \begin{publist}
-  \pub{P1}{Temporal Leakage in LLM Backtesting: From Statistical Modeling to Leakage-Adjusted Evaluation}
+  \pub{P1}{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
     {\chip{In submission, TMLR}}
-    {\me, B.\ C.\ Stadie}
+    {\me, B.\ C.\ Stadie \;
+     \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
   \pub{P2}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
     {\chip{Under review, NeurIPS 2026}}
     {\me, B.\ C.\ Stadie \;
@@ -154,11 +155,13 @@ EMNLP 2026, TMLR), plus a first-author NeurIPS 2023 paper on offline RL.
         inflation), while perturbations orthogonal to the leak strictly deflate the score.
   \item \facet{Prove what evaluation requires [P1].} Proved the inflation is \emph{non-identifiable} from
         passive backtest scores---entangled with genuine skill and recency, so a flat pre/post profile does
-        not certify a clean backtest---and that one practical external reference restores identification:
-        a clean control model (difference-in-differences), a known cutoff (regression discontinuity), or
-        paraphrase queries (detection). The result is a \textbf{leakage-adjusted score} with confidence
-        intervals, validated on controlled contamination doses, frontier code models (GPT-4o pass@1
-        $0.534 \to 0.444$), and 1{,}199 prediction-market questions.
+        not certify a clean backtest, and four flagships fail the naive check on questions they cannot
+        have memorized---and that one external reference restores measurement: a matched clean control
+        (difference-in-differences) or a known cutoff (regression discontinuity), yielding a
+        \textbf{leakage-adjusted score} with confidence intervals. Estimators recover leakage planted in
+        twin models in dose, location, and per-question profile, return null on the clean twin, and,
+        deployed on frontier models over a 1{,}646-question ForecastBench panel, detect one
+        cutoff-localized signature while clearing five models whose apparent advantages were recency alone.
   \item \facet{Audit any black box [P3].} \textbf{Shapley-DCLR}: decomposes rationales into atomic claims
         (nine-category taxonomy) and attributes each claim's decision impact with Shapley values
         (near-linear Leverage-SHAP estimation), measuring how much of the reasoning that \emph{actually

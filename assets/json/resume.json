@@ -26,7 +26,8 @@
       "summary": "Detecting, attributing, quantifying, and eliminating temporal knowledge leakage in LLM backtesting. Three first-author papers under review or in submission (NeurIPS 2026, EMNLP 2026, TMLR).",
       "highlights": [
         "Formalized temporal knowledge leakage: models exploit post-cutoff pre-training knowledge on historical prediction tasks, inflating reported accuracy and invalidating evaluation",
-        "Proved the leakage inflation is non-identifiable from passive backtest scores and that one external reference (clean-control difference-in-differences or cutoff regression discontinuity) restores identification, yielding a leakage-adjusted score with confidence intervals",
+        "Proved the leakage inflation is non-identifiable from passive backtest scores (recency alone reproduces the leakage signature: four flagship models fail the naive pre/post check on questions they cannot have memorized) and derived a concentration law: inflation = honest uncertainty x extraction factor, so partial memorization is disproportionately rewarded",
+        "Showed one external reference restores measurement: a known cutoff (regression discontinuity) or a matched clean control (difference-in-differences) yields a leakage-adjusted score with confidence intervals; validated by planting leakage in twin models (dose recovery, null on the clean twin) and deployed on frontier models, detecting one cutoff-localized signature and clearing five models whose advantages were recency alone",
         "Introduced Shapley-DCLR, a claim-level Shapley-weighted metric quantifying what fraction of decision-critical reasoning is contaminated",
         "Designed TimeSPEC, an inference-time architecture interleaving temporally filtered retrieval with claim-level supervision, requiring no retraining",
         "Developed TEMPO, GRPO-based post-training with a two-mode reward; proved monotonic leakage decrease and convergence to the leak-free optimum",
@@ -214,10 +215,10 @@
   "certificates": [],
   "publications": [
     {
-      "name": "Temporal Leakage in LLM Backtesting: From Statistical Modeling to Leakage-Adjusted Evaluation",
-      "publisher": "In submission to TMLR",
-      "releaseDate": "2026-07-01",
-      "url": "",
+      "name": "Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores",
+      "publisher": "Preprint, in submission to TMLR",
+      "releaseDate": "2026-08-03",
+      "url": "https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting",
       "summary": "Zeyu Zhang, Bradly C. Stadie"
     },
     {

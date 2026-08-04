@@ -6,8 +6,9 @@
       standard alternative is <strong>backtesting</strong>: ask the model historical questions under a cutoff date, as if it were forecasting from
       that earlier time. The hard problem is <strong>temporal leakage</strong>—a special form of data contamination in which post-cutoff knowledge
       from pretraining seeps into the model’s reasoning and inflates backtest scores. My work treats this problem as a whole. On the
-      <strong>evaluation</strong> side, a statistical theory shows the inflation is systematic rather than random, proves it cannot be separated from
-      genuine skill using backtest scores alone, and restores a trustworthy, leakage-adjusted score through practical external references. On the
+      <strong>evaluation</strong> side, a statistical theory shows the standard pre/post contamination check is uninformative—recency alone reproduces
+      the leakage signature—proves that no passive backtest can separate leakage from genuine skill, and shows that one external reference (a known
+      training cutoff or a matched clean control) restores measurement, yielding a validated <strong>leakage-adjusted score</strong>. On the
       <strong>mitigation</strong> side, an inference-time architecture blocks leaked claims from the model’s output without retraining—paired with an
       interpretable claim-level metric that quantifies how much of the decision-driving reasoning is contaminated—while an RL post-training method
       teaches the model temporal discipline itself.
@@ -15,6 +16,32 @@
   </section>
 
   <div class="about-works-label">Selected works in this line</div>
+
+  <article class="about-paper">
+    <div class="about-paper-inner">
+      <div class="about-paper-body">
+        <div class="about-paper-figure">
+          <img
+            src="{{ '/assets/img/about_story/theme_leakage.png' | relative_url }}"
+            alt="Temporal leakage causal mechanism and the double-benefit law"
+          >
+        </div>
+        <div class="about-paper-meta">
+          <div>
+            <span class="about-paper-role">Measure &amp; correct the score</span>
+            <span class="about-paper-nick">Leakage Audit</span>
+          </div>
+          <div class="about-paper-title">Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores</div>
+          <p class="about-paper-blurb">
+            The standard pre/post contamination check is uninformative: recency alone reproduces the leakage signature, and no passive backtest can
+            separate leakage from skill and recency. One external reference—a known training cutoff or a matched clean control—restores measurement
+            and yields a leakage-adjusted score, validated by planting leakage in twin models and deployed as an audit of frontier systems.
+          </p>
+          <div class="about-paper-venue">Preprint · In submission to TMLR</div>
+        </div>
+      </div>
+    </div>
+  </article>
 
   <article class="about-paper">
     <div class="about-paper-inner">
