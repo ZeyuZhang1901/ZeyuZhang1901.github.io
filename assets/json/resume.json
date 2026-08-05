@@ -78,6 +78,16 @@
     {
       "organization": "Northwestern University",
       "location": "Evanston, IL",
+      "position": "Teaching Assistant - Applied Multivariate Analysis (STAT 348)",
+      "url": "https://www.northwestern.edu/",
+      "startDate": "2026-09-01",
+      "endDate": "2026-12-01",
+      "summary": "Teaching assistant for Applied Multivariate Analysis with Prof. Thomas Severini (second appointment).",
+      "highlights": ["Hold in-class discussion sessions to answer student questions", "Grade all homework assignments"]
+    },
+    {
+      "organization": "Northwestern University",
+      "location": "Evanston, IL",
       "position": "Teaching Assistant - Data Science 3 with Python (STAT 303-3)",
       "url": "https://www.northwestern.edu/",
       "startDate": "2026-04-01",
@@ -216,9 +226,9 @@
   "publications": [
     {
       "name": "Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores",
-      "publisher": "Preprint, in submission to TMLR",
-      "releaseDate": "2026-08-03",
-      "url": "https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting",
+      "publisher": "Preprint, in submission to TMLR (arXiv:2608.02985)",
+      "releaseDate": "2026-08-04",
+      "url": "https://arxiv.org/abs/2608.02985",
       "summary": "Zeyu Zhang, Bradly C. Stadie"
     },
     {

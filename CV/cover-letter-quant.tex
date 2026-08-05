@@ -1,0 +1,99 @@
+%-------------------------------------------------------------------------------
+% Cover letter — Quantitative research summer internships
+% Zeyu (Steven) Zhang.  Compile with: tectonic cover-letter-quant.tex
+%
+% Before sending, replace the three [BRACKETED] placeholders:
+%   1. [Company] and the recipient line
+%   2. [ROLE / PROGRAM NAME] in the opening paragraph
+%   3. The company-specific sentence in the closing paragraph
+%-------------------------------------------------------------------------------
+
+\documentclass[10.5pt]{article}
+
+\usepackage[letterpaper, margin=2.2cm, top=1.8cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{XCharter}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+
+\definecolor{accent}{HTML}{1F3A6E}
+\definecolor{bodygray}{HTML}{2B2B2B}
+\definecolor{metagray}{HTML}{5A5A5A}
+\colorlet{rulegray}{black!25}
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Zeyu Zhang - Cover Letter (Quantitative Research)}, pdfauthor={Zeyu Zhang}}
+
+\color{bodygray}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{9pt}
+
+\begin{document}
+
+%--------------------------- Header --------------------------------------------
+\begin{center}
+  {\Huge\scshape Zeyu (Steven) Zhang}\\[6pt]
+  {\color{metagray}\itshape Ph.D.\ Student in Statistics and Data Science, Northwestern University}\\[6pt]
+  {\small
+    \faEnvelope\ \href{mailto:zeyuzhang2028@u.northwestern.edu}{zeyuzhang2028@u.northwestern.edu}
+    \;$|$\;
+    \faGlobe\ \href{https://zeyuzhang1901.github.io}{zeyuzhang1901.github.io}
+    \;$|$\;
+    \faLinkedin\ \href{https://www.linkedin.com/in/zeyu-zhang-42813a271/}{LinkedIn}
+    \;$|$\;
+    \faGraduationCap\ \href{https://scholar.google.com/citations?user=dr-xetEAAAAJ}{Google Scholar}
+  }\\[4pt]
+  {\color{accent}\rule[0.6pt]{2.4cm}{1.6pt}}{\color{rulegray}\rule[1.15pt]{\dimexpr\textwidth-2.4cm\relax}{0.5pt}}
+\end{center}
+
+\vspace{4pt}
+{\color{metagray}\today}
+
+Dear [Company] Quantitative Research Recruiting Team,
+
+I am a third-year Ph.D.\ student in Statistics and Data Science at Northwestern
+University, applying for the [ROLE / PROGRAM NAME]. My research is about a question
+every systematic strategy must answer before capital is at risk: \textbf{when can a
+backtest be trusted?} I study look-ahead bias in evaluations of LLM-based
+forecasters---models that have already ``read the future'' in their training
+data---and build the statistical machinery to detect, measure, and remove it.
+
+My most recent paper (in submission to TMLR) shows that the standard defense,
+comparing scores before and after a training cutoff, is uninformative: legitimate
+recency reproduces the leakage signature, and I prove that no passive backtest can
+separate contamination from genuine skill. One defensible external reference
+restores measurement---difference-in-differences against a matched clean control,
+or regression discontinuity at a known cutoff---yielding a leakage-adjusted score
+with confidence intervals. I did not stop at theory: I validated the estimators by
+planting leakage at controlled doses in twin models, where they recovered the
+injected dose and returned null on the clean twin, then audited frontier models on
+1{,}646 prediction-market questions, clearing five whose apparent forecasting edge
+was recency alone. The habits this work demands---distrusting in-sample signals,
+designing falsification checks, pre-registering analyses---are the working habits
+of quantitative research.
+
+The rest of my record shows I can carry a problem from proof to large-scale
+experiment. My first-author NeurIPS 2023 paper cast learning-to-rank from logged
+clicks as offline reinforcement learning: counterfactual learning from biased
+logged feedback, structurally the same problem as learning from historical trading
+data. Two companion papers under review extend the backtesting program to
+mitigation---constrained RL post-training with convergence guarantees (NeurIPS
+2026) and an inference-time auditing system evaluated on 2{,}769 forecasting
+instances (EMNLP 2026). I work daily in Python and PyTorch, build evaluation
+pipelines end to end, and have taught six quarters of statistics and data science
+as a TA, so I am comfortable explaining technical decisions to a non-specialist
+audience.
+
+[One sentence on why this firm specifically: a team, a research area, or an aspect
+of its culture that matches the work above.] I would welcome the chance to bring
+this skepticism and rigor to problems where the data are noisier and the stakes are
+real. Thank you for your consideration.
+
+\vspace{6pt}
+Sincerely,\\[2pt]
+{\scshape Zeyu (Steven) Zhang}
+
+\end{document}
