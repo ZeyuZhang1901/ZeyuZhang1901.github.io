@@ -51,8 +51,8 @@ ninja.data = [{
           section: "News",},{id: "news-our-new-preprint-on-catching-models-that-peek-at-the-future-is-live-on-arxiv-with-code-to-reproduce-the-claim-level-leakage-audit-and-timespec-mitigation",
           title: 'Our new preprint on catching models that “peek” at the future is live...',
           description: "",
-          section: "News",},{id: "news-the-capstone-of-our-backtesting-line-is-complete-temporal-leakage-in-llm-backtesting-measurement-validation-and-adjusted-scores-proves-the-standard-contamination-check-is-uninformative-and-shows-one-defensible-reference-restores-a-leakage-adjusted-score-in-submission-to-tmlr-with-code-and-data-released",
-          title: 'The capstone of our backtesting line is complete: Temporal Leakage in LLM Backtesting:...',
+          section: "News",},{id: "news-the-capstone-of-our-backtesting-line-is-live-on-arxiv-temporal-leakage-in-llm-backtesting-measurement-validation-and-adjusted-scores-proves-the-standard-contamination-check-is-uninformative-and-shows-one-defensible-reference-restores-a-leakage-adjusted-score-in-submission-to-tmlr-with-code-and-data-released",
+          title: 'The capstone of our backtesting line is live on arXiv: Temporal Leakage in...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
@@ -124,6 +124,11 @@ ninja.data = [{
           description: "",
           section: "Teachings",handler: () => {
               window.location.href = "/teachings/25winter-data-science-2/";
+            },},{id: "teachings-applied-multivariate-analysis-stat-348",
+          title: 'Applied Multivariate Analysis (STAT 348)',
+          description: "",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/26fall-multivariate-analysis/";
             },},{id: "teachings-data-science-3-with-python-stat-303-3",
           title: 'Data Science 3 with Python (STAT 303-3)',
           description: "",
