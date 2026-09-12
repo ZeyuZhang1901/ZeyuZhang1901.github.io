@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-talks-amp-activities",
+          title: "Talks &amp; Activities",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/talks/";
+          },
         },{id: "nav-teaching-experience",
           title: "Teaching Experience",
           description: "",
@@ -53,6 +60,9 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "news-the-capstone-of-our-backtesting-line-is-live-on-arxiv-temporal-leakage-in-llm-backtesting-measurement-validation-and-adjusted-scores-proves-the-standard-contamination-check-is-uninformative-and-shows-one-defensible-reference-restores-a-leakage-adjusted-score-in-submission-to-tmlr-with-code-and-data-released",
           title: 'The capstone of our backtesting line is live on arXiv: Temporal Leakage in...',
+          description: "",
+          section: "News",},{id: "news-all-leaks-count-some-count-more-is-accepted-to-the-findings-of-emnlp-2026-14-3-acceptance-the-paper-measures-how-much-of-an-llm-s-decision-driving-reasoning-is-temporally-contaminated-shapley-dclr-and-blocks-it-at-inference-time-without-retraining-timespec",
+          title: 'All Leaks Count, Some Count More is accepted to the Findings of EMNLP...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
@@ -104,6 +114,11 @@ ninja.data = [{
           description: "High-precision device achieving 0.5% error with 1kHz-100kHz bandwidth",
           section: "Projects",handler: () => {
               window.location.href = "/projects/signal_distortion/";
+            },},{id: "talks-temporal-leakage-in-llm-backtesting-measurement-validation-and-adjusted-scores",
+          title: 'Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores',
+          description: "I delivered an invited research talk in the 2026 Academic Lecture Series of the College of Cyber Security at Jinan University, presenting my work on temporal leakage in LLM backtesting — how pretrained models silently &quot;read the future,&quot; how to measure the contamination, and how to eliminate it — to faculty and graduate students, followed by an extended Q&amp;A.",
+          section: "Talks",handler: () => {
+              window.location.href = "/talks/2026-09-jinan-invited-talk/";
             },},{id: "teachings-introduction-to-probability-and-statistics-stat-210-0-20",
           title: 'Introduction to Probability and Statistics (STAT 210-0-20)',
           description: "",
