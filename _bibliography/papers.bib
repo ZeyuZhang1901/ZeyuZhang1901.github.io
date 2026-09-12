@@ -45,9 +45,10 @@
   abstract={Backtesting large language models on historical events requires reasoning exclusively from information available before a specified cutoff date. Yet models routinely leak post-cutoff knowledge from pre-training into their reasoning, inflating apparent accuracy and undermining evaluation validity. Prompt-based constraints fail when suppressed content is causally related to the prediction, and knowledge unlearning cannot address this problem because temporal compliance is instance-specific: the same fact may be legitimate evidence for one cutoff date and a violation for another. Rather than erasing knowledge, the model must learn temporal discipline: selecting evidence conditioned on each instance's cutoff date. We propose TEMPO (Temporal Enforcement via Mode-separated Policy Optimization), which trains this discipline via two contributions: (1) a two-mode reward where a leakage mode drives post-cutoff claims to zero as a hard prerequisite before a performance mode optimizes task performance; and (2) a GRPO-based training pipeline that enables the model to discover temporally valid reasoning strategies. We prove that training monotonically decreases leakage, converges to the leak-free optimum, and improves task performance once compliance is achieved. On three prediction tasks and two models, TEMPO reduces leakage from 2–13\% to 0.6–3.7\% across all conditions, with task performance improving 6–13\% where strong pre-cutoff signals exist and maintained where the prediction task is inherently difficult from valid information alone.}
 }
 
-@misc{zhang2026allleaks,
+@inproceedings{zhang2026allleaks,
   title={All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting},
   author={Zhang, Zeyu and Chen, Ryan and Stadie, Bradly C.},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
   year={2026},
   eprint={2602.17234},
   archivePrefix={arXiv},
@@ -59,7 +60,6 @@
   preview={timespec2026_preview.png},
   bibtex_show={true},
   selected={true},
-  additional_info={Preprint, Under review at EMNLP 2026},
   category={First Author Publications},
   nick={TimeSPEC},
   blurb={Backtesting assumes models use only pre-cutoff evidence, but pretrained LLMs routinely leak later knowledge into their rationales. We introduce Shapley-DCLR to measure how much decision-critical reasoning is contaminated at the claim level, and TimeSPEC, an inference-time supervisor that regenerates predictions from temporally filtered evidence without retraining.},

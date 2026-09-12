@@ -317,6 +317,32 @@ map: true
     {
       "type": "Feature",
       "properties": {
+        "name": "Xi'an, Shaanxi, China (home)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.94,
+          34.26
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Guangzhou, China"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.264,
+          23.129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Evanston, IL (home base)"
       },
       "geometry": {

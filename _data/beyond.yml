@@ -133,6 +133,66 @@ trips:
       - file: guatemala/15.jpg
         caption: Fuego erupted all night, tireless. Honestly? I want that energy.
 
+  - id: china
+    title: "Back Home — China"
+    icon: fa-solid fa-house-chimney
+    when: Summer 2026
+    story: >
+      Some trips you plan; this one you simply return to. A few weeks back home in China
+      with my family, and the itinerary wrote itself: slow mornings in the neighborhood
+      garden — there's a little farm in it, the air is fresh, and everything smells like
+      things growing — lazy afternoons around Meibei Lake, all willows, bridges, and
+      pagodas, and a full-time eating schedule. Liangpi, roujiamo, yangrou paomo, plus a
+      Cantonese detour of chicken pot and dim sum. No summits, no border stamps. Just
+      home — which, it turns out, is a destination too.
+    photos:
+      - file: china/1.jpg
+        caption: The garden five minutes from home — a bench, a lawn, mountains on the horizon. My official spot for doing absolutely nothing.
+      - file: china/2.jpg
+        caption: The lotus pond in the neighborhood garden. Fresh air with a hint of green.
+      - file: china/3.jpg
+        caption: The red path through the trees — my walking-and-thinking route.
+      - file: china/4.jpg
+        caption: The neighborhood farm, quietly growing somebody's dinner. I love living next to things that grow.
+      - file: china/5.jpg
+        caption: Meibei Lake — stone lions on guard, a pagoda supervising from a distance.
+      - file: china/6.jpg
+        caption: The boardwalk across the water lilies. Every step is a new postcard.
+      - file: china/7.jpg
+        caption: Willows, a stone bridge, a pavilion over the water — the classical Chinese landscape checklist, fully satisfied.
+      - file: china/8.jpg
+        caption: The pagoda peeking through the willows, playing hard to get.
+      - file: china/9.jpg
+        caption: Same pagoda, new frame. This park makes everyone feel like a photographer.
+      - file: china/10.jpg
+        caption: The Spotted-Bamboo Pavilion (斑竹亭), living up to its name.
+      - file: china/11.jpg
+        caption: Liangpi — cold noodles slicked with chili oil and vinegar. One bite and I'm in high school again.
+      - file: china/12.jpg
+        caption: A stone pot of fish under a red tide of chili. It looks dangerous. It is. Worth it.
+      - file: china/13.jpg
+        caption: Braised beef tripe — glossy, tender, and completely unapologetic.
+      - file: china/14.jpg
+        caption: Roujiamo, the original burger — slow-stewed pork in a crisp flatbread. Held correctly, eaten immediately.
+      - file: china/15.jpg
+        caption: Fresh-sliced beef hotpot. The plates empty faster than the pot can boil.
+      - file: china/16.jpg
+        caption: A spicy shrimp pot from a shop that literally crowns itself the King of Live Shrimp. No objections at this table.
+      - file: china/17.jpg
+        caption: Hulatang, the peppery breakfast soup that wakes you up more honestly than coffee ever could.
+      - file: china/18.jpg
+        caption: Chemian (扯面) — hand-pulled wide noodles in tomato soup, chewy in exactly the way noodles dream of being.
+      - file: china/19.jpg
+        caption: Cantonese congee with youtiao — silk in a bowl, crunch on the side.
+      - file: china/20.jpg
+        caption: The chicken pot arrives already bubbling, like it has somewhere to be.
+      - file: china/21.jpg
+        caption: Noodles buried under a landslide of diced pork. Zero notes.
+      - file: china/22.jpg
+        caption: Yangrou paomo (羊肉泡馍) — flatbread soaked in lamb soup. Xi'an's most patient dish, and its most rewarding.
+      - file: china/23.jpg
+        caption: Cold dressed vegetables — the crunchy diplomat keeping the peace between all that spice.
+
 # The view: places and scenery, grouped by place.
 postcards:
   id: postcards

@@ -1,0 +1,76 @@
+{% if site.talks and site.talks.size > 0 %}
+  <div class="talks-activities">
+    <div class="talk-timeline">
+      {% assign talks_sorted = site.talks | sort: 'date' | reverse %}
+      {% assign talks_by_year = talks_sorted | group_by_exp: 'item', 'item.date | date: "%Y"' %}
+
+      {% for year_group in talks_by_year %}
+        <div class="talk-year-block">
+          <h2 class="talk-year">{{ year_group.name }}</h2>
+          <ul class="talk-list">
+            {% for talk in year_group.items %}
+              <li class="talk-item">
+                <div class="talk-row">
+                  {% if talk.lead_image %}
+                    {% assign lead_url = '/assets/img/' | append: talk.lead_image.path | relative_url %}
+                    <a class="talk-lead-photo" href="{{ lead_url }}" target="_blank" rel="noopener">
+                      <img src="{{ lead_url }}" alt="{{ talk.lead_image.caption | default: talk.title }}" loading="lazy" />
+                      {% if talk.lead_image.caption %}
+                        <span class="talk-photo-caption">{{ talk.lead_image.caption }}</span>
+                      {% endif %}
+                    </a>
+                  {% endif %}
+                  <div class="talk-main">
+                    <div class="talk-top">
+                      {% if talk.type %}
+                        <span class="talk-badge{% if talk.type == 'Invited Talk' %} talk-badge-invited{% endif %}">{{ talk.type }}</span>
+                      {% endif %}
+                      <span class="talk-date">{{ talk.date | date: '%B %-d, %Y' }}</span>
+                    </div>
+                    <div class="talk-title">{{ talk.title }}</div>
+                    {% if talk.venue %}
+                      <div class="talk-venue">
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ talk.venue -}}
+                        {%- if talk.location %} &middot; {{ talk.location }}{% endif %}
+                      </div>
+                    {% endif %}
+                    {% if talk.description %}
+                      <p class="talk-desc">{{ talk.description }}</p>
+                    {% endif %}
+                    <div class="talk-reveals">
+                      {% if talk.details %}
+                        <details class="talk-reveal">
+                          <summary><i class="fa-solid fa-circle-info"></i> More about this talk</summary>
+                          <p class="talk-details-text">{{ talk.details }}</p>
+                        </details>
+                      {% endif %}
+                      {% if talk.more_images %}
+                        <details class="talk-reveal">
+                          <summary><i class="fa-solid fa-images"></i> More photos</summary>
+                          <div class="talk-photos">
+                            {% for img in talk.more_images %}
+                              {% assign img_url = '/assets/img/' | append: img.path | relative_url %}
+                              <a class="talk-photo" href="{{ img_url }}" target="_blank" rel="noopener">
+                                <img src="{{ img_url }}" alt="{{ img.caption | default: talk.title }}" loading="lazy" />
+                                {% if img.caption %}
+                                  <span class="talk-photo-caption">{{ img.caption }}</span>
+                                {% endif %}
+                              </a>
+                            {% endfor %}
+                          </div>
+                        </details>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <p>No talks or activities listed yet.</p>
+{% endif %}

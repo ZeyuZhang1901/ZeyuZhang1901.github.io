@@ -176,6 +176,8 @@ collections:
     output: true
   projects:
     output: false # hidden from site (Projects page removed)
+  talks:
+    output: false # listed on Talks & Activities page only
   teachings:
     output: false # listed on Teaching Experience page only
   tools:
