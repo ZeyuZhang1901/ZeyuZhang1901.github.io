@@ -104,36 +104,36 @@ data---where temporal leakage from pretraining silently inflates scores and the 
 pre/post check cannot see it: I prove when the inflation can be measured at all and correct
 the score with one external reference (leakage-adjusted evaluation), measure the
 contamination interpretably (\textbf{TimeSPEC}), and train it away with RL post-training
-(\textbf{TEMPO}). First-author publications at EMNLP 2026 (Findings) and NeurIPS 2023,
-with two more first-author papers under review or in submission (NeurIPS 2026, TMLR).
+(\textbf{TEMPO}). First-author publications at NeurIPS 2026, EMNLP 2026 (Findings), and
+NeurIPS 2023, plus a first-author paper in submission (TMLR) and an AISTATS 2026 Spotlight.
 
 %--------------------------- Publications ---------------------------------------
 \section{Publications \& Preprints}
 \begin{publist}
+  \pub{C1}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
+    {\chip{NeurIPS 2026}}
+    {\me, B.\ C.\ Stadie \;
+     \href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}
+     \href{https://github.com/nu-snail/TEMPO}{[Code]}}
+  \pub{C2}{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
+    {\chip{Findings of EMNLP 2026}}
+    {\me, R.\ Chen, B.\ C.\ Stadie \;
+     \href{https://arxiv.org/abs/2602.17234}{[arXiv:2602.17234]}
+     \href{https://github.com/ZeyuZhang1901/TimeSPEC}{[Code]}}
+  \pub{C3}{LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models}
+    {\chip{AISTATS 2026}\,\chip{Spotlight}}
+    {R.\ Chen, Y.\ Ko, \me, C.\ Cho, S.\ Chung, M.\ Giuffr\'e, D.\ L.\ Shung, B.\ C.\ Stadie \;
+     \href{https://arxiv.org/abs/2505.11772}{[arXiv:2505.11772]}}
+  \pub{C4}{Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective}
+    {\chip{NeurIPS 2023}}
+    {\me, Y.\ Su, H.\ Yuan, Y.\ Wu, R.\ Balasubramanian, Q.\ Wu, H.\ Wang, M.\ Wang \;
+     \href{https://arxiv.org/abs/2306.07528}{[arXiv:2306.07528]}
+     \href{https://github.com/ZeyuZhang1901/Unified-Off-Policy-LTR-Neurips2023}{[Code]}}
   \pub{P1}{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
     {\chip{In submission, TMLR}}
     {\me, B.\ C.\ Stadie \;
      \href{https://arxiv.org/abs/2608.02985}{[arXiv:2608.02985]}
      \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
-  \pub{P2}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
-    {\chip{Under review, NeurIPS 2026}}
-    {\me, B.\ C.\ Stadie \;
-     \href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}
-     \href{https://github.com/nu-snail/TEMPO}{[Code]}}
-  \pub{P3}{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
-    {\chip{Findings of EMNLP 2026}}
-    {\me, R.\ Chen, B.\ C.\ Stadie \;
-     \href{https://arxiv.org/abs/2602.17234}{[arXiv:2602.17234]}
-     \href{https://github.com/ZeyuZhang1901/TimeSPEC}{[Code]}}
-  \pub{C1}{LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models}
-    {\chip{AISTATS 2026}\,\chip{Spotlight}}
-    {R.\ Chen, Y.\ Ko, \me, C.\ Cho, S.\ Chung, M.\ Giuffr\'e, D.\ L.\ Shung, B.\ C.\ Stadie \;
-     \href{https://arxiv.org/abs/2505.11772}{[arXiv:2505.11772]}}
-  \pub{C2}{Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective}
-    {\chip{NeurIPS 2023}}
-    {\me, Y.\ Su, H.\ Yuan, Y.\ Wu, R.\ Balasubramanian, Q.\ Wu, H.\ Wang, M.\ Wang \;
-     \href{https://arxiv.org/abs/2306.07528}{[arXiv:2306.07528]}
-     \href{https://github.com/ZeyuZhang1901/Unified-Off-Policy-LTR-Neurips2023}{[Code]}}
 \end{publist}
 
 %--------------------------- Research Experience ---------------------------------
@@ -148,8 +148,8 @@ with two more first-author papers under review or in submission (NeurIPS 2026, T
   reasoning, inflates backtest scores---and the standard pre/post audit cannot see it, because legitimate
   recency produces the same signature. My work treats this as one program: a \textbf{statistical theory}
   of what a backtest can reveal and how one reference restores a corrected score [P1], an
-  \textbf{interpretable audit} and inference-time defense [P3], and a \textbf{training method} that
-  instills temporal discipline [P2].}
+  \textbf{interpretable audit} and inference-time defense [C2], and a \textbf{training method} that
+  instills temporal discipline [C1].}
 \begin{bullets}
   \item \facet{Formalize the mechanism [P1].} Modeled leakage causally and derived an exact decomposition
         of its score inflation: the inflation is systematic, not noise---it follows the
@@ -165,15 +165,15 @@ with two more first-author papers under review or in submission (NeurIPS 2026, T
         twin models in dose, location, and per-question profile, return null on the clean twin, and,
         deployed on frontier models over a 1{,}646-question ForecastBench panel, detect one
         cutoff-localized signature while clearing five models whose apparent advantages were recency alone.
-  \item \facet{Audit any black box [P3].} \textbf{Shapley-DCLR}: decomposes rationales into atomic claims
+  \item \facet{Audit any black box [C2].} \textbf{Shapley-DCLR}: decomposes rationales into atomic claims
         (nine-category taxonomy) and attributes each claim's decision impact with Shapley values
         (near-linear Leverage-SHAP estimation), measuring how much of the reasoning that \emph{actually
         drives} a prediction is contaminated---interpretable, and computable for any black-box model.
-  \item \facet{Mitigate without training [P3].} \textbf{TimeSPEC}, a five-phase generate--supervise--%
+  \item \facet{Mitigate without training [C2].} \textbf{TimeSPEC}, a five-phase generate--supervise--%
         regenerate--aggregate architecture with date-filtered retrieval and a closed-world aggregator that
         blocks leaked claims at the output level; evaluated on \textbf{2{,}769 forecasting instances}
         across Qwen3.5, Kimi-K2.5, and Claude Sonnet 4.
-  \item \facet{Mitigate by training [P2].} Temporal compliance is \emph{instance-specific}---the same fact
+  \item \facet{Mitigate by training [C1].} Temporal compliance is \emph{instance-specific}---the same fact
         is legitimate evidence for one cutoff date and a violation for another---so unlearning cannot fix
         it. \textbf{TEMPO} instead teaches the discipline: GRPO + LoRA post-training of Qwen3 MoE models
         (30B/35B) with a two-mode reward that drives leaked claims to zero as a hard prerequisite before
@@ -187,7 +187,7 @@ with two more first-author papers under review or in submission (NeurIPS 2026, T
   0.6--3.7\%, task performance +6--13\%, zero inference overhead.}
 
 \vspace{7pt}
-\entry{LAMP: Black-Box Interpretability via Locally Linear Decision Surfaces \; {\normalfont\small\itshape\color{metagray}[C1]}}
+\entry{LAMP: Black-Box Interpretability via Locally Linear Decision Surfaces \; {\normalfont\small\itshape\color{metagray}[C3]}}
   {Northwestern University}
   {Advisor: Prof.\ Bradly C.\ Stadie}{Jan 2024 -- Jan 2025}
 \story{LLMs give fluent explanations for their predictions, but fluency is not faithfulness. The hard
@@ -204,7 +204,7 @@ with two more first-author papers under review or in submission (NeurIPS 2026, T
 \end{bullets}
 
 \vspace{7pt}
-\entry{CUOLR: Unified Off-Policy Learning to Rank \; {\normalfont\small\itshape\color{metagray}[C2]}}
+\entry{CUOLR: Unified Off-Policy Learning to Rank \; {\normalfont\small\itshape\color{metagray}[C4]}}
   {Princeton University (remote)}
   {Mentors: Prof.\ Mengdi Wang, Prof.\ Huazheng Wang}{May 2022 -- Dec 2023}
 \story{Rankers must learn from logged clicks that are biased by how results were displayed; existing
