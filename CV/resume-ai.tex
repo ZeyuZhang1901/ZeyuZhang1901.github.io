@@ -104,17 +104,22 @@ data---where temporal leakage from pretraining silently inflates scores and the 
 pre/post check cannot see it: I prove when the inflation can be measured at all and correct
 the score with one external reference (leakage-adjusted evaluation), measure the
 contamination interpretably (\textbf{TimeSPEC}), and train it away with RL post-training
-(\textbf{TEMPO}). First-author publications at NeurIPS 2026, EMNLP 2026 (Findings), and
-NeurIPS 2023, plus a first-author paper in submission (TMLR) and an AISTATS 2026 Spotlight.
+(\textbf{TEMPO}). First-author publications at NeurIPS 2026, TMLR 2026, EMNLP 2026 (Findings),
+and NeurIPS 2023, plus an AISTATS 2026 Spotlight.
 
 %--------------------------- Publications ---------------------------------------
-\section{Publications \& Preprints}
+\section{Publications}
 \begin{publist}
   \pub{C1}{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
     {\chip{NeurIPS 2026}}
     {\me, B.\ C.\ Stadie \;
      \href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}
      \href{https://github.com/nu-snail/TEMPO}{[Code]}}
+  \pub{J1}{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
+    {\chip{TMLR 2026}}
+    {\me, B.\ C.\ Stadie \;
+     \href{https://arxiv.org/abs/2608.02985}{[arXiv:2608.02985]}
+     \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
   \pub{C2}{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
     {\chip{Findings of EMNLP 2026}}
     {\me, R.\ Chen, B.\ C.\ Stadie \;
@@ -129,11 +134,6 @@ NeurIPS 2023, plus a first-author paper in submission (TMLR) and an AISTATS 2026
     {\me, Y.\ Su, H.\ Yuan, Y.\ Wu, R.\ Balasubramanian, Q.\ Wu, H.\ Wang, M.\ Wang \;
      \href{https://arxiv.org/abs/2306.07528}{[arXiv:2306.07528]}
      \href{https://github.com/ZeyuZhang1901/Unified-Off-Policy-LTR-Neurips2023}{[Code]}}
-  \pub{P1}{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
-    {\chip{In submission, TMLR}}
-    {\me, B.\ C.\ Stadie \;
-     \href{https://arxiv.org/abs/2608.02985}{[arXiv:2608.02985]}
-     \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
 \end{publist}
 
 %--------------------------- Research Experience ---------------------------------
@@ -147,16 +147,16 @@ NeurIPS 2023, plus a first-author paper in submission (TMLR) and an AISTATS 2026
   silently: \textbf{temporal leakage}, post-cutoff knowledge from pretraining seeping into the model's
   reasoning, inflates backtest scores---and the standard pre/post audit cannot see it, because legitimate
   recency produces the same signature. My work treats this as one program: a \textbf{statistical theory}
-  of what a backtest can reveal and how one reference restores a corrected score [P1], an
+  of what a backtest can reveal and how one reference restores a corrected score [J1], an
   \textbf{interpretable audit} and inference-time defense [C2], and a \textbf{training method} that
   instills temporal discipline [C1].}
 \begin{bullets}
-  \item \facet{Formalize the mechanism [P1].} Modeled leakage causally and derived an exact decomposition
+  \item \facet{Formalize the mechanism [J1].} Modeled leakage causally and derived an exact decomposition
         of its score inflation: the inflation is systematic, not noise---it follows the
         stakes$\times$extraction law $B=\mathrm{E}[\,b_0\,w(2-w)\,]$, so partial leakage is
         disproportionately rewarded (absorbing half the leaked signal already yields 75\% of the full
         inflation), while perturbations orthogonal to the leak strictly deflate the score.
-  \item \facet{Prove what evaluation requires [P1].} Proved the inflation is \emph{non-identifiable} from
+  \item \facet{Prove what evaluation requires [J1].} Proved the inflation is \emph{non-identifiable} from
         passive backtest scores---entangled with genuine skill and recency, so a flat pre/post profile does
         not certify a clean backtest, and four flagships fail the naive check on questions they cannot
         have memorized---and that one external reference restores measurement: a matched clean control

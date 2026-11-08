@@ -23,7 +23,7 @@
       "url": "https://www.northwestern.edu/",
       "startDate": "2025-09-01",
       "endDate": "",
-      "summary": "Detecting, attributing, quantifying, and eliminating temporal knowledge leakage in LLM backtesting. Three first-author papers: NeurIPS 2026, Findings of EMNLP 2026, and one in submission (TMLR).",
+      "summary": "Detecting, attributing, quantifying, and eliminating temporal knowledge leakage in LLM backtesting. Three first-author papers: NeurIPS 2026, TMLR 2026, and Findings of EMNLP 2026.",
       "highlights": [
         "Formalized temporal knowledge leakage: models exploit post-cutoff pre-training knowledge on historical prediction tasks, inflating reported accuracy and invalidating evaluation",
         "Proved the leakage inflation is non-identifiable from passive backtest scores (recency alone reproduces the leakage signature: four flagship models fail the naive pre/post check on questions they cannot have memorized) and derived a concentration law: inflation = honest uncertainty x extraction factor, so partial memorization is disproportionately rewarded",
@@ -226,7 +226,7 @@
   "publications": [
     {
       "name": "Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores",
-      "publisher": "Preprint, in submission to TMLR (arXiv:2608.02985)",
+      "publisher": "Transactions on Machine Learning Research (TMLR), 2026 (arXiv:2608.02985)",
       "releaseDate": "2026-08-04",
       "url": "https://arxiv.org/abs/2608.02985",
       "summary": "Zeyu Zhang, Bradly C. Stadie"
