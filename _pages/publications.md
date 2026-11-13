@@ -14,6 +14,13 @@ nav_order: 2
 
 <div class="publications">
 
-{% bibliography %}
+<h2 class="bibliography">First-Author Publications</h2>
+{% bibliography --group_by none --query @*[category=First Author Publications] %}
+
+<h2 class="bibliography">Preprints</h2>
+{% bibliography --group_by none --query @*[category=Preprints] %}
+
+<h2 class="bibliography">Co-authored Publications and Preprints</h2>
+{% bibliography --group_by none --query @*[category=Co-authored Publications and Preprints] %}
 
 </div>

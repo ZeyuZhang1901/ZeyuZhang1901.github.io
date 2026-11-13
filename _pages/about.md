@@ -39,17 +39,15 @@ latest_posts:
   limit: 3
 ---
 
-I am a third-year Ph.D. student in Statistics and Data Science at Northwestern University, working with Prof. Bradly C. Stadie. My research sits at the intersection of statistics, machine learning, and large language models.
+I am a fourth-year Ph.D. student in Statistics and Data Science at Northwestern University, working with Prof. Bradly C. Stadie. My main research interest is **LLM forecasting**.
 
-I study how to make LLMs more **trustworthy** and **reliable** when they are used for prediction and reasoning—especially failure modes such as **hallucination**, temporal contamination in evaluation, and explanations that look fluent but may not track the model's actual decisions. I am particularly interested in **interpretation** of LLMs and in methods that help us audit, constrain, and improve model behavior under realistic deployment conditions.
+My recent research asks how to make **LLM backtests reliable**. A central and hard obstacle is **temporal leakage (look-ahead bias)**: knowledge from pretraining that lets a model "read the future" during a backtest. I also study the **robustness** of LLM forecasting systems: how they behave when the evidence they retrieve is manipulated. In addition, I am interested in the **interpretation** of LLM predictions—whether the prediction a model states reflects its internal reasoning and knowledge.
 
 <div class="about-interests">
   <div class="about-interests-label">Research interests</div>
   <div class="about-chips">
-    <span class="about-chip">Trustworthy LLMs</span>
-    <span class="about-chip">Reliability</span>
-    <span class="about-chip">Hallucination</span>
-    <span class="about-chip">Interpretation</span>
     <span class="about-chip">LLM forecasting</span>
+    <span class="about-chip">Trustworthy LLMs</span>
+    <span class="about-chip">LLM interpretation</span>
   </div>
 </div>

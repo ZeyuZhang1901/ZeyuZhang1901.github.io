@@ -9,13 +9,10 @@ last_name: Zhang
 contact_note: >
   Best reached via email.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  I am a third-year Ph.D. student in the Department of Statistics and Data Science at Northwestern University. My
-  research focuses on knowledge leakage in large language models, with particular emphasis on settings that involve
-  complex reasoning and chain-of-thought processes. I study how and when sensitive or unintended information may be
-  exposed during multi-step inference, and I am interested in principled methods for detecting, characterizing, and
-  mitigating such leakage. In parallel, I work on fine-tuning language models using reinforcement learning–based
-  approaches, including RLHF, Direct Preference Optimization (DPO), and related algorithms, with the goal of improving
-  alignment, robustness, and controllability.
+  I am a fourth-year Ph.D. student in Statistics and Data Science at Northwestern University, working on LLM
+  forecasting. My recent research asks how to make LLM backtests reliable, with temporal leakage (look-ahead bias) as a
+  central obstacle. I also study the robustness of LLM forecasting systems to manipulated evidence, and the
+  interpretation of LLM predictions.
 
   Outside of research, I am deeply committed to an active lifestyle. I follow a structured workout program and train
   almost every day, viewing physical discipline as a natural complement to intellectual rigor. I enjoy a wide range of
@@ -366,8 +363,8 @@ scholar:
   query: "@*"
   group_by: category
   group_order: descending
-  sort_by: year
-  order: descending
+  sort_by: sortdate, year # sortdate = acceptance/release date (YYYY-MM-DD) in papers.bib
+  order: descending, descending
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid

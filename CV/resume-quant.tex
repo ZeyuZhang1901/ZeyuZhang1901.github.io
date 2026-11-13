@@ -75,6 +75,12 @@
 
 \newcommand{\me}{\textbf{Z.\ Zhang}}
 
+% Compact publication: {title}{authors}{chips}{links}
+\newcommand{\cpub}[4]{\item \textbf{#1}. #2.\; #3\; {\footnotesize #4}}
+
+% Per-paper research item: {short name}{venue chip}{text}
+\newcommand{\paper}[3]{\item \facet{#1}\;#2\;\; #3}
+
 %===============================================================================
 \begin{document}
 
@@ -93,28 +99,22 @@
   }
 \end{center}
 
-%--------------------------- Summary --------------------------------------------
+%%%--------------------------- Summary --------------------------------------------
 \section{Summary}
-Statistics \& Data Science Ph.D.\ student at Northwestern (GPA 3.95/4.00) researching
-\textbf{LLM backtesting}: evaluating the forecasting ability of large language models on
-historical data, and detecting, attributing, and eliminating the \textbf{look-ahead bias}
-that silently inflates backtest scores when a pretrained model has already ``read the future.''
-First-author publications at NeurIPS 2026, TMLR 2026, EMNLP 2026 (Findings), and NeurIPS 2023,
-plus an AISTATS 2026 Spotlight. Strong foundation in probability, statistics, optimization, and
-offline reinforcement learning; fluent in Python.
+I am a fourth-year Ph.D.\ student in Statistics and Data Science at Northwestern University (GPA 3.95/4.00; expected graduation June 2028). My main research interest is \textbf{LLM forecasting}, and my recent research asks how to make \textbf{LLM backtests reliable}. A central and hard obstacle is \textbf{temporal leakage (look-ahead bias)}: knowledge from pretraining that lets a model ``read the future'' during a backtest. I also study the robustness of LLM prediction systems: how they are affected by attacks. In addition, I am interested in the \textbf{interpretation} of LLM predictions---whether the prediction a model states reflects its internal reasoning and knowledge. My strengths are \textbf{LLM evaluation and large-scale experiments} on frontier models, \textbf{post-training LLMs} with reinforcement learning, and a solid \textbf{statistics} foundation.
 
 %--------------------------- Education ------------------------------------------
 \section{Education}
 \entry{Northwestern University \; {\normalfont\small\itshape\color{metagray}Ph.D.\ in Statistics and Data Science, GPA 3.95/4.00}}
   {Evanston, IL}
-  {Advisor: Prof.\ Bradly C.\ Stadie; expected graduation June 2028}{Sept 2023 -- Present}
+  {Advisor: Prof.\ Bradly C.\ Stadie \quad \textbf{Expected graduation: June 2028}}{Sept 2023 -- Jun 2028 (expected)}
 \begin{bullets}
   \item Ph.D.\ coursework (all A): Statistical Theory \& Methods I--III, Applied Probability,
         Mathematics of Machine Learning, Reinforcement Learning, Mathematical Optimization,
         Analysis of Financial Data, Advanced Regression, Deep Learning.
 \end{bullets}
 \vspace{5pt}
-\entry{University of Science and Technology of China \; {\normalfont\small\itshape\color{metagray}B.Eng.\ EE; Minor in AI, GPA 3.93/4.30}}
+\entry{University of Science and Technology of China \; {\normalfont\small\itshape\color{metagray}B.Eng.\ EE, GPA 3.93/4.30}}
   {Hefei, China}
   {Rank 5/213 in School of Information Science and Technology}{Sept 2019 -- Jun 2023}
 \begin{bullets}
@@ -125,113 +125,105 @@ offline reinforcement learning; fluent in Python.
 %--------------------------- Research Experience ---------------------------------
 \section{Research Experience}
 
-\entry{LLM Backtesting \& Look-Ahead Bias: Theory, Detection, and Elimination}
+\entry{Trustworthy LLM Backtesting: Temporal Leakage and Look-Ahead Bias}
   {Northwestern University}
-  {Advisor: Prof.\ Bradly C.\ Stadie \quad Three first-author papers (NeurIPS 2026; TMLR 2026; Findings of EMNLP 2026)}{Sept 2025 -- Present}
-\story{Backtesting is how every forecasting system is validated---and LLM forecasters, increasingly
-  deployed for financial prediction, are no exception. But a pretrained LLM has already read the future:
-  post-cutoff knowledge from pretraining leaks into its reasoning, a model-internal form of
-  \textbf{look-ahead bias} that no date filter on the data can remove. Worse, the standard audit---%
-  comparing performance before and after the training cutoff---is uninformative: legitimate recency
-  reproduces the leakage pattern, flagging even provably clean models. My research treats this as one
-  program: a \textbf{statistical theory} of what a backtest can reveal and how one defensible reference
-  restores a corrected score, an \textbf{interpretable audit} and inference-time defense, and a
-  \textbf{training method} that instills point-in-time discipline.}
+  {Advisor: Prof.\ Bradly C.\ Stadie}{Sept 2025 -- Nov 2026}
+\story{Backtesting evaluates a model's prediction ability by asking historical questions as if it were forecasting from
+  the earlier time. Its validity breaks when applying to LLMs: post-cutoff knowledge from pretraining leaks into the
+  model's reasoning and inflates the backtest score.}
 \begin{bullets}
-  \item \facet{Formalize the mechanism.} Modeled leakage causally and proved the inflation is systematic,
-        not random: it obeys a stakes $\times$ extraction law and concentrates where the outcome surprised
-        the contemporaneous crowd and the model absorbed it. Partial leakage is disproportionately
-        rewarded: absorbing half the leaked signal already yields 75\% of the full inflation.
-  \item \facet{Recover true forecasting skill.} Proved the inflation is \emph{non-identifiable} from
-        backtest scores alone---entangled with genuine skill and recency, so a flat pre/post performance
-        profile does \emph{not} certify a clean backtest---and that one practical external reference
-        restores identification (\textbf{difference-in-differences} against a clean control model, or
-        \textbf{regression discontinuity} at the training cutoff), yielding a \textbf{leakage-adjusted
-        score} with confidence intervals. Estimators recover leakage planted in twin models in dose,
-        location, and per-question profile, return null on the clean twin, and, deployed on frontier
-        models over a 1{,}646-question prediction-market panel (Polymarket, Metaculus, Manifold, INFER),
-        detect one cutoff-localized signature while clearing five models whose apparent forecasting edge
-        was recency alone.
-  \item \facet{Audit any black box.} \textbf{Shapley-DCLR}: decomposes each rationale into atomic claims
-        and attributes each claim's decision impact with \textbf{Shapley values} (near-linear
-        leverage-score estimation), measuring what fraction of the reasoning that \emph{actually drives} a
-        prediction depends on future information.
-  \item \facet{Block at inference.} \textbf{TimeSPEC}, a point-in-time evaluation architecture
-        (date-filtered retrieval + claim-level supervision + closed-world aggregation) that blocks leaked
-        claims at the output level with no retraining; evaluated on \textbf{2{,}769 forecasting instances}
-        across three LLMs.
-  \item \facet{Train it out.} Temporal compliance is \emph{instance-specific}---the same fact is legitimate
-        for one cutoff date and a violation for another---so unlearning cannot fix it. \textbf{TEMPO}
-        instead trains the discipline: constrained RL post-training with a two-mode reward that eliminates
-        leaked claims as a hard constraint before optimizing predictive performance; \textbf{proved}
-        monotonic descent of leakage and linear convergence to the leak-free optimum (PL condition).
-  \item \facet{Point-in-time data.} Constructed three \textbf{point-in-time benchmarks} ($\sim$3{,}500
-        instances) with per-instance cutoff dates and zero-knowledge controls: ranking same-sector stocks
-        by six-month total return (incl.\ the COVID regime shift), athlete contract values, and federal
-        case outcomes.
+  \item \facet{Theory and adjusted scores.} Built a mathematical model of temporal leakage in LLM backtests.
+        LLMs legitimately know more about times near their cutoff, so recency mimics leakage: proved no
+        passive backtest can separate recency and leakage from genuine skill, and showed it on four flagship
+        models. Leakage concentrates on hard questions, where the honest forecast is far from the outcome,
+        and even partial memorization captures most of the inflation (the quadratic ``double benefit,''
+        $w(2-w)$). Introduced two estimators---a known cutoff (regression discontinuity) and a clean control
+        model (difference-in-differences)---that yield a \textbf{leakage-adjusted score}; in twin models with
+        planted leakage, they tracked the dose and returned null on clean questions.
+  \item \facet{Interpretable audit and inference-time defense.} Designed \textbf{Shapley-DCLR}, an
+        interpretable metric of what fraction of a model's decision-driving reasoning is contaminated, and
+        \textbf{TimeSPEC}, an architecture that interleaves temporally filtered retrieval with claim-level
+        supervision so predictions rest entirely on pre-cutoff evidence. It reports backtest performance
+        honestly---harder tasks such as stock-return ranking typically show a drop---and cut leakage by
+        \textbf{83--89\%} versus unsupervised retrieval-augmented prediction across three LLM families.
+  \item \facet{Training leakage out.} Designed \textbf{TEMPO}, GRPO post-training with a \textbf{two-mode
+        reward}: a leakage mode drives post-cutoff claims to zero as a hard prerequisite before a performance
+        mode optimizes the task on clean evidence, letting the model discover temporally valid reasoning;
+        proved monotonic leakage descent and convergence to the leak-free optimum. Across three tasks and two
+        models, leakage fell from \textbf{2--13\% to 0.6--3.7\%}; performance rose 6--13\% where pre-cutoff
+        signal is strong and held where the task is hard.
 \end{bullets}
-\impact{Leakage: retrieval baselines 13.1\% $\rightarrow$ 1.8\%; trained models 2--13\% $\rightarrow$
-  0.6--3.7\%, predictive performance +6--13\%, zero inference overhead.}
+
+\newpage
+\entry{One Fabrication Is Enough to Move LLM Forecasts}
+  {Northwestern University}
+  {Advisor: Prof.\ Bradly C.\ Stadie}{Aug 2026 -- Nov 2026}
+\story{Retrieval-based LLM forecasters search the news for evidence. We study the weakest attacker this
+  allows: one who knows only the forecasting question and publishes one fabricated article, with no access
+  to the model, retriever, or queries.}
+\begin{bullets}
+  \item \facet{The attack reaches the systems in use.} Evaluated the attack against five frontier models and
+        the architectures of two leading deployed forecasting systems, on real stock and prediction-market
+        questions (ForecastBench, Polymarket, Kalshi). Once in context, one fabricated article reverses
+        \textbf{74--82\%} of opposing forecasts, and the deployed systems' search retrieves it in
+        \textbf{$\sim$90\%} of runs.
+  \item \facet{Why it works.} Showed that retrieval decides the outcome: once the article is retrieved, every
+        model follows it. A genuine article in the same position has one third of the effect, so the effect
+        comes from the fabrication, not the added document.
+  \item \facet{A second attack.} Designed the first destabilizing attack on a forecaster: two fabricated
+        articles arguing opposite directions. The model does not hedge; it returns a confident forecast in a
+        direction the attacker no longer controls.
+  \item \facet{Against the best available defenses.} Passage filtering and partitioned retrieval each stop
+        one article but are cheaply bypassed; combined, they stop both bypasses at four articles but are beaten
+        by sixteen, change 29\% of clean decisions, and require control of the retrieval index, which
+        open-web systems do not have.
+\end{bullets}
 
 \vspace{7pt}
-\entry{Counterfactual Learning from Logged Feedback: Off-Policy Learning to Rank}
+\entry{CUOLR: Counterfactual Off-Policy Learning to Rank from Logged Feedback}
   {Princeton University (remote)}
-  {Mentors: Prof.\ Mengdi Wang, Prof.\ Huazheng Wang \quad Published at NeurIPS 2023}{May 2022 -- Dec 2023}
-\story{Learning to rank from logged user feedback is a counterfactual problem: clicks are biased by how
-  results were displayed, and existing corrections each assume a specific, known user-behavior model.}
+  {Mentors: Prof.\ Mengdi Wang, Prof.\ Huazheng Wang}{May 2022 -- Dec 2023}
 \begin{bullets}
-  \item Cast ranking under general stochastic user-behavior (click) models as a Markov Decision Process,
-        enabling offline RL (CQL, SAC, BCQ) to learn optimal rankings from biased logged data
-        \emph{without} explicit debiasing.
-  \item Statistically significant state-of-the-art on Yahoo!\ LETOR and MSLR-WEB10K, robust across
-        position-based, cascade, and DCM behavior models.
-\end{bullets}
-
-\vspace{7pt}
-\entry{Sensitivity Analysis of Black-Box Models via Local Linear Surrogates (LAMP)}
-  {Northwestern University}
-  {Advisor: Prof.\ Bradly C.\ Stadie \quad AISTATS 2026 \textbf{Spotlight}}{Jan 2024 -- Jan 2025}
-\story{Before trusting a black-box model's output, one should ask whether the factors it cites actually
-  move its predictions---a question of local sensitivity, answerable by regression.}
-\begin{bullets}
-  \item Co-developed a perturbation-based method that regresses a black-box model's re-queried predictions
-        on perturbed factor weights, recovering a local linear approximation of its decision surface---no
-        gradients or internals required; validated against human and clinical-expert judgments.
+  \item Cast ranking under general click models as a Markov Decision Process so offline RL (CQL, SAC, BCQ)
+        learns optimal rankings from biased logged data without explicit debiasing; statistically
+        significant state-of-the-art on Yahoo!\ LETOR and MSLR-WEB10K across position-based, cascade, and DCM
+        behavior models.
 \end{bullets}
 
 %--------------------------- Publications ---------------------------------------
 \section{Publications}
 \begin{publist}
-  \pub{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
-    {\chip{NeurIPS 2026}}
-    {\me, B.\ C.\ Stadie \; \href{https://arxiv.org/abs/2605.18843}{[arXiv:2605.18843]}}
-  \pub{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
-    {\chip{TMLR 2026}}
-    {\me, B.\ C.\ Stadie \; \href{https://arxiv.org/abs/2608.02985}{[arXiv:2608.02985]}
-     \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
-  \pub{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
-    {\chip{Findings of EMNLP 2026}}
-    {\me, R.\ Chen, B.\ C.\ Stadie \; \href{https://arxiv.org/abs/2602.17234}{[arXiv:2602.17234]}}
-  \pub{LAMP: Extracting Locally Linear Decision Surfaces from LLM World Models}
-    {\chip{AISTATS 2026}\,\chip{Spotlight}}
-    {R.\ Chen, Y.\ Ko, \me, C.\ Cho, S.\ Chung, M.\ Giuffr\'e, D.\ L.\ Shung, B.\ C.\ Stadie \;
-     \href{https://arxiv.org/abs/2505.11772}{[arXiv:2505.11772]}}
-  \pub{Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective}
-    {\chip{NeurIPS 2023}}
-    {\me, Y.\ Su, H.\ Yuan, Y.\ Wu, R.\ Balasubramanian, Q.\ Wu, H.\ Wang, M.\ Wang \;
-     \href{https://arxiv.org/abs/2306.07528}{[arXiv:2306.07528]}}
+  \cpub{Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores}
+       {\me, B.\ C.\ Stadie}{\chip{TMLR 2026}}{\href{https://arxiv.org/abs/2608.02985}{[arXiv]}
+        \href{https://github.com/ZeyuZhang1901/Temporal-Leakage-Backtesting}{[Code]}}
+  \cpub{TEMPO: Temporal Enforcement via Mode-Separated Policy Optimization for Trustworthy LLM Backtesting}
+       {\me, B.\ C.\ Stadie}{\chip{NeurIPS 2026}}{\href{https://arxiv.org/abs/2605.18843}{[arXiv]}}
+  \cpub{All Leaks Count, Some Count More: Interpretable Temporal Contamination Detection and Mitigation in LLM Backtesting}
+       {\me, R.\ Chen, B.\ C.\ Stadie}{\chip{Findings of EMNLP 2026}}{\href{https://arxiv.org/abs/2602.17234}{[arXiv]}}
+  \cpub{Unified Off-Policy Learning to Rank: a Reinforcement Learning Perspective}
+       {\me, Y.\ Su, H.\ Yuan, Y.\ Wu, R.\ Balasubramanian, Q.\ Wu, H.\ Wang, M.\ Wang}
+       {\chip{NeurIPS 2023}}{\href{https://arxiv.org/abs/2306.07528}{[arXiv]}}
+  \cpub{LAMP: Extracting Local Decision Surfaces From Large Language Models}
+       {R.\ Chen$^*$, Y.\ Ko$^*$, C.\ Cho, \me, S.\ Chung, M.\ Giuffr\'e, D.\ L.\ Shung, B.\ C.\ Stadie}
+       {\chip{AISTATS 2026}\,\chip{Spotlight}}{\href{https://arxiv.org/abs/2505.11772}{[arXiv]}}
+\end{publist}
+
+%--------------------------- Preprints ------------------------------------------
+\section{Preprints}
+\begin{publist}
+  \cpub{One Fabrication Is Enough: A Fake News Article Changes the Forecasts of LLM Forecasting Systems}
+       {\me, B.\ C.\ Stadie}{\chip{Preprint 2026}}{\href{https://arxiv.org/abs/2611.15102}{[arXiv]}}
 \end{publist}
 
 %--------------------------- Honors & Skills -------------------------------------
 \section{Honors, Skills \& Teaching}
 \begin{bullets}
-  \item \textbf{Honors:} China National Scholarship, Ministry of Education (top 1\%), 2020;
+  \item \textbf{Honors:} \textbf{China National Scholarship, Ministry of Education (top 1\%), 2020};
         National Undergraduate Electronic Design Contest, 2nd Prize nationally / 1st in Anhui Province, 2021.
-  \item \textbf{Programming:} Python (NumPy, Pandas, PyTorch), R, C/C++, Bash, Git, \LaTeX.
-  \item \textbf{Quantitative:} probability \& stochastic processes, statistical inference \& experiment design,
-        causal identification (difference-in-differences, regression discontinuity, partial identification),
-        Shapley-value attribution, offline reinforcement learning, ML evaluation under data contamination.
-  \item \textbf{Teaching:} TA for six quarters at Northwestern Statistics (probability \& statistics,
+  \item \textbf{Programming:} Python, R.
+  \item \textbf{Expertise:} probability and stochastic processes, statistical inference, regression,
+        machine learning, reinforcement learning.
+  \item \textbf{Teaching:} TA for seven quarters at Northwestern Statistics (probability \& statistics,
         multivariate analysis, data science with Python), 2024--2026.
 \end{bullets}
 

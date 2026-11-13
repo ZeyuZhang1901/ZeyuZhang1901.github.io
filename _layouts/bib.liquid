@@ -2,7 +2,7 @@
 ---
 <div class="row publication-row">
   {% if site.enable_publication_thumbnails %}
-    <div class="col col-sm-2 abbr preview-col">
+    <div class="col col-sm-2 abbr preview-col pub-preview-col">
       {% if entry.preview %}
         <div class="preview-frame">
           {% if entry.preview contains '://' %}
@@ -26,7 +26,7 @@
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8 pub-content-col{% else %}col-sm-10{% endif %}">
     {% if entry.nick %}
       <div class="nick">{{ entry.nick }}</div>
     {% endif %}

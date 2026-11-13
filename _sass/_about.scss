@@ -212,6 +212,20 @@ $about-theme-line: rgba($purple-color, 0.22);
     margin-top: 2rem;
   }
 
+  .about-research-sub {
+    margin-top: 1.6rem;
+  }
+
+  .about-paper-wide {
+    .about-paper-body {
+      grid-template-columns: 1fr;
+    }
+
+    .about-paper-figure img {
+      max-height: 260px;
+    }
+  }
+
   .about-paper {
     margin: 0 0 1rem;
     border: 1px solid $about-theme-line;

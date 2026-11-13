@@ -2,16 +2,11 @@
   <section class="about-story" aria-labelledby="about-story-leakage">
     <h3 id="about-story-leakage">Temporal leakage in LLM backtesting</h3>
     <p>
-      A central challenge in evaluating an LLM’s <strong>prediction</strong> ability is that testing on the true future is often impractical. The
-      standard alternative is <strong>backtesting</strong>: ask the model historical questions under a cutoff date, as if it were forecasting from
-      that earlier time. The hard problem is <strong>temporal leakage</strong>—a special form of data contamination in which post-cutoff knowledge
-      from pretraining seeps into the model’s reasoning and inflates backtest scores. My work treats this problem as a whole. On the
-      <strong>evaluation</strong> side, a statistical theory shows the standard pre/post contamination check is uninformative—recency alone reproduces
-      the leakage signature—proves that no passive backtest can separate leakage from genuine skill, and shows that one external reference (a known
-      training cutoff or a matched clean control) restores measurement, yielding a validated <strong>leakage-adjusted score</strong>. On the
-      <strong>mitigation</strong> side, an inference-time architecture blocks leaked claims from the model’s output without retraining—paired with an
-      interpretable claim-level metric that quantifies how much of the decision-driving reasoning is contaminated—while an RL post-training method
-      teaches the model temporal discipline itself.
+      Backtesting evaluates a model’s prediction ability by asking historical questions as if it were forecasting from an earlier time. Its validity
+      breaks when applied to LLMs: post-cutoff knowledge from pretraining leaks into the model’s reasoning and inflates the backtest score. My work
+      treats this problem as a whole: a <strong>theory</strong> of when the inflation can be measured and corrected, an
+      <strong>interpretable audit</strong> with an inference-time defense, and a <strong>training method</strong> that teaches the model temporal
+      discipline.
     </p>
   </section>
 
@@ -33,9 +28,10 @@
           </div>
           <div class="about-paper-title">Temporal Leakage in LLM Backtesting: Measurement, Validation, and Adjusted Scores</div>
           <p class="about-paper-blurb">
-            The standard pre/post contamination check is uninformative: recency alone reproduces the leakage signature, and no passive backtest can
-            separate leakage from skill and recency. One external reference—a known training cutoff or a matched clean control—restores measurement
-            and yields a leakage-adjusted score, validated by planting leakage in twin models and deployed as an audit of frontier systems.
+            LLMs legitimately know more about times near their cutoff, so recency mimics leakage, and no passive backtest can separate recency and
+            leakage from genuine skill. Leakage concentrates on hard questions, and even partial memorization captures most of the inflation (the
+            “double benefit”). Two estimators—a known cutoff or a clean control model—yield a leakage-adjusted score, validated on twin models with
+            planted leakage.
           </p>
           <div class="about-paper-venue">TMLR 2026</div>
         </div>
@@ -59,9 +55,9 @@
           </div>
           <div class="about-paper-title">All Leaks Count, Some Count More</div>
           <p class="about-paper-blurb">
-            Backtesting assumes models use only pre-cutoff evidence, but pretrained LLMs routinely leak later knowledge into their rationales. We
-            introduce Shapley-DCLR to measure how much decision-critical reasoning is contaminated at the claim level, and TimeSPEC, an inference-time
-            supervisor that regenerates predictions from temporally filtered evidence without retraining.
+            Shapley-DCLR measures what fraction of a model’s decision-driving reasoning is contaminated. TimeSPEC interleaves temporally filtered
+            retrieval with claim-level supervision so predictions rest entirely on pre-cutoff evidence, cutting leakage by 83–89% and reporting
+            backtest performance honestly.
           </p>
           <div class="about-paper-venue">Findings of EMNLP 2026</div>
         </div>
@@ -85,15 +81,55 @@
           </div>
           <div class="about-paper-title">Temporal Enforcement via Mode-Separated Policy Optimization</div>
           <p class="about-paper-blurb">
-            Temporal leakage lets LLMs recall post-cutoff outcomes during backtesting, so reported accuracy is often invalid. TEMPO trains temporal
-            discipline with a two-mode RL objective that first drives leaked claims to zero, then optimizes prediction quality once reasoning stays
-            pre-cutoff.
+            GRPO post-training with a two-mode reward: a leakage mode drives post-cutoff claims to zero before a performance mode optimizes the task
+            on clean evidence. Leakage falls from 2–13% to 0.6–3.7%, with performance up 6–13% where pre-cutoff signal is strong.
           </p>
           <div class="about-paper-venue">NeurIPS 2026</div>
         </div>
       </div>
     </div>
   </article>
+
+  <div class="about-research-sub">
+    <section class="about-story" aria-labelledby="about-story-fabrication">
+      <h3 id="about-story-fabrication">Attack and defense of LLM forecasting systems</h3>
+      <p>
+        Retrieval-based LLM forecasters search the news for evidence, and the wide search that makes them strong also makes them depend on the
+        authenticity of every article they retrieve. We study the weakest attacker this design allows—one who knows only the forecasting question and
+        publishes a single fabricated article—and show that even frontier models and leading deployed forecasting systems follow it, while accuracy
+        hides the harm.
+      </p>
+    </section>
+
+    <div class="about-works-label">Selected works in this line</div>
+
+    <article class="about-paper about-paper-wide">
+      <div class="about-paper-inner">
+        <div class="about-paper-body">
+          <div class="about-paper-figure">
+            <img
+              src="{{ '/assets/img/about_story/theme_fabrication.png' | relative_url }}"
+              alt="Directional attack: one fabricated article flips a stock forecast"
+            >
+          </div>
+          <div class="about-paper-meta">
+            <div>
+              <span class="about-paper-role">Attack the evidence</span>
+              <span class="about-paper-nick">One Fabrication</span>
+            </div>
+            <div class="about-paper-title">One Fabrication Is Enough</div>
+            <p class="about-paper-blurb">
+              An attacker who knows only the forecasting question publishes one fake news article. Once retrieved, it reverses 74–82% of opposing
+              forecasts on every frontier model tested, and the architectures of two leading deployed forecasting systems retrieve it in about 90% of
+              runs. A two-article version makes the model confidently wrong rather than uncertain, and the strongest published defenses are cheaply
+              bypassed.
+            </p>
+            <div class="about-paper-venue">Preprint 2026</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 
   <div class="about-research-line">
     <section class="about-story" aria-labelledby="about-story-interp">
@@ -121,7 +157,7 @@
               <span class="about-paper-role">Local decision surfaces</span>
               <span class="about-paper-nick">LAMP</span>
             </div>
-            <div class="about-paper-title">Extracting Locally Linear Decision Surfaces from LLM World Models</div>
+            <div class="about-paper-title">Extracting Local Decision Surfaces From Large Language Models</div>
             <p class="about-paper-blurb">
               Fluent LLM explanations need not track what actually drives the prediction. LAMP treats the model’s own stated factors as coordinates
               and fits a local linear decision surface—without gradients or internal access—to test whether predictions move consistently when those
